@@ -13,6 +13,8 @@ define('BASE_URL', '/monetra/public_html/');
     <title>Login | Monetra</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="icon" href="<?php echo BASE_URL; ?>assets/images/monetra-only-logo-royal.png"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.min.js" integrity="sha512-OlF0YFB8FRtvtNaGojDXbPT7LgcsSB3hj0IZKaVjzFix+BReDmTWhntaXBup8qwwoHrTHvwTxhLeoUqrYY9SEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -30,19 +32,19 @@ define('BASE_URL', '/monetra/public_html/');
             <div class="form-content">
                 <div class="login-form">
                     <div class="title">Login</div>
-                    <form action="#">
+                    <form action="#" id="form-login">
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" placeholder="Email" required>
+                                <input type="text" placeholder="Email" id="email" name="email" >
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Senha" required>
+                                <input type="password" placeholder="Senha" id="password" name="password" >
                             </div>
                             <div class="text"><a href="#">Esqueceu sua senha?</a></div>
                             <div class="button input-box">
-                                <input type="submit" value="Entrar">
+                                <input type="submit" id="submit" class="btn-logar" value="Entrar">
                             </div>
                             <div class="text sign-up-text">Não possui conta ainda? <label for="flip">Garanta seu acesso!</label>
                             </div>
@@ -62,7 +64,11 @@ define('BASE_URL', '/monetra/public_html/');
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.min.js" integrity="sha512-OlF0YFB8FRtvtNaGojDXbPT7LgcsSB3hj0IZKaVjzFix+BReDmTWhntaXBup8qwwoHrTHvwTxhLeoUqrYY9SEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../assets/js/publico-login.js"></script>
+    
+
 </body>
 
 </html>
