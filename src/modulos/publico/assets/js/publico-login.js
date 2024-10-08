@@ -18,10 +18,6 @@ const login = () => {
 
     const data = new FormData(form)
 
-    data.append('email', email)
-
-    data.append('password', senha)
-
     const url = '../backend/login.php'
 
 
@@ -46,9 +42,11 @@ const login = () => {
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
-                });
+                }).then(() => {
+                    window.location.href = "../pages/publico-inicio.php"
+                })
             } else {
-                Toast.fire({
+                Swal.fire({
                     icon: 'error',
                     title: 'Erro',
                     text: 'Usuário ou senha incorretos!',

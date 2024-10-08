@@ -29,11 +29,13 @@ if(empty($password)){
 
 $sql = "SELECT *
         FROM users
-        WHERE email = :email";
+        WHERE email = ?";
 
-$query = prepare($sql, ['email'=>$email]);
+$query = prepare($sql, [$email]);
 
 $info = $query->data;
+
+$id = $info->id;
 
 if(empty($query->data)){
     response([
@@ -51,5 +53,5 @@ if(($password !== $info->senha)){
 
 response([
     'status'=>true,
-    'data'=>$info
+    'data'=>$info,
 ]);
