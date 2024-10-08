@@ -133,7 +133,7 @@ function prepare($sql, $columns = [], $mode = PDO::FETCH_OBJ, $all = false) {
 
             
     } catch (\Throwable $th) {
-        $results->exception = str_replace(' at row 1', '', $th->errorInfo[2]);
+        $results->exception = str_replace(' at row 1', '', $th->errorInfo[0]);
     }
     
     $results->status = !empty($results->query);

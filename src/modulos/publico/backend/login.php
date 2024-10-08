@@ -1,6 +1,7 @@
 <?php
 
 require "../.././../../public_html/config/conexao.php";
+require "../../../../app/functions.php";
 
 $email = mb_strtolower(trim($_POST['email'])) ?? null;
 $password = $_POST['password'] ?? null;
@@ -28,26 +29,27 @@ if(empty($password)){
 
 $sql = "SELECT *
         FROM users
-        WHERE email = $email";
+        WHERE email = :email";
 
-$query = prepare($sql, [$email]);
+$query = prepare($sql, ['email'=>$email]);
 
 $info = $query->data;
 
 if(empty($query->data)){
     response([
         'status'=>false,
-        'message'=>"Usuário e/ou senha invalidos!"
+        'message'=>"Usuário e/ou senha invalidos![001]"
     ]);
 }
 
-if(!password_verify($password, $info->password)){
+if(($password !== $info->senha)){
     response([
         'status'=>false,
-        'message'=>'Usuário e/ou senha invalidos!'
+        'message'=>'Usuário e/ou senha invalidos![002]'
     ]);
 }
 
 response([
-    'status'=>true
+    'status'=>true,
+    'data'=>$info
 ]);
