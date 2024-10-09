@@ -1,5 +1,5 @@
 {
-  "name": "meu-projeto",
+  "name": "monetra",
   "version": "1.0.0",
   "description": "Projeto usando Tailwind CSS",
   "main": "index.js",
@@ -17,6 +17,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "flowbite": "^2.5.2",
     "sweetalert2": "^11.14.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuabatista/monetra.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joshuabatista/monetra/issues"
+  },
+  "homepage": "https://github.com/joshuabatista/monetra#readme"
 }

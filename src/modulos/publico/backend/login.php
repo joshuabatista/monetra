@@ -35,7 +35,7 @@ $query = prepare($sql, [$email]);
 
 $info = $query->data;
 
-$id = $info->id;
+// $id = $info->id;
 
 if(empty($query->data)){
     response([
