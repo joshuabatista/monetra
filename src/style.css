@@ -3,3 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.content {
+
+    @apply bg-white mt-4 shadow-lg
+}

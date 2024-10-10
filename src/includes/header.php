@@ -1,4 +1,4 @@
-<header class="bg-[#4b50d1] text-white p-4 rounded mt-4 ml-4 mr-4">
+<header class="bg-[#4b50d1] text-white p-4 shadow-lg">
     <div class="grid grid-cols-2 gap-4">
         <div class="logo-monetra">
             <img class=" w-48" src="../../../../public_html/assets/images/monetra-logo-azul-royal-sem-margem.png"
@@ -43,6 +43,6 @@
     </div>
 </header>
 
-<body class=" bg-gray-100">
+<body class=" bg-gray-200">
     
 </body>

@@ -56,7 +56,12 @@ const login = () => {
         }
 
     })
+
 } 
 
 $(document).on('click', '.btn-logar', login)
-
+$(document).on('keydown', function(e) {
+    if (e.key === "Enter") {  
+        login();  
+    }
+});
