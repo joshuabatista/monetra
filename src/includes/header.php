@@ -2,7 +2,7 @@
     <div class="grid grid-cols-2 gap-4">
         <div class="logo-monetra">
             <img class=" w-48" src="../../../../public_html/assets/images/monetra-logo-azul-royal-sem-margem.png"
-                alt="">
+                alt="Logo-Monetra" href="../../src/modulos/publico/pages/publico-inicio.php">
         </div>
         <div class=" flex items-end ml-[44rem] mb-[1rem]">
 
