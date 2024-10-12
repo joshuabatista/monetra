@@ -4,8 +4,12 @@ const showSelectCreditCards = () => {
     let button = $('#switch-avançar').is(':checked')
 
     if(button == true) {
-        $('.creditCards').removeClass('d-none')
+        $('.creditCards').removeClass('hidden')
     } else{
-        $('.creditCards').addClass('d-none')
+        $('.creditCards').addClass('hidden')
     }
 }
+
+
+//Eventos ouvintes
+$('#switch-avançar').change(showSelectCreditCards)

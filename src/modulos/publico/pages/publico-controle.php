@@ -17,7 +17,7 @@
             <div class="max-w-md mx-auto mt-4">
                 <label for="saldoInicialLabel" class="label">Saldo inicial</label>
                 <div class="form-control">
-                    <input type="saldoInicial" id="saldoInicial" class="input" />
+                    <input type="saldoInicial" id="saldoInicial" class="input w-[14rem]" />
                 </div>
             </div>
     
@@ -31,10 +31,11 @@
                 </label>
             </div>
     
-            <div class="max-w-md mx-auto mt-4 mb-4 creditCards none">
+            <div class="max-w-md mx-auto mt-4 mb-4 creditCards hidden">
                 <label for="options" class="label">Quantos Cartões de Crédito?</label>
                 <div class="form-control">
-                    <select id="options" name="options" class="select">
+                    <select id="options" name="options" class="select w-[14rem]">
+                        <option value="">Selecione</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -45,14 +46,13 @@
             </div>
 
             <div class="max-w-md mx-auto mt-4 mb-4">
-            <a href="#_" class="relative inline-flex items-center justify-center  px-2 py-2 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
-                <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </span>
-                <span class="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">Avançar</span>
-                <span class="relative invisible">Avançar</span>
-            </a>
-
+                <a href="#_" class="relative inline-flex items-center justify-center  px-2 py-2 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
+                    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </span>
+                    <span class="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">Avançar</span>
+                    <span class="relative invisible">Avançar</span>
+                </a>
             </div>
 
 

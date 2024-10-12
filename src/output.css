@@ -1312,6 +1312,10 @@ input:checked + .toggle-bg {
   width: 100%;
 }
 
+.w-\[14rem\] {
+  width: 14rem;
+}
+
 .max-w-md {
   max-width: 28rem;
 }
