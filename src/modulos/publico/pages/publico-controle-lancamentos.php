@@ -19,7 +19,7 @@
             <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
                 data-tabs-toggle="#abas" role="tablist">
                 <li class="me-2" role="presentation">
-                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="janeiro-tab" data-tabs-target="#janeiro"
+                    <button class=" inline-block p-4 border-b-2 rounded-t-lg" id="janeiro-tab" data-tabs-target="#janeiro"
                         type="button" role="tab" aria-controls="janeiro" aria-selected="false">Janeiro</button>
                 </li>
                 <li class="me-2" role="presentation">
