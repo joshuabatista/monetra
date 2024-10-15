@@ -1300,6 +1300,10 @@ input:checked + .toggle-bg {
   width: 16rem;
 }
 
+.w-\[14rem\] {
+  width: 14rem;
+}
+
 .w-\[26rem\] {
   width: 26rem;
 }
@@ -1310,10 +1314,6 @@ input:checked + .toggle-bg {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[14rem\] {
-  width: 14rem;
 }
 
 .max-w-md {
