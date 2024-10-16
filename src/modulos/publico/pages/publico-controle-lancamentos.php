@@ -16,7 +16,7 @@
 <div class=" flex justify-center items-center">
     <div class="content flex flex-col rounded-lg">
         <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
+            <ul class="flex justify-around flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
                 data-tabs-toggle="#abas" role="tablist">
                 <li class="me-2" role="presentation">
                     <button class=" inline-block p-4 border-b-2 rounded-t-lg" id="janeiro-tab" data-tabs-target="#janeiro"
