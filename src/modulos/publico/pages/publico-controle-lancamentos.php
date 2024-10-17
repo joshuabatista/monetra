@@ -4,6 +4,7 @@
 
  require '../../../includes/head.php'; 
  require "../../../../app/functions.php";
+ require "../../../../public_html/config/conexao.php";
 
 ?>
 
@@ -121,7 +122,7 @@
     </div>
 </div>
 
-    <script src="../assets/js/publico-controle.js"></script>
+    <script src="../assets/js/publico-controle-lancamentos.js"></script>
     <?php require"../../../includes/footer.php"?>
 </body>
 
