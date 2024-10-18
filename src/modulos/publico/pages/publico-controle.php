@@ -19,11 +19,6 @@
                 <div class="form-control">
                     <input type="saldoInicial" id="saldoInicial" class="input w-[14rem]" />
                 </div>
-                <script>
-                    $(document).ready(function() {
-                        $('#saldoInicial').mask('000.000.000,00', { reverse: true });
-                    });
-                </script>
             </div>
     
             <div class="max-w-md mx-auto mt-4">
@@ -35,11 +30,13 @@
                     <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Possui cartão de Crédito?</span>
                 </label>
             </div>
-    
+
+           
             <div class="max-w-md mx-auto mt-4 mb-4 creditCards hidden">
                 <label for="options" class="label">Quantos Cartões de Crédito?</label>
                 <div class="form-control">
-                    <select id="options" name="options" class="select w-[14rem]">
+                    <select id="options" name="options" class="options select w-[14rem]">
+                        <option value="">Selecione</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -47,8 +44,12 @@
                         <option value="5">5</option>
                     </select>
                 </div>
-            </div>
+                <div class="max-w-md mx-auto mt-4" id="cardNamesContainer">
 
+                </div>
+            </div>
+           
+    
             <div class="max-w-md mx-auto mt-4 mb-4">
                 <a id="btn-avancar" href="../pages/publico-controle-lancamentos.php" class="relative inline-flex items-center justify-center  px-2 py-2 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
                     <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
@@ -62,6 +63,13 @@
 
         </div>
     </div>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#saldoInicial').mask('000.000.000,00', { reverse: true });
+        });
+    </script>
 
 
     <script src="../assets/js/publico-controle.js"></script>
