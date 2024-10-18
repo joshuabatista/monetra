@@ -1,26 +1,23 @@
-(() => {
-    defineAno()
-})
 
 //muda dinamicamente o plano de contas para Despesas ou Receitas
-const changePlanoContas = () => {
+const changePlanoContasCard = () => {
 
-    let selectCategoria = $('.select-categoria').val()
+    let selectCategoria = $('.select-categoria-cartao').val()
 
     if(selectCategoria) {
         $.ajax({
-            url: '../backend/publico-get-plano-contas.php',
+            url: '../backend/publico-get-plano-contas-card.php',
             type: 'GET',
             data: {selectCategoria: selectCategoria},
             success: function(response){
-                $('.selectPlanoContas').empty()
-                $('.selectPlanoContas').append('<option value"">Selecione</option>')
+                $('.selectPlanoContasCartao').empty()
+                $('.selectPlanoContasCartao').append('<option value"">Selecione</option>')
                 if(response.data || response.data.length > 0) {
                     response.data.forEach(item=>{
-                        $('.selectPlanoContas').append(`<option value"${item.id}">${item.codigo} - ${item.descricao}</option>`)
+                        $('.selectPlanoContasCartao').append(`<option value"${item.id}">${item.codigo} - ${item.descricao}</option>`)
                     })
                 } else {
-                    $('.selectPlanoContas').append('<option value="">Nenhum plano de contas encontrado</option>')
+                    $('.selectPlanoContasCartao').append('<option value="">Nenhum plano de contas encontrado</option>')
                 }
             }
         })
@@ -29,14 +26,14 @@ const changePlanoContas = () => {
 
 
 
-const addMovimentation = () => {
+const addMovimentationCard = () => {
 
-        let data = $('#data').val();
-        let categoria = $('#select-categoria').val();
-        let planoContas = $('#selectPlanoContas').val();
-        let beneficiario = $('.beneficiario').val();
-        let tipo = $('#tipo').val();
-        let valor = $('#valor').val();
+        let data = $('#dataCartao').val();
+        let categoria = $('#select-categoria-cartao').val();
+        let planoContas = $('#selectPlanoContasCartao').val();
+        let beneficiario = $('.beneficiarioCartao').val();
+        let tipo = $('#tipoCartao').val();
+        let valor = $('#valorCartao').val();
         let dataFormatada = formatarData(data)
 
         // Valida se os campos obrigatórios estão preenchidos
@@ -73,7 +70,7 @@ const addMovimentation = () => {
 
 
         // Adiciona uma nova linha na tabela com os valores capturados
-        $('#tabelaMovimentacoes tbody').append(`
+        $('#tabelaCartoes tbody').append(`
             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${categoria.charAt(0).toUpperCase() + categoria.slice(1)}</td>
@@ -86,19 +83,19 @@ const addMovimentation = () => {
         `);
 
         // Limpa os campos após a inserção
-        $('#data').val('');
-        $('#select-categoria').val('');
-        $('#selectPlanoContas').val('');
-        $('.beneficiario').val('');
-        $('#tipo').val('');
-        $('#valor').val('');
+        $('#dataCartao').val('');
+        $('#select-categoriaCartao').val('');
+        $('#selectPlanoContasCartao').val('');
+        $('.beneficiarioCartao').val('');
+        $('#tipoCartao').val('');
+        $('#valorCartao').val('');
   
 }
 
-const changeTipo = () => {
+const changeTipoCard = () => {
 
-    let categoria = $('#select-categoria').val()
-    let tipoSelect = $('#tipo')
+    let categoria = $('#select-categoria-cartao').val()
+    let tipoSelect = $('#tipoCartao')
 
     tipoSelect.empty()
     tipoSelect.append('<option value="">Selecione</option>')
@@ -123,6 +120,6 @@ function formatarData(data) {
 
 // Eventos ouvintes
 
-$(document).on('change', '.select-categoria', changePlanoContas)
-$(document).on('change', '.select-categoria', changeTipo)
-$(document).on('click', '.btn-add-mov', addMovimentation)
+$(document).on('change', '.select-categoria-cartao', changePlanoContasCard)
+$(document).on('change', '.select-categoria-cartao', changeTipoCard)
+$(document).on('click', '.btn-add-card', addMovimentationCard)
