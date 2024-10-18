@@ -40,7 +40,6 @@
                 <label for="options" class="label">Quantos Cartões de Crédito?</label>
                 <div class="form-control">
                     <select id="options" name="options" class="select w-[14rem]">
-                        <option value="">Selecione</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

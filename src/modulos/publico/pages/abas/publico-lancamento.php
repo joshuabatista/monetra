@@ -1,8 +1,5 @@
 
-
-
-<div class="" id="janeiro" role="tabpanel"
-    aria-labelledby="janeiro-tab">
+<div class="" id="janeiro" role="tabpanel"aria-labelledby="janeiro-tab">
 
     <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800 m-3 border border-primary">
 
@@ -72,17 +69,16 @@
     </div>
 
 
-
+    
     <table class="table-auto w-full mt-5" id="tabelaMovimentacoes">
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Categoria</th>
-                <th>Plano de Contas</th>
-                <th>Beneficiário</th>
-                <th>Tipo</th>
-                <th>Debito</th>
-                <th>Crédito</th>
+        <thead class="border border-solid border-gray-300 bg-gray-50">
+                <th class="px-6 py-3 text-center" scope="col">Data</th>
+                <th class="px-6 py-3 text-center" scope="col">Categoria</th>
+                <th class="px-6 py-3 text-center" scope="col">Plano de Contas</th>
+                <th class="px-6 py-3 text-center" scope="col">Beneficiário</th>
+                <th class="px-6 py-3 text-center" scope="col">Tipo</th>
+                <th class="px-6 py-3 text-center" scope="col">Debito</th>
+                <th class="px-6 py-3 text-center" scope="col">Crédito</th>
             </tr>
         </thead>
         <tbody>
