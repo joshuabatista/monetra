@@ -34,6 +34,8 @@ const addMovimentationCard = () => {
         let beneficiario = $('.beneficiarioCartao').val();
         let tipo = $('#tipoCartao').val();
         let valor = $('#valorCartao').val();
+        let cartao = $('#cartao').val();
+        let quantidade = $('#quantidade').val();
         let dataFormatada = formatarData(data)
 
         // Valida se os campos obrigatórios estão preenchidos
@@ -75,10 +77,13 @@ const addMovimentationCard = () => {
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${categoria.charAt(0).toUpperCase() + categoria.slice(1)}</td>
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${planoContas}</td>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${cartao}</td>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${quantidade}</td>
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${beneficiario}</td>
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${tipoTexto}</td>
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${debito}</td>
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${credito}</td>
+
             </tr>
         `);
 
@@ -89,6 +94,8 @@ const addMovimentationCard = () => {
         $('.beneficiarioCartao').val('');
         $('#tipoCartao').val('');
         $('#valorCartao').val('');
+        $('#cartao').val('');
+        $('#quantidade').val('');
   
 }
 

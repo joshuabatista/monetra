@@ -84,8 +84,7 @@
             </div>
             <div>
                 <label for="" class="label">Em quantas vezes? * </label>
-                <select name="quantidade" id="quantidade" class="select quantidade">
-                    <option value="">Selecione</option>
+                <select name="quantidade" id="quantidade" class="select quantidade w-32">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -127,6 +126,8 @@
             <th class="px-6 py-3 text-center" scope="col">Data</th>
             <th class="px-6 py-3 text-center" scope="col">Categoria</th>
             <th class="px-6 py-3 text-center" scope="col">Plano de Contas</th>
+            <th class="px-6 py-3 text-center" scope="col">Cartão de Crédito</th>
+            <th class="px-6 py-3 text-center" scope="col">Parcelas</th>
             <th class="px-6 py-3 text-center" scope="col">Beneficiário</th>
             <th class="px-6 py-3 text-center" scope="col">Tipo</th>
             <th class="px-6 py-3 text-center" scope="col">Debito</th>
