@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require "../.././../../public_html/config/conexao.php";
 require "../../../../app/functions.php";
 
@@ -35,8 +37,6 @@ $query = prepare($sql, [$email]);
 
 $info = $query->data;
 
-// $id = $info->id;
-
 if(empty($query->data)){
     response([
         'status'=>false,
@@ -50,6 +50,11 @@ if(($password !== $info->senha)){
         'message'=>'Usuário e/ou senha invalidos![002]'
     ]);
 }
+
+$_SESSION['user_id'] = $info->id;
+$_SESSION['user_name'] = $info->nome;
+$_SESSION['user_lastName'] = $info->sobrenome;
+$_SESSION['user_email'] = $info->email;
 
 response([
     'status'=>true,
