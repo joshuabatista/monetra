@@ -18,7 +18,7 @@ const login = () => {
 
     const data = new FormData(form)
 
-    const url = '../backend/login.php'
+    const url = '/src/modulos/publico/backend/login.php'
 
 
     $.ajax({
@@ -43,7 +43,7 @@ const login = () => {
                     timer: 3000,
                     timerProgressBar: true,
                 }).then(() => {
-                    window.location.href = "../pages/publico-inicio.php"
+                    window.location.href = "inicio"
                 })
             } else {
                 Swal.fire({
