@@ -6,7 +6,7 @@ const changePlanoContasCard = () => {
 
     if(selectCategoria) {
         $.ajax({
-            url: '../backend/publico-get-plano-contas-card.php',
+            url: '/src/modulos/publico/backend/publico-get-plano-contas-card.php',
             type: 'GET',
             data: {selectCategoria: selectCategoria},
             success: function(response){

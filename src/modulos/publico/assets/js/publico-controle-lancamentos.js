@@ -1,6 +1,3 @@
-(() => {
-    defineAno()
-})
 
 //muda dinamicamente o plano de contas para Despesas ou Receitas
 const changePlanoContas = () => {
@@ -9,7 +6,7 @@ const changePlanoContas = () => {
 
     if(selectCategoria) {
         $.ajax({
-            url: '../backend/publico-get-plano-contas.php',
+            url: '/src/modulos/publico/backend/publico-get-plano-contas.php',
             type: 'GET',
             data: {selectCategoria: selectCategoria},
             success: function(response){
