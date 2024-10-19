@@ -25,7 +25,6 @@ const changePlanoContasCard = () => {
 }
 
 
-
 const addMovimentationCard = () => {
 
         let data = $('#dataCartao').val();
@@ -40,7 +39,16 @@ const addMovimentationCard = () => {
 
         // Valida se os campos obrigatórios estão preenchidos
         if(!dataFormatada || !categoria || !planoContas || !tipo || !valor) {
-            alert("Por favor, preencha todos os campos obrigatórios.");
+            Swal.fire({
+                position: 'top-end',
+                toast: true,
+                icon: 'error',
+                title: 'Opss!',
+                text: 'Por favor, preencha todos os campos obrigatórios',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            })
             return;
         }
 
