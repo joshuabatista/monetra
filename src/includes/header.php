@@ -2,20 +2,18 @@
 
 session_start();
 
-// Verifique se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
-    // Redirecionar para a página de login se não estiver logado
     header("Location: /login");
     exit;
 }
-
 ?>
 
 <header class="bg-[#4b50d1] text-white p-4 shadow-lg">
     <div class="grid grid-cols-2 gap-4">
         <div class="logo-monetra">
-            <img class=" w-48" src="../../../../public_html/assets/images/monetra-logo-azul-royal-sem-margem.png"
-                alt="Logo-Monetra" href="../../src/modulos/publico/pages/publico-inicio.php">
+            <a href="inicio">
+                <img class=" w-48" src="../../../../public_html/assets/images/monetra-logo-azul-royal-sem-margem.png" alt="Logo-Monetra" >
+            </a>
         </div>
         <div class=" flex items-end ml-[44rem] mb-[1rem]">
 
