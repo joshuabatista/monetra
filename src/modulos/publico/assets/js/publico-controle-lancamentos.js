@@ -119,8 +119,50 @@ const changeTipo = () => {
     }
 }
 
-//Funções auxiliares
+const saveMovimentation = () => {
+    
+    var tabelaDados = []
 
+    $('#tabelaMovimentacoes tbody tr').each(function() {
+        var linha = {
+            data: $(this).find('td:eq(0)').text(),
+            categoria: $(this).find('td:eq(1)').text(),
+            plano_contas: $(this).find('td:eq(2)').text(),
+            beneficiario: $(this).find('td:eq(3)').text(),
+            tipo: $(this).find('td:eq(4)').text(),
+            debito: $(this).find('td:eq(5)').text(),
+            credito: $(this).find('td:eq(6)').text()
+        };
+        tabelaDados.push(linha);
+    });
+
+    console.log(tabelaDados);
+    
+
+    $.ajax({
+        url: '/src/modulos/publico/backend/publico-salvar-movimentacao.php',
+        method: 'POST',
+        data: {tabela: tabelaDados},
+        dataType: 'json',
+        success: function(response) {
+            Swal.fire({
+                position: 'top-end',
+                toast: true,
+                icon: 'success',
+                title: 'Sucesso!',
+                text: 'Lançamento realizado!',
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+            })
+        },
+
+    })
+
+
+}
+
+//Funções auxiliares
 function formatarData(data) {
     let partes = data.split("-"); 
     return `${partes[2]}/${partes[1]}/${partes[0]}`; 
@@ -128,7 +170,7 @@ function formatarData(data) {
 
 
 // Eventos ouvintes
-
 $(document).on('change', '.select-categoria', changePlanoContas)
 $(document).on('change', '.select-categoria', changeTipo)
 $(document).on('click', '.btn-add-mov', addMovimentation)
+$(document).on('click', '.btn-add-mov', saveMovimentation)
