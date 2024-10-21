@@ -3,12 +3,10 @@
 require "../.././../../public_html/config/conexao.php";
 require "../../../../app/functions.php";
 
-echo "<pre>";
-    print_r($_SESSION);
-echo "</pre>";
-die;
+session_start();
 
 $dadosTabela = $_POST['tabela'];
+$usu_id = $_SESSION['user_id'];
 
 foreach($dadosTabela as $linha) {
     $data = $linha['data'];
@@ -20,6 +18,20 @@ foreach($dadosTabela as $linha) {
     $credito = $linha['credito'];
 }
 
+$dataConvertida = DateTime::createFromFormat('d/m/Y', $data)->format('Y-m-d');
+
+$pdo->beginTransaction();
+
+$valor = '';
+
+if(!empty($debito)) {
+    $valor = $debito;
+} else {
+    $valor = $credito;
+}
+
+$valorTratado = str_replace(['R$', ' ', '-'], '', $valor);
+
 if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo)){
     response([
         'status'=>false,
@@ -28,4 +40,39 @@ if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo)){
 }
 
 $sql = "INSERT INTO movimentacoes SET
-        usu_id = ";
+        usu_id = ?,
+        data = ?,
+        categoria = ?,
+        plano_contas = ?,
+        beneficiario = ?,
+        tipo = ?,
+        valor = ?";
+
+$columns = [
+    $usu_id,
+    $dataConvertida,
+    $categoria,
+    $planoContas,
+    $beneficiario,
+    $tipo,
+    $valorTratado
+    
+];
+
+$query = prepare($sql, $columns);
+
+
+if(!empty($query->exception)){
+    $pdo->rollBack();
+    response([
+        'status' => false,
+        'message' => 'Erro ao lançar movimentação [001]'
+    ]);
+}
+
+$pdo->commit();
+
+response([
+    'status'=>true,
+    'message'=>'Lançamento realizado com sucesso!'
+]);
