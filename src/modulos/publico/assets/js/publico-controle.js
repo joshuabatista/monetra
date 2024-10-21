@@ -1,6 +1,8 @@
-(() => {
-    $('#saldoInicial').mask('000.000,00')
-})
+
+$(document).ready(function() {
+    getSaldo()
+});
+
 
 const showSelectCreditCards = () => {
 
@@ -68,6 +70,24 @@ const saveSaldo = () => {
     })
 }
 
+const getSaldo = () => {
+    const url = '/src/modulos/publico/backend/publico-get-saldo-inicial.php';
+
+    $.getJSON(url, function(response) {
+
+        
+        if (response.status) {
+            const saldo = response.data; 
+
+            if (saldo) {
+                $('#saldoInicial').val(saldo); 
+                $('#saldoInicial').prop('disabled', true);
+            }
+        } else {
+            console.error("Erro ao recuperar saldo: ", response.message);
+        }
+    });
+}
 
 
 //Eventos ouvintes

@@ -22,6 +22,20 @@ if(empty($saldo)){
     ]);
 }
 
+$sqlCheck = "SELECT COUNT(*) total FROM saldo_inicial WHERE usu_id = ?";
+$queryCheck = prepare($sqlCheck, [$usu_id]);
+$total = $queryCheck->data->total;
+
+
+
+if($total > 0) {
+    $pdo->rollBack();
+    response([
+        'status'=>false,
+        'message'=>'Saldo inicial ja cadastrado!'
+    ]);
+}
+
 $sql = "INSERT INTO saldo_inicial SET
         usu_id = ?,
         saldo = ?";
