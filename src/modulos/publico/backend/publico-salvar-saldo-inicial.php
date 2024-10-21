@@ -8,6 +8,7 @@ session_start();
 $pdo->beginTransaction();
 
 $saldo = $_POST['saldo'];
+$data = $_POST['data'];
 
 $usu_id = $_SESSION['user_id'];
 
@@ -27,7 +28,6 @@ $queryCheck = prepare($sqlCheck, [$usu_id]);
 $total = $queryCheck->data->total;
 
 
-
 if($total > 0) {
     $pdo->rollBack();
     response([
@@ -38,11 +38,13 @@ if($total > 0) {
 
 $sql = "INSERT INTO saldo_inicial SET
         usu_id = ?,
-        saldo = ?";
+        saldo = ?,
+        data = ?";
 
 $columns = [
     $usu_id,
-    $saldoTratado
+    $saldoTratado,
+    $data
 ];
 
 $query = prepare($sql, $columns);

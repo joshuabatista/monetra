@@ -61,11 +61,12 @@ $(document).ready(function() {
 const saveSaldo = () => {
 
     const saldo  = $('#saldoInicial').val()
+    const data = $('#dataSaldo').val()
 
     $.ajax({
         url: '/src/modulos/publico/backend/publico-salvar-saldo-inicial.php',
         method: 'POST',
-        data: {saldo: saldo},
+        data: {saldo: saldo, data: data},
         dataType: 'json',
     })
 }
@@ -77,11 +78,15 @@ const getSaldo = () => {
 
         
         if (response.status) {
-            const saldo = response.data; 
+            
+            const saldo = response.data.saldo; 
+            const data = response.data.data
 
             if (saldo) {
                 $('#saldoInicial').val(saldo); 
                 $('#saldoInicial').prop('disabled', true);
+                $('#dataSaldo').val(data); 
+                $('#dataSaldo').prop('disabled', true);
             }
         } else {
             console.error("Erro ao recuperar saldo: ", response.message);

@@ -20,6 +20,12 @@
                     <input type="saldoInicial" id="saldoInicial" class="input w-[14rem]" />
                 </div>
             </div>
+            <div class="max-w-md mx-auto mt-4">
+                <label for="dataSaldoLabel" class="label">Data do saldo inicial</label>
+                <div class="form-control">
+                    <input type="date" id="dataSaldo" class="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-[14rem]" />
+                </div>
+            </div>
     
             <div class="max-w-md mx-auto mt-4">
                 <label class="inline-flex items-center cursor-pointer">
