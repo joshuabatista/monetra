@@ -56,6 +56,7 @@ $_SESSION['user_name'] = $info->nome;
 $_SESSION['user_lastName'] = $info->sobrenome;
 $_SESSION['user_email'] = $info->email;
 
+
 response([
     'status'=>true,
     'data'=>$info,

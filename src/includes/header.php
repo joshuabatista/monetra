@@ -1,12 +1,3 @@
-<?php 
-
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: /login");
-    exit;
-}
-?>
 
 <header class="bg-[#4b50d1] text-white p-4 shadow-lg">
     <div class="grid grid-cols-2 gap-4">

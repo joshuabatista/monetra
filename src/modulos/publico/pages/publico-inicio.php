@@ -1,5 +1,4 @@
 <?php
-
  $title = "Monetra | Inicio";
 
  require '../../../includes/head.php'; 
@@ -17,9 +16,6 @@
     <div class="grid grid-cols-[80%_20%] gap-4">
 
         <div class="content rounded-r-xl">
-
-
-
 
             <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
