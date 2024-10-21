@@ -56,7 +56,21 @@ $(document).ready(function() {
 });
 
 
+const saveSaldo = () => {
+
+    const saldo  = $('#saldoInicial').val()
+
+    $.ajax({
+        url: '/src/modulos/publico/backend/publico-salvar-saldo-inicial.php',
+        method: 'POST',
+        data: {saldo: saldo},
+        dataType: 'json',
+    })
+}
+
+
 
 //Eventos ouvintes
 $('#switch-avançar').change(showSelectCreditCards)
 $('#btn-avancar').click(validation)
+$('#btn-avancar').click(saveSaldo)
