@@ -144,19 +144,6 @@ const saveMovimentation = () => {
         method: 'POST',
         data: {tabela: tabelaDados},
         dataType: 'json',
-        success: function(response) {
-            Swal.fire({
-                position: 'top-end',
-                toast: true,
-                icon: 'success',
-                title: 'Sucesso!',
-                text: 'Lançamento realizado!',
-                showConfirmButton: false,
-                timer: 1000,
-                timerProgressBar: true,
-            })
-        },
-
     })
 
 

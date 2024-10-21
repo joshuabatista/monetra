@@ -11,7 +11,7 @@ $usu_id = $_SESSION['user_id'];
 foreach($dadosTabela as $linha) {
     $data = $linha['data'];
     $categoria = $linha['categoria'];
-    $planoContas = $linha['plano_contas'];
+    $planoContas = explode(' - ', $linha['plano_contas'])[0];
     $beneficiario = $linha['beneficiario'];
     $tipo = $linha['tipo'];
     $debito = $linha['debito'];
@@ -31,6 +31,7 @@ if(!empty($debito)) {
 }
 
 $valorTratado = str_replace(['R$', ' ', '-'], '', $valor);
+$valorTratado = number_format((float)$valorTratado, 2, '.', '');
 
 if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo)){
     response([
