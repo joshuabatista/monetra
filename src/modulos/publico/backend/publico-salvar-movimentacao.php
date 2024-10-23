@@ -5,39 +5,26 @@ require "../../../../app/functions.php";
 
 session_start();
 
-$dadosTabela = $_POST['tabela'];
-$usu_id = $_SESSION['user_id'];
+$data = $_POST['data'];
+$categoria = $_POST['categoria'];
+$planoContas = explode(' - ', $_POST['plano_contas'])[0];
+$beneficiario = $_POST['beneficiario'];
+$tipo = $_POST['tipo'];
+$valor = $_POST['valor'];
 
-foreach($dadosTabela as $linha) {
-    $data = $linha['data'];
-    $categoria = $linha['categoria'];
-    $planoContas = explode(' - ', $linha['plano_contas'])[0];
-    $beneficiario = $linha['beneficiario'];
-    $tipo = $linha['tipo'];
-    $debito = $linha['debito'];
-    $credito = $linha['credito'];
-}
+$usu_id = $_SESSION['user_id'];
 
 $dataConvertida = DateTime::createFromFormat('d/m/Y', $data)->format('Y-m-d');
 
 $pdo->beginTransaction();
 
-$valor = '';
-
-if(!empty($debito)) {
-    $valor = $debito;
-} else {
-    $valor = $credito;
-}
-
-$valorTratado = str_replace(['R$', ' ', '-'], '', $valor);
-$valorTratado = number_format((float)$valorTratado, 2, '.', '');
+$valorTratado = number_format((float)$valor, 2, '.', '');
 
 if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo)){
     $pdo->rollBack();
     response([
-        'status'=>false,
-        'message'=>"Preencha os campos corretamente"
+        'status' => false,
+        'message' => "Preencha os campos corretamente"
     ]);
 }
 
@@ -58,11 +45,9 @@ $columns = [
     $beneficiario,
     $tipo,
     $valorTratado
-    
 ];
 
 $query = prepare($sql, $columns);
-
 
 if(!empty($query->exception)){
     $pdo->rollBack();
@@ -75,6 +60,6 @@ if(!empty($query->exception)){
 $pdo->commit();
 
 response([
-    'status'=>true,
-    'message'=>'Lançamento realizado com sucesso!'
+    'status' => true,
+    'message' => 'Lançamento realizado com sucesso!'
 ]);
