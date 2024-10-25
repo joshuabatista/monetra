@@ -13,7 +13,6 @@ $query = prepareAll($sql, [$usu_id]);
 $saldo = $query->data;
 
 if (!empty($saldo)) {
-    // Formata o saldo corretamente
     $saldoFormatado = number_format($saldo[0]->saldo, 2, ',', '.');
 
     // Formata a data no formato 'd/m/Y'

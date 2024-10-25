@@ -15,7 +15,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+// Se o usuário já estiver na página de login, não redireciona.
+if (!isset($_SESSION['user_id']) && $_SERVER['REQUEST_URI'] !== '/login') {
     header("Location: /login");
     exit;
 }

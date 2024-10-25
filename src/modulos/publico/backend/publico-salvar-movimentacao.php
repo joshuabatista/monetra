@@ -24,7 +24,7 @@ if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo)){
     $pdo->rollBack();
     response([
         'status' => false,
-        'message' => "Preencha os campos corretamente"
+        'message' => "Preencha os campos corretamente [01]"
     ]);
 }
 

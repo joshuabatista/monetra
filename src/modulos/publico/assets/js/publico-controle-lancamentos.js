@@ -16,8 +16,21 @@ const getMovimentation = () => {
             $('#tabelaMovimentacoes tbody').empty();
 
             movimentacoes.forEach(movimentacao => {
+
+                if(movimentacao.tipo == 1) {
+                    movimentacao.tipo = 'Pago'
+                } else if(movimentacao.tipo == 4) {
+                    movimentacao.tipo = 'A pagar'
+                } else if(movimentacao.tipo == 2){
+                    movimentacao.tipo = 'Recebido'
+                } else if (movimentacao.tipo == 3){
+                    movimentacao.tipo = 'A receber'
+                }
+
                 const dataFormatada = formatarData(movimentacao.data); 
-                // const valorFormatado = parseFloat(movimentacao.valor).toFixed(2).replace('.', ','); 
+
+                
+                
 
                 movimentacao.valor = Number(movimentacao.valor).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL', minimumFractionDigits: 2})
                 
@@ -117,7 +130,7 @@ const changeTipo = () => {
 
     if(categoria === 'despesa') {
         tipoSelect.append('<option value="1">Pago</option>');
-        tipoSelect.append('<option value="0">A pagar</option>');
+        tipoSelect.append('<option value="4">A pagar</option>');
     } else if (categoria === 'receita') {
         tipoSelect.append('<option value="2">Recebido</option>');
         tipoSelect.append('<option value="3">A receber</option>');
