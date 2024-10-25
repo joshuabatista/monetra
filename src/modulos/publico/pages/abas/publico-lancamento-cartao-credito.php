@@ -79,6 +79,7 @@
                 <label for="" class="label">Cartão * </label>
                 <select name="cartao" id="cartao" class="select cartao w-48 ">
                     <option value="">Selecione</option>
+                    <option value="1">1</option>
                     <!-- Select dinamico no js -->
                 </select>
             </div>
