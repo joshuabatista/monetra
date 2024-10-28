@@ -185,3 +185,10 @@ function response($arr = [], $code = 200, $sleep = 0, $type = 'json', $headers =
 
     exit;
 }
+
+function debug($var) {
+    echo "<pre>";
+    print_r($var);
+    echo "</pre>";
+    die; 
+}
