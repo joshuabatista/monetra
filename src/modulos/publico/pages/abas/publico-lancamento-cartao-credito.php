@@ -1,3 +1,17 @@
+<?php
+
+$usu_id = $_SESSION['user_id'];
+
+$sql = "SELECT id, cartao
+        FROM cartao_credito
+        WHERE usu_id = $usu_id";
+
+$query = prepareAll($sql);
+
+$data = $query->data;
+
+?>
+
 <div class="" id="fevereiro" role="tabpanel" aria-labelledby="fevereiro-tab">
 
     <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800 m-3 border border-primary">
@@ -79,8 +93,9 @@
                 <label for="" class="label">Cartão * </label>
                 <select name="cartao" id="cartao" class="select cartao w-48 ">
                     <option value="">Selecione</option>
-                    <option value="1">1</option>
-                    <!-- Select dinamico no js -->
+                    <?php foreach($data as $cartao) {
+                        echo '<option value = "'.$cartao->id.'">'.$cartao->cartao.'</option>';
+                    } ?>
                 </select>
             </div>
             <div>

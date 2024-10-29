@@ -12,9 +12,6 @@ const getMovimentationCard = () => {
         if (response.status) {
             const movimentacoes = response.data; 
 
-            console.log(movimentacoes);
-            
-
             $('#tabelaCartoes tbody').empty();
 
             movimentacoes.forEach(movimentacao => {
@@ -31,16 +28,13 @@ const getMovimentationCard = () => {
 
                 const dataFormatada = formatarData(movimentacao.data); 
 
-                
-                
-
                 movimentacao.valor = Number(movimentacao.valor).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL', minimumFractionDigits: 2})
                 
                 $('#tabelaCartoes tbody').append(`
                     <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.plano_contas}</td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.descricao}</td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.cartao}</td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.parcelamento}</td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.beneficiario}</td>
@@ -119,7 +113,7 @@ const addMovimentationCard = () => {
     $('#tipoCartao').val('');
     $('#valorCartao').val('');
     $('#cartao').val()
-    $('#quantidade').val()
+    $('#quantidade').val(1)
 };
 
 

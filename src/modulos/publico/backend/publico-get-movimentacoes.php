@@ -7,8 +7,9 @@ session_start();
 
 $usu_id = $_SESSION['user_id'];
 
-$sql = "SELECT *
-        FROM movimentacoes
+$sql = "SELECT pc.descricao, m.*
+        FROM movimentacoes m
+        JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
         WHERE usu_id = ?";
 
 $query = prepareAll($sql, [$usu_id]);

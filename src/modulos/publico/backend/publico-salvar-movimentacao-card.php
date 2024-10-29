@@ -14,13 +14,13 @@ $valor = $_POST['valor'];
 $cartao = $_POST['cartao'];
 $parcelamento = $_POST['parcelamento'];
 
+$valor = str_replace(',', '.', $valor);
+
 $usu_id = $_SESSION['user_id'];
 
 $dataConvertida = DateTime::createFromFormat('d/m/Y', $data)->format('Y-m-d');
 
 $pdo->beginTransaction();
-
-$valorTratado = number_format((float)$valor, 2, '.', '');
 
 if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo) || empty($valor) || empty($cartao) || empty($parcelamento)){
     $pdo->rollBack();
@@ -50,13 +50,14 @@ $columns = [
     $planoContas,
     $beneficiario,
     $tipo,
-    $valorTratado,
+    $valor,
     $cartao,
     $parcelamento,
     '1'
 ];
 
 $query = prepare($sql, $columns);
+
 
 if(!empty($query->exception)){
     $pdo->rollBack();

@@ -18,7 +18,7 @@ $dataConvertida = DateTime::createFromFormat('d/m/Y', $data)->format('Y-m-d');
 
 $pdo->beginTransaction();
 
-$valorTratado = number_format((float)$valor, 2, '.', '');
+$valor = str_replace(',', '.', $valor);
 
 if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo)){
     $pdo->rollBack();
@@ -44,7 +44,7 @@ $columns = [
     $planoContas,
     $beneficiario,
     $tipo,
-    $valorTratado
+    $valor
 ];
 
 $query = prepare($sql, $columns);
