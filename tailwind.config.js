@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         primary: '#4b50d1',
         secondary: '#d5ed86'
+      },
+      animation: {
+        spin: 'spin 5s linear infinite',
       }
     },
   },

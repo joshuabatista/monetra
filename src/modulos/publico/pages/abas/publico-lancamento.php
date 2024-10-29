@@ -1,4 +1,16 @@
 
+<?php
+$sql = "SELECT *
+        FROM plano_contas_analitico 
+        ORDER BY descricao ASC";
+
+$query = prepareAll($sql);
+
+$plano = $query->data;
+
+?>
+
+
 <div class="" id="janeiro" role="tabpanel"aria-labelledby="janeiro-tab">
 
     <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800 m-3 border border-primary">
@@ -87,8 +99,11 @@
         </div>
         <div class="col-plano-contas">
             <label for="filtro-plano-contas" class="label">Plano de Contas</label>
-            <select id="filtro-plano-contas" name="filtro-plano-contas" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            <select id="filtro-plano-contas" name="filtro-plano-contas" class=" w-64 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 <option value="">Selecione</option>
+                <?php foreach($plano as $planos) {
+                    echo '<option value = "'.$planos->codigo.'">'.$planos->descricao.'</option>';
+                } ?>
             </select>
         </div>
         <div class="col-categoria">
@@ -110,8 +125,6 @@
             </select>
         </div>
     </div>
-
-
     
     <table class="table-auto w-full mt-5" id="tabelaMovimentacoes">
         <thead class="border border-solid border-gray-300 bg-gray-50">
@@ -125,8 +138,16 @@
                 <!-- <th class="px-6 py-3 text-center" scope="col">Saldo</th> -->
             </tr>
         </thead>
+        
+        
         <tbody>
             <!-- Linhas serão adicionadas aqui -->
         </tbody>
     </table>
+    
+    <div class="loading justify-center mt-5 hidden">
+        <img src="/public_html/assets/images/monetra-loading.png" alt="loading" class=" w-14 animate-spin">
+    </div>
+   
+
 </div>

@@ -7,48 +7,83 @@ $(() => {
 
 const getMovimentation = () => {
 
+    $('.loading').removeClass('hidden')
+    $('.loading').addClass('flex')
+
+
+    let dataInicio = $('#data-inicio').val();
+    let dataFinal = $('#data-termino').val();
+    let planoContas = $('#filtro-plano-contas').val();
+    let categoria = $('#filtro-categoria').val();
+    let tipoFiltro = $('#filtro-tipo').val();
+
     const url = '/src/modulos/publico/backend/publico-get-movimentacoes.php';
 
-    $.getJSON(url, function (response) {
+    $.getJSON(url, {
+        data_inicio: dataInicio,
+        data_final: dataFinal,
+        plano_contas: planoContas,
+        categoria: categoria,
+        tipo: tipoFiltro
+    }, function (response) {
+        $('#tabelaMovimentacoes tbody').empty(); 
+
+        $('.loading').removeClass('flex')
+        $('.loading').addClass('hidden')
+
         if (response.status) {
-            const movimentacoes = response.data; 
+            const movimentacoes = response.data;
 
-            $('#tabelaMovimentacoes tbody').empty();
-
-            movimentacoes.forEach(movimentacao => {
-
-                if(movimentacao.tipo == 1) {
-                    movimentacao.tipo = 'Pago'
-                } else if(movimentacao.tipo == 4) {
-                    movimentacao.tipo = 'A pagar'
-                } else if(movimentacao.tipo == 2){
-                    movimentacao.tipo = 'Recebido'
-                } else if (movimentacao.tipo == 3){
-                    movimentacao.tipo = 'A receber'
-                }
-
-                const dataFormatada = formatarData(movimentacao.data); 
-
-                movimentacao.valor = Number(movimentacao.valor).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL', minimumFractionDigits: 2})
-                
+            // Verifica se há dados
+            if (movimentacoes.length === 0) {
                 $('#tabelaMovimentacoes tbody').append(`
-                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.descricao}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.beneficiario}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.tipo}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Despesa' ? `${movimentacao.valor}` : ''}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Receita' ? `${movimentacao.valor}` : ''}</td>
+                    <tr>
+                        <td colspan="7" class="text-center py-4">Nenhum resultado encontrado</td>
                     </tr>
                 `);
-            });
+            } else {
+                movimentacoes.forEach(movimentacao => {
+
+                    if (movimentacao.tipo == 1) {
+                        movimentacao.tipo = 'Pago';
+                    } else if (movimentacao.tipo == 4) {
+                        movimentacao.tipo = 'A pagar';
+                    } else if (movimentacao.tipo == 2) {
+                        movimentacao.tipo = 'Recebido';
+                    } else if (movimentacao.tipo == 3) {
+                        movimentacao.tipo = 'A receber';
+                    }
+
+                    const dataFormatada = formatarData(movimentacao.data);
+
+                    movimentacao.valor = Number(movimentacao.valor).toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    });
+
+                    $('#tabelaMovimentacoes tbody').append(`
+                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.descricao}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.beneficiario}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.tipo}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Despesa' ? `${movimentacao.valor}` : ''}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Receita' ? `${movimentacao.valor}` : ''}</td>
+                        </tr>
+                    `);
+                });
+            }
         }
     });
+
     $('.btn-add-mov').html(`<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
         Adicionar
     </span>`).prop('disabled', false).removeClass('w-4 h-10');
 };
+
+
 
 const addMovimentation = () => {
 
@@ -135,7 +170,6 @@ const changeTipo = () => {
     }
 }
 
-//muda dinamicamente o plano de contas para Despesas ou Receitas
 const changePlanoContas = () => {
 
     let selectCategoria = $('.select-categoria').val()
@@ -189,3 +223,9 @@ $(document).on('click', '.btn-hide-filters', function() {
 $(document).on('change', '.select-categoria', changePlanoContas)
 $(document).on('change', '.select-categoria', changeTipo)
 $(document).on('click', '.btn-add-mov', addMovimentation)
+$(document).on('change', '#data-inicio', getMovimentation)
+$(document).on('change', '#data-termino', getMovimentation)
+$(document).on('change', '#filtro-plano-contas', getMovimentation)
+$(document).on('change', '#filtro-categoria', getMovimentation)
+$(document).on('change', '#filtro-tipo', getMovimentation)
+$(document).on('click', '.btn-hide-filters', getMovimentation)
