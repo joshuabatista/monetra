@@ -29,9 +29,6 @@ const getMovimentation = () => {
 
                 const dataFormatada = formatarData(movimentacao.data); 
 
-                
-                
-
                 movimentacao.valor = Number(movimentacao.valor).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL', minimumFractionDigits: 2})
                 
                 $('#tabelaMovimentacoes tbody').append(`
@@ -162,6 +159,30 @@ const changePlanoContas = () => {
         })
     }
 }
+
+$(document).on('click', '.btn-show-filters', function() {
+    $('.filters').hide().removeClass('hidden').slideDown(); 
+    $('.filters').addClass('grid')
+    $('.btn-show-filters').addClass('hidden');
+    $('.btn-hide-filters').removeClass('hidden');
+});
+
+$(document).on('click', '.btn-hide-filters', function() {
+    $('.filters').addClass('grid').slideUp(function() {
+        $(this).addClass('hidden'); 
+    });
+    $('.btn-hide-filters').addClass('hidden');
+    $('.btn-show-filters').removeClass('hidden');
+
+    $('#data-inicio').val('')
+    $('#data-termino').val('')
+    $('#filtro-plano-contas').val('')
+    $('#filtro-categoria').val('')
+    $('#filtro-tipo').val('')
+
+    
+
+});
 
 
 // Eventos ouvintes

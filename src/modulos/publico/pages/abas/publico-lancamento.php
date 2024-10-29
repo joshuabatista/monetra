@@ -66,6 +66,51 @@
         </div>
     </div>
 
+    <div class="">
+        <div class=" flex flex-row gap-3 ml-10 mb-3 mt-4">
+            <small class=" text-zinc-600 font-bold">Filtros</small>
+            <button class="btn-show-filters"><i class="fa-solid fa-arrow-down-wide-short"></i></button>
+            <button class="btn-hide-filters hidden"><i class="fa-solid fa-arrow-up-wide-short"></i></button>
+        </div>
+    </div>
+
+
+
+    <div class="hidden grid-cols-5 justify-center gap-3 filters">
+        <div class="col-data-inicio ml-[40px]">
+            <label for="data-inicio" class="label">Data inicio</label>
+            <input type="date" id="data-inicio" name="data-inicio" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+        </div>
+        <div class="col-data-termino">
+            <label for="data-termino" class="label">Data termino</label>
+            <input type="date" id="data-termino" name="data-termino" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+        </div>
+        <div class="col-plano-contas">
+            <label for="filtro-plano-contas" class="label">Plano de Contas</label>
+            <select id="filtro-plano-contas" name="filtro-plano-contas" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <option value="">Selecione</option>
+            </select>
+        </div>
+        <div class="col-categoria">
+            <label for="filtro-categoria" class="label">Categoria</label>
+            <select id="filtro-categoria" name="filtro-categoria" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <option value="">Selecione</option>
+                <option value="Despesa">Despesa</option>
+                <option value="Receita">Receita</option>
+            </select>
+        </div>
+        <div class="col-tipo mr-[40px]">
+            <label for="filtro-tipo" class="label">Tipo</label>
+            <select id="filtro-tipo" name="filtro-tipo" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <option value="">Selecione</option>
+                <option value="1">Pago</option>
+                <option value="4">A pagar</option>
+                <option value="2">Recebido</option>
+                <option value="3">A receber</option>
+            </select>
+        </div>
+    </div>
+
 
     
     <table class="table-auto w-full mt-5" id="tabelaMovimentacoes">
