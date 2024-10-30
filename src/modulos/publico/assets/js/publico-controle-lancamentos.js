@@ -7,7 +7,7 @@ var currentPage, totalPages
 
 
 const getMovimentation = async (page = 1) => {
-    
+
     $('.loading').removeClass('hidden').addClass('flex');
 
     let dataInicio = $('#data-inicio').val();
@@ -100,12 +100,16 @@ const getMovimentation = async (page = 1) => {
 
 const next = () => {
 
+    $('#tabelaMovimentacoes tbody').empty();
+
     const page = Number(currentPage) + 1
 
     getMovimentation(page)
 }
 
 const prev = () => {
+
+    $('#tabelaMovimentacoes tbody').empty();
 
     const page = Number(currentPage) - 1
 

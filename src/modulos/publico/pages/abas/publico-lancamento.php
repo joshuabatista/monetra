@@ -98,7 +98,7 @@ $plano = $query->data;
 
 
 
-    <div class="hidden grid-cols-5 justify-center gap-3 filters">
+    <div class="hidden grid grid-cols-5 justify-center gap-3 filters">
         <div class="col-data-inicio ml-[40px]">
             <label for="data-inicio" class="label">Data inicio</label>
             <input type="date" id="data-inicio" name="data-inicio"
