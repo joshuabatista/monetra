@@ -12,6 +12,17 @@ $plano_contas = $_GET['plano_contas'];
 $categoria = $_GET['categoria'];
 $tipo = $_GET['tipo'];
 
+//paginacao
+
+$page = $_GET['page'] ?? 1;
+
+
+$limit = 10;
+
+$start = ($page - 1) * $limit;
+
+
+
 $where = '';
 
 if(!empty($data_inicio) && !empty($data_final)){
@@ -36,17 +47,29 @@ if(!empty($tipo)) {
 
 $usu_id = $_SESSION['user_id'];
 
-$sql = "SELECT pc.descricao, m.*, cc.cartao
+$sql = "SELECT SQL_CALC_FOUND_ROWS pc.descricao, m.*, cc.cartao
         FROM movimentacoes m
         JOIN cartao_credito cc ON cc.id = m.id_cartao
         JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
-        WHERE m.usu_id = ? AND m.cartao_credito = '1' $where";
+        WHERE m.usu_id = ? AND m.cartao_credito = '1' $where
+        LIMIT $start, $limit";
 
 $query = prepareAll($sql, [$usu_id]);
 
 $movimentacao = $query->data;
 
+$query = $pdo->query("SELECT FOUND_ROWS()");
+$total = $query->fetch(PDO::FETCH_COLUMN);
+
+$pages = ceil($total / $limit);
+
+
+
 response([
     'status'=>true,
-    'data'=>$movimentacao
+    'data'=>$movimentacao,
+    'page' => $page,
+    'pages' => $pages,
+    'limit' => $limit,
+    'total' => number_format($total, 0, ',', '.'),
 ]);

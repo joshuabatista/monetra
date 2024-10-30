@@ -2,10 +2,12 @@ $(() => {
     getMovimentationCard()
 })
 
+var currentPage, totalPages
 
+const getMovimentationCard = async (page = 1) => {
 
-const getMovimentationCard = async () => {
     $('#tabelaCartoes tbody').empty(); 
+
     $('.loading-card').removeClass('hidden').addClass('flex');
 
     let dataInicio = $('#data-inicio-card').val();
@@ -24,14 +26,23 @@ const getMovimentationCard = async () => {
             cartao: cartao,
             plano_contas: planoContas,
             categoria: categoria,
-            tipo: tipo
+            tipo: tipo,
+            page: page
         });
 
+        if (isNaN(page)) page = 1;
+
         $('#tabelaCartoes tbody').empty(); 
+
         $('.loading-card').removeClass('flex').addClass('hidden');
 
         if (response.status) {
             const movimentacoes = response.data;
+
+            currentPage = Number(response.page);
+            totalPages = Number(response.pages);
+
+            $('.pagination-info-card').html(`Página <strong>${currentPage}</strong> de ${totalPages}`);
 
             if (movimentacoes.length === 0) {
                 $('#tabelaCartoes tbody').append(`
@@ -41,7 +52,6 @@ const getMovimentationCard = async () => {
                 `);
             } else {
                 movimentacoes.forEach(movimentacao => {
-                    // Converte o tipo de movimentação para texto legível
                     switch(movimentacao.tipo) {
                         case 1:
                             movimentacao.tipo = 'Pago';
@@ -88,7 +98,30 @@ const getMovimentationCard = async () => {
     $('.btn-add-card').html(`<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
         Adicionar
     </span>`).prop('disabled', false).removeClass('w-4 h-10');
+
+    $('.pagination-card').removeClass('hidden');
+
+    $('.btn-next-card').prop('disabled', currentPage + 1 > totalPages);
+    $('.btn-prev-card').prop('disabled', currentPage - 1 <= 0);
 };
+
+const nextCard = () => {
+
+    $('#tabelaCartoes tbody').empty();
+
+    const page = Number(currentPage) + 1
+
+    getMovimentationCard(page)
+}
+
+const prevCard = () => {
+
+    $('#tabelaCartoes tbody').empty();
+
+    const page = Number(currentPage) - 1
+
+    getMovimentationCard(page)
+}
 
 
 const addMovimentationCard = () => {
@@ -236,10 +269,12 @@ $(document).on('click', '.btn-hide-filters-card', function() {
 $(document).on('change', '.select-categoria-cartao', changePlanoContasCartao)
 $(document).on('change', '.select-categoria-cartao', changeTipoCartao)
 $(document).on('click', '.btn-add-card', addMovimentationCard)
-$(document).on('change', '#data-inicio-card', getMovimentationCard)
-$(document).on('change', '#data-termino-card', getMovimentationCard)
-$(document).on('change', '#filtro-card', getMovimentationCard)
-$(document).on('change', '#filtro-plano-contas-card', getMovimentationCard)
-$(document).on('change', '#filtro-categoria-card', getMovimentationCard)
-$(document).on('change', '#filtro-tipo-card', getMovimentationCard)
-$(document).on('click', '.btn-hide-filters-card', getMovimentationCard)
+$(document).on('change', '#data-inicio-card', () => getMovimentationCard(1))
+$(document).on('change', '#data-termino-card', () => getMovimentationCard(1))
+$(document).on('change', '#filtro-card', () => getMovimentationCard(1))
+$(document).on('change', '#filtro-plano-contas-card', () => getMovimentationCard(1))
+$(document).on('change', '#filtro-categoria-card', () => getMovimentationCard(1))
+$(document).on('change', '#filtro-tipo-card', () => getMovimentationCard(1))
+$(document).on('click', '.btn-hide-filters-card', () => getMovimentationCard(1))
+$('.btn-prev-card').click(prevCard)
+$('.btn-next-card').click(nextCard)

@@ -235,4 +235,42 @@ $plano = $queryPlan->data;
         <img src="/public_html/assets/images/monetra-loading.png" alt="loading" class=" w-14 animate-spin">
     </div>
 
+    <div class="flex justify-between items-center mt-5 pagination-card">
+
+        <div class="hidden sm:flex ml-2">
+            <span class="font-medium text-base text-gray-500 pagination-info-card"></span>
+        </div>
+
+        <div class="flex mt-5">
+            <button
+                class="btn-prev-card relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                <span
+                    class="relative flex items-center justify-center px-4 h-10 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 5H1m0 0 4 4M1 5l4-4" />
+                    </svg>
+                    Anterior
+                </span>
+            </button>
+            <button
+                class="btn-next-card relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                <span
+                    class="relative flex items-center justify-center px-4 h-10 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    Próximo
+                    <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+    </div>
+    <div class="flex justify-center mt-1 sm:hidden">
+        <span class="font-medium text-base text-gray-500 pagination-info-card">Página 1 de 10</span>
+    </div>
+
 </div>
