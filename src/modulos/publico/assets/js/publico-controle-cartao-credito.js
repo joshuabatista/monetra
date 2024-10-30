@@ -4,52 +4,92 @@ $(() => {
 
 
 
-const getMovimentationCard = () => {
+const getMovimentationCard = async () => {
+    $('#tabelaCartoes tbody').empty(); 
+    $('.loading-card').removeClass('hidden').addClass('flex');
+
+    let dataInicio = $('#data-inicio-card').val();
+    let dataTermino = $('#data-termino-card').val();
+    let cartao = $('#filtro-card').val();
+    let planoContas = $('#filtro-plano-contas-card').val();
+    let categoria = $('#filtro-categoria-card').val();
+    let tipo = $('#filtro-tipo-card').val();
 
     const url = '/src/modulos/publico/backend/publico-get-movimentacoes-card.php';
 
-    $.getJSON(url, function (response) {
+    try {
+        const response = await $.getJSON(url, {
+            data_inicio: dataInicio,
+            data_final: dataTermino,
+            cartao: cartao,
+            plano_contas: planoContas,
+            categoria: categoria,
+            tipo: tipo
+        });
+
+        $('#tabelaCartoes tbody').empty(); 
+        $('.loading-card').removeClass('flex').addClass('hidden');
+
         if (response.status) {
-            const movimentacoes = response.data; 
+            const movimentacoes = response.data;
 
-            $('#tabelaCartoes tbody').empty();
-
-            movimentacoes.forEach(movimentacao => {
-
-                if(movimentacao.tipo == 1) {
-                    movimentacao.tipo = 'Pago'
-                } else if(movimentacao.tipo == 4) {
-                    movimentacao.tipo = 'A pagar'
-                } else if(movimentacao.tipo == 2){
-                    movimentacao.tipo = 'Recebido'
-                } else if (movimentacao.tipo == 3){
-                    movimentacao.tipo = 'A receber'
-                }
-
-                const dataFormatada = formatarData(movimentacao.data); 
-
-                movimentacao.valor = Number(movimentacao.valor).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL', minimumFractionDigits: 2})
-                
+            if (movimentacoes.length === 0) {
                 $('#tabelaCartoes tbody').append(`
-                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.descricao}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.cartao}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.parcelamento}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.beneficiario}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.tipo}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Despesa' ? `${movimentacao.valor}` : ''}</td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Receita' ? `${movimentacao.valor}` : ''}</td>
+                    <tr>
+                        <td colspan="9" class="text-center py-4">Nenhum resultado encontrado</td>
                     </tr>
                 `);
-            });
+            } else {
+                movimentacoes.forEach(movimentacao => {
+                    // Converte o tipo de movimentação para texto legível
+                    switch(movimentacao.tipo) {
+                        case 1:
+                            movimentacao.tipo = 'Pago';
+                            break;
+                        case 4:
+                            movimentacao.tipo = 'A pagar';
+                            break;
+                        case 2:
+                            movimentacao.tipo = 'Recebido';
+                            break;
+                        case 3:
+                            movimentacao.tipo = 'A receber';
+                            break;
+                    }
+
+                    const dataFormatada = formatarData(movimentacao.data);
+
+                    movimentacao.valor = Number(movimentacao.valor).toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    });
+
+                    $('#tabelaCartoes tbody').append(`
+                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.descricao}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.cartao}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.parcelamento}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.beneficiario}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.tipo}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Despesa' ? movimentacao.valor : ''}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Receita' ? movimentacao.valor : ''}</td>
+                        </tr>
+                    `);
+                });
+            }
         }
-    });
+    } catch (error) {
+        $('.loading-card').removeClass('flex').addClass('hidden');
+    }
+
     $('.btn-add-card').html(`<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
         Adicionar
     </span>`).prop('disabled', false).removeClass('w-4 h-10');
 };
+
 
 const addMovimentationCard = () => {
 
@@ -168,8 +208,38 @@ const changePlanoContasCartao = () => {
     }
 }
 
+$(document).on('click', '.btn-show-filters-card', function() {
+    $('.filters-card').hide().removeClass('hidden').slideDown(); 
+    $('.filters-card').addClass('grid')
+    $('.btn-show-filters-card').addClass('hidden');
+    $('.btn-hide-filters-card').removeClass('hidden');
+});
+
+$(document).on('click', '.btn-hide-filters-card', function() {
+    $('.filters-card').addClass('grid').slideUp(function() {
+        $(this).addClass('hidden'); 
+    });
+    $('.btn-hide-filters-card').addClass('hidden');
+    $('.btn-show-filters-card').removeClass('hidden');
+
+    $('#data-inicio-card').val('')
+    $('#data-termino-card').val('')
+    $('#filtro-plano-contas-card').val('')
+    $('#filtro-categoria-card').val('')
+    $('#filtro-tipo-card').val('')
+    $('#filtro-card').val('')
+
+});
+
 
 // Eventos ouvintes
 $(document).on('change', '.select-categoria-cartao', changePlanoContasCartao)
 $(document).on('change', '.select-categoria-cartao', changeTipoCartao)
 $(document).on('click', '.btn-add-card', addMovimentationCard)
+$(document).on('change', '#data-inicio-card', getMovimentationCard)
+$(document).on('change', '#data-termino-card', getMovimentationCard)
+$(document).on('change', '#filtro-card', getMovimentationCard)
+$(document).on('change', '#filtro-plano-contas-card', getMovimentationCard)
+$(document).on('change', '#filtro-categoria-card', getMovimentationCard)
+$(document).on('change', '#filtro-tipo-card', getMovimentationCard)
+$(document).on('click', '.btn-hide-filters-card', getMovimentationCard)

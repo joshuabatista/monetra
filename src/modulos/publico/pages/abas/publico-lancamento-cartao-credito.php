@@ -10,6 +10,17 @@ $query = prepareAll($sql);
 
 $data = $query->data;
 
+$sqlPlan = "SELECT *
+        FROM plano_contas_analitico 
+        ORDER BY descricao ASC";
+
+$queryPlan = prepareAll($sqlPlan);
+
+$plano = $queryPlan->data;
+
+
+
+
 ?>
 
 <div class="" id="fevereiro" role="tabpanel" aria-labelledby="fevereiro-tab">
@@ -135,6 +146,71 @@ $data = $query->data;
         </div>
     </div>
 
+    <div class="">
+        <div class=" flex flex-row gap-3 ml-10 mb-3 mt-4">
+            <small class=" text-zinc-600 font-bold">Filtros</small>
+            <button class="btn-show-filters-card"><i class="fa-solid fa-arrow-down-wide-short"></i></button>
+            <button class="btn-hide-filters-card hidden"><i class="fa-solid fa-arrow-up-wide-short"></i></button>
+        </div>
+    </div>
+
+
+
+    <div class="hidden grid grid-cols-5 justify-center gap-3 filters-card">
+        <div class="col-data-inicio-card ml-[40px]">
+            <label for="data-inicio-card" class="label">Data inicio</label>
+            <input type="date" id="data-inicio-card" name="data-inicio-card"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+        </div>
+        <div class="col-data-termino-card">
+            <label for="data-termino-card" class="label">Data termino</label>
+            <input type="date" id="data-termino-card" name="data-termino-card"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+        </div>
+        <div class="col-card">
+            <label for="filtro-card" class="label">Cartão</label>
+            <select id="filtro-card" name="filtro-card"
+                class=" w-64 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <option value="">Selecione</option>
+                <?php foreach($data as $cartao) {
+                        echo '<option value = "'.$cartao->id.'">'.$cartao->cartao.'</option>';
+                    } ?>
+            </select>
+        </div>
+        <div class="col-plano-contas-card">
+            <label for="filtro-plano-contas-card" class="label">Plano de Contas</label>
+            <select id="filtro-plano-contas-card" name="filtro-plano-contas-card"
+                class=" w-64 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <option value="">Selecione</option>
+                <?php foreach($plano as $planos) {
+                    echo '<option value = "'.$planos->codigo.'">'.$planos->descricao.'</option>';
+                } ?>
+            </select>
+        </div>
+        <div class="col-categoria-card mr-[40px]">
+            <label for="filtro-categoria-card" class="label">Categoria</label>
+            <select id="filtro-categoria-card" name="filtro-categoria-card"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <option value="">Selecione</option>
+                <option value="Despesa">Despesa</option>
+                <option value="Receita">Receita</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="hidden grid grid-cols-1 justify-start gap-3 filters-card ml-[40px]">
+        <div class="col-tipo-card mr-[40px] mt-4">
+            <label for="filtro-tipo-card" class="label">Tipo</label>
+            <select id="filtro-tipo-card" name="filtro-tipo-card"
+                class=" w-56 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <option value="">Selecione</option>
+                <option value="1">Pago</option>
+                <option value="4">A pagar</option>
+                <option value="2">Recebido</option>
+                <option value="3">A receber</option>
+            </select>
+        </div>
+    </div>
 
 
     <table class="table-auto w-full mt-5" id="tabelaCartoes">
@@ -154,5 +230,9 @@ $data = $query->data;
             <!-- Linhas serão adicionadas aqui -->
         </tbody>
     </table>
+
+    <div class="loading-card justify-center mt-5 hidden">
+        <img src="/public_html/assets/images/monetra-loading.png" alt="loading" class=" w-14 animate-spin">
+    </div>
 
 </div>

@@ -10,6 +10,8 @@ const getMovimentation = async (page = 1) => {
 
     $('.loading').removeClass('hidden').addClass('flex');
 
+    $('#tabelaMovimentacoes tbody').empty(); 
+
     let dataInicio = $('#data-inicio').val();
     let dataFinal = $('#data-termino').val();
     let planoContas = $('#filtro-plano-contas').val();
@@ -254,11 +256,11 @@ $(document).on('click', '.btn-hide-filters', function() {
 $(document).on('change', '.select-categoria', changePlanoContas)
 $(document).on('change', '.select-categoria', changeTipo)
 $(document).on('click', '.btn-add-mov', addMovimentation)
-$(document).on('change', '#data-inicio', getMovimentation)
-$(document).on('change', '#data-termino', getMovimentation)
-$(document).on('change', '#filtro-plano-contas', getMovimentation)
-$(document).on('change', '#filtro-categoria', getMovimentation)
-$(document).on('change', '#filtro-tipo', getMovimentation)
-$(document).on('click', '.btn-hide-filters', getMovimentation)
+$(document).on('change', '#data-inicio', () => getMovimentation(1))
+$(document).on('change', '#data-termino', () => getMovimentation(1))
+$(document).on('change', '#filtro-plano-contas', () => getMovimentation(1))
+$(document).on('change', '#filtro-categoria', () => getMovimentation(1))
+$(document).on('change', '#filtro-tipo', () => getMovimentation(1))
+$(document).on('click', '.btn-hide-filters', () => getMovimentation(1))
 $('.btn-prev').click(prev)
 $('.btn-next').click(next)
