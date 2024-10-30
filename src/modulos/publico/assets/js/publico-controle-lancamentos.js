@@ -3,13 +3,12 @@ $(() => {
     getMovimentation()
 })
 
+var currentPage, totalPages
 
 
-const getMovimentation = () => {
-
-    $('.loading').removeClass('hidden')
-    $('.loading').addClass('flex')
-
+const getMovimentation = async (page = 1) => {
+    
+    $('.loading').removeClass('hidden').addClass('flex');
 
     let dataInicio = $('#data-inicio').val();
     let dataFinal = $('#data-termino').val();
@@ -19,20 +18,29 @@ const getMovimentation = () => {
 
     const url = '/src/modulos/publico/backend/publico-get-movimentacoes.php';
 
-    $.getJSON(url, {
-        data_inicio: dataInicio,
-        data_final: dataFinal,
-        plano_contas: planoContas,
-        categoria: categoria,
-        tipo: tipoFiltro
-    }, function (response) {
+    try {
+        const response = await $.getJSON(url, {
+            data_inicio: dataInicio,
+            data_final: dataFinal,
+            plano_contas: planoContas,
+            categoria: categoria,
+            tipo: tipoFiltro,
+            page: page
+        });
+
+        if (isNaN(page)) page = 1;
+
         $('#tabelaMovimentacoes tbody').empty(); 
 
-        $('.loading').removeClass('flex')
-        $('.loading').addClass('hidden')
+        $('.loading').removeClass('flex').addClass('hidden');
 
         if (response.status) {
             const movimentacoes = response.data;
+
+            currentPage = Number(response.page);
+            totalPages = Number(response.pages);
+
+            $('.pagination-info').html(`Página <strong>${currentPage}</strong> de ${totalPages}`);
 
             // Verifica se há dados
             if (movimentacoes.length === 0) {
@@ -43,7 +51,6 @@ const getMovimentation = () => {
                 `);
             } else {
                 movimentacoes.forEach(movimentacao => {
-
                     if (movimentacao.tipo == 1) {
                         movimentacao.tipo = 'Pago';
                     } else if (movimentacao.tipo == 4) {
@@ -76,12 +83,34 @@ const getMovimentation = () => {
                 });
             }
         }
-    });
+    } catch (error) {
+        console.error("Erro ao buscar movimentações:", error);
+        $('.loading').removeClass('flex').addClass('hidden');
+    }
 
     $('.btn-add-mov').html(`<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
         Adicionar
     </span>`).prop('disabled', false).removeClass('w-4 h-10');
+
+    $('.pagination').removeClass('hidden');
+
+    $('.btn-next').prop('disabled', currentPage + 1 > totalPages);
+    $('.btn-prev').prop('disabled', currentPage - 1 <= 0);
 };
+
+const next = () => {
+
+    const page = Number(currentPage) + 1
+
+    getMovimentation(page)
+}
+
+const prev = () => {
+
+    const page = Number(currentPage) - 1
+
+    getMovimentation(page)
+}
 
 
 
@@ -142,8 +171,6 @@ const addMovimentation = () => {
     $('#tipo').val('');
     $('#valor').val('');
 };
-
-
 
 //Funções auxiliares
 function formatarData(data) {
@@ -229,3 +256,5 @@ $(document).on('change', '#filtro-plano-contas', getMovimentation)
 $(document).on('change', '#filtro-categoria', getMovimentation)
 $(document).on('change', '#filtro-tipo', getMovimentation)
 $(document).on('click', '.btn-hide-filters', getMovimentation)
+$('.btn-prev').click(prev)
+$('.btn-next').click(next)
