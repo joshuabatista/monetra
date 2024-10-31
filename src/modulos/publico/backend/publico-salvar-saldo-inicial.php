@@ -23,7 +23,7 @@ if(empty($saldo)){
     ]);
 }
 
-$sqlCheck = "SELECT COUNT(*) total FROM saldo_inicial WHERE usu_id = ?";
+$sqlCheck = "SELECT COUNT(*) total FROM movimentacoes WHERE usu_id = ? AND categoria = 'Inicial'";
 $queryCheck = prepare($sqlCheck, [$usu_id]);
 $total = $queryCheck->data->total;
 
@@ -36,13 +36,15 @@ if($total > 0) {
     ]);
 }
 
-$sql = "INSERT INTO saldo_inicial SET
+$sql = "INSERT INTO movimentacoes SET
         usu_id = ?,
-        saldo = ?,
+        categoria = ?,
+        valor = ?,
         data = ?";
 
 $columns = [
     $usu_id,
+    'Inicial',
     $saldoTratado,
     $data
 ];
