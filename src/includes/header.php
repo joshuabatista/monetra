@@ -1,12 +1,14 @@
 
 <header class="bg-[#4b50d1] text-white p-4 shadow-lg">
-    <div class="grid grid-cols-2 gap-4">
+
+    <div class="grid grid-cols-2 justify-between">
         <div class="logo-monetra">
             <a href="inicio">
                 <img class=" w-48" src="../../../../public_html/assets/images/monetra-logo-azul-royal-sem-margem.png" alt="Logo-Monetra" >
             </a>
         </div>
-        <div class=" flex items-end ml-[44rem] mb-[1rem]">
+
+        <div class=" flex items-end justify-end mb-[1rem]">
 
             <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full" type="button">
                 <img class=" w-[3rem] h-[3rem] mr-2 rounded-full" src="../../../../public_html/assets/images/foto-usuario.png" alt="user photo">Joshua Batista
