@@ -6,19 +6,15 @@
                         <h1 class="mb-2 text-2xl text-center font-semibold">Periodo</h1>
                     </div>
                 </div>
+
                 <div class="filters-period flex flex-row bg-gray-100 p-5 rounded-xl shadow-xl justify-between">
                     <div class="col-data-inicio">
-                        <label for="data-inicio" class="label">Data inicio</label>
-                        <input type="date" id="data-inicio" name="data-inicio"
+                        <label for="data-inicio" class="label">Selecione o período</label>
+                        <input type="month" id="data-inicio" name="data-inicio"
                             class=" px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                     </div>
-                    <div class="col-data-termino">
-                        <label for="data-termino" class="label">Data termino</label>
-                        <input type="date" id="data-termino" name="data-termino"
-                            class=" px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-                    </div>
-        
                 </div>
+                
                 <br>
                 
                 <div class="grid grid-cols-2 gap-4">
@@ -32,15 +28,15 @@
                             <h1 class="text-xl" id="saldoInicial"><small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small></h1>
                         </div>
                         <div class="">
-                            <label for="" class="text-xl text-zinc-600">Entradas</label>
+                            <label for="" class="text-xl text-zinc-600 italic">Entradas</label>
                             <h1 class="text-xl" id="entradas"><small><i class="fa-solid fa-arrow-trend-up bg-green-500 p-2 rounded-lg"></i></small></h1>
                         </div>
                         <div class="">
-                            <label for="" class="text-xl text-zinc-600">Saidas</label>
+                            <label for="" class="text-xl text-zinc-600 italic">Saidas</label>
                             <h1 class="text-xl" id="saidas"><small><i class="fa-solid fa-arrow-trend-down bg-red-500 p-2 rounded-lg"></i></small></h1>
                         </div>
                         <div class="">
-                            <label for="" class="text-xl text-zinc-600">Saldo Final</label>
+                            <label for="" class="text-xl text-zinc-600 italic">Saldo Final</label>
                             <h1 class="text-xl" id="saldoFinal"><small><i class="fa-solid fa-money-bill-transfer bg-slate-500 p-2 rounded-lg"></i></small></h1>
                         </div>
                     </div>

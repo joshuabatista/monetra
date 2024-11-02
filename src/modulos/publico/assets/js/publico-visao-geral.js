@@ -3,25 +3,24 @@ $(() => {
     getSaldosDoDia()
     chartsMovimentationMonth()
     getDay()
+    getMonth()
     // chartsMovimentationDay()
 })
 
 let chart
 
 const getSaldos = async () => {
-    
     const url = 'get-saldos';
-
     const response = await $.getJSON(url);
-    
     renderSaldos(response.data);
 }
 
+
 const renderSaldos = (data) => {
-    $('#saldoInicial').html(`<small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small> R$ ${data.saldo_inicial}`);
-    $('#entradas').html(`<small><i class="fa-solid fa-arrow-trend-up bg-green-500 p-2 rounded-lg"></i></small> R$  ${data.entradas}`);
-    $('#saidas').html(`<small><i class="fa-solid fa-arrow-trend-down bg-red-500 p-2 rounded-lg"></i></small> R$  ${data.saidas}`);
-    $('#saldoFinal').html(`<small><i class="fa-solid fa-money-bill-transfer bg-slate-500 p-2 rounded-lg"></i></small> R$  ${data.saldo_final}`);
+    animateCount('#saldoInicial', 0, parseCurrency(data.saldo_inicial), 1000);
+    animateCount('#entradas', 0, parseCurrency(data.entradas), 1000);
+    animateCount('#saidas', 0, parseCurrency(data.saidas), 1000);
+    animateCount('#saldoFinal', 0, parseCurrency(data.saldo_final), 1000);
 }
 
 
@@ -74,7 +73,7 @@ const chartsMovimentationDay = (response) => {
         plotOptions: {
             bar: {
                 horizontal: false,
-                columnWidth: '100%',
+                columnWidth: '50%',
                 endingShape: 'rounded'
             }
         },
@@ -180,16 +179,45 @@ const chartsMovimentationMonth = () => {
 }
 
 // pega o dia de hoje
-
 const getDay = () => {
     const today = new Date();
-    const dia = String(today.getDate()).padStart(2, '0'); // Pega o dia e adiciona um zero à esquerda se necessário
-    const mes = String(today.getMonth() + 1).padStart(2, '0'); // Pega o mês (0-11) e adiciona um zero à esquerda
-    const ano = today.getFullYear(); // Pega o ano
-
-    const dataHoje = `${ano}-${mes}-${dia}`; // Formata como YYYY-MM-DD
-    $('#dataInicio').val(dataHoje); // Define o valor do input
+    const dia = String(today.getDate()).padStart(2, '0');
+    const mes = String(today.getMonth() + 1).padStart(2, '0'); 
+    const ano = today.getFullYear(); 
+    const dataHoje = `${ano}-${mes}-${dia}`; 
+    $('#dataInicio').val(dataHoje); 
 }
+
+//pega o mes atual
+const getMonth = () => {
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); 
+
+    $('#data-inicio').val(`${year}-${month}`);
+}
+
+// Função para converter string de moeda brasileira para número
+const parseCurrency = (value) => {
+    return parseFloat(value.replace(/\./g, '').replace(',', '.'))
+}
+
+//animação
+const animateCount = (selector, start, end, duration) => {
+    let current = start;
+    const increment = (end - start) / (duration / 10); 
+
+    const interval = setInterval(() => {
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+            clearInterval(interval);
+            current = end;
+        }
+        
+        $(selector).html(`<small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small> R$ ${current.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
+    }, 10);
+};
 
 //Eventos ouvintes
 
