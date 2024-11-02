@@ -8,7 +8,7 @@ let savedCards = []
 
 const getInfoCard = () => {
 
-    const url = '/src/modulos/publico/backend/publico-controle-get-info-card.php';
+    const url = 'get-info-card';
 
     $.getJSON(url, function(response) {
 
@@ -118,7 +118,7 @@ const saveSaldo = () => {
     const data = $('#dataSaldo').val()
 
     $.ajax({
-        url: '/src/modulos/publico/backend/publico-salvar-saldo-inicial.php',
+        url: 'save-saldo',
         method: 'POST',
         data: {saldo: saldo, data: data},
         dataType: 'json',
@@ -126,7 +126,7 @@ const saveSaldo = () => {
 }
 
 const getSaldo = () => {
-    const url = '/src/modulos/publico/backend/publico-get-saldo-inicial.php';
+    const url = 'get-saldo-inicial';
 
     $.getJSON(url, function(response) {
 
@@ -168,7 +168,7 @@ const saveCreditCard = () => {
     }
 
     $.ajax({
-        url: '/src/modulos/publico/backend/publico-salvar-cartao-credito.php',
+        url: 'save-credit-card',
         method: 'POST',
         data: data,
         dataType: 'json',

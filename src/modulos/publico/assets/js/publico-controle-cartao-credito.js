@@ -17,7 +17,7 @@ const getMovimentationCard = async (page = 1) => {
     let categoria = $('#filtro-categoria-card').val();
     let tipo = $('#filtro-tipo-card').val();
 
-    const url = '/src/modulos/publico/backend/publico-get-movimentacoes-card.php';
+    const url = 'get-movimentation-card';
 
     try {
         const response = await $.getJSON(url, {
@@ -161,7 +161,7 @@ const addMovimentationCard = () => {
     }
 
     $.ajax({
-        url: '/src/modulos/publico/backend/publico-salvar-movimentacao-card.php',
+        url: 'save-movimentation-card',
         method: 'POST',
         data: {
             data: dataFormatada,
@@ -223,7 +223,7 @@ const changePlanoContasCartao = () => {
 
     if(selectCategoria) {
         $.ajax({
-            url: '/src/modulos/publico/backend/publico-get-plano-contas.php',
+            url: 'get-plano',
             type: 'GET',
             data: {selectCategoria: selectCategoria},
             success: function(response){

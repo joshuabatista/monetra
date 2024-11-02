@@ -18,7 +18,7 @@ const login = () => {
 
     const data = new FormData(form)
 
-    const url = '/src/modulos/publico/backend/login.php'
+    const url = 'login-usu'
 
 
     $.ajax({

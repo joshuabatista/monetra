@@ -18,7 +18,7 @@ const getMovimentation = async (page = 1) => {
     let categoria = $('#filtro-categoria').val();
     let tipoFiltro = $('#filtro-tipo').val();
 
-    const url = '/src/modulos/publico/backend/publico-get-movimentacoes.php';
+    const url = 'get-movimentation';
 
     try {
         const response = await $.getJSON(url, {
@@ -155,7 +155,7 @@ const addMovimentation = () => {
     }
 
     $.ajax({
-        url: '/src/modulos/publico/backend/publico-salvar-movimentacao.php',
+        url: 'save-movimentation',
         method: 'POST',
         data: {
             data: dataFormatada,
@@ -209,7 +209,7 @@ const changePlanoContas = () => {
 
     if(selectCategoria) {
         $.ajax({
-            url: '/src/modulos/publico/backend/publico-get-plano-contas.php',
+            url: 'get-plano',
             type: 'GET',
             data: {selectCategoria: selectCategoria},
             success: function(response){

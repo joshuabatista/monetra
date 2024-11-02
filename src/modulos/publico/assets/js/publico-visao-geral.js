@@ -9,7 +9,8 @@ $(() => {
 let chart
 
 const getSaldos = async () => {
-    const url = '/src/modulos/publico/backend/publico-get-saldos.php';
+    
+    const url = 'get-saldos';
 
     const response = await $.getJSON(url);
     
@@ -26,7 +27,7 @@ const renderSaldos = (data) => {
 
 const getSaldosDoDia = async () => {
 
-    const url = '/src/modulos/publico/backend/publico-get-movimentacoes-dia.php'
+    const url = 'get-movimentacoes-dia'
 
     const dataInput = $('#dataInicio').val();
 
