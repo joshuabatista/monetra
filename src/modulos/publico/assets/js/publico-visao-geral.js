@@ -16,11 +16,18 @@ const getSaldos = async () => {
 }
 
 
+
 const renderSaldos = (data) => {
-    animateCount('#saldoInicial', 0, parseCurrency(data.saldo_inicial), 1000);
-    animateCount('#entradas', 0, parseCurrency(data.entradas), 1000);
-    animateCount('#saidas', 0, parseCurrency(data.saidas), 1000);
-    animateCount('#saldoFinal', 0, parseCurrency(data.saldo_final), 1000);
+    
+    const iconSaldoInicial = `<small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small>`;
+    const iconEntradas = `<small><i class="fa-solid fa-arrow-trend-up bg-green-500 p-2 rounded-lg"></i></small>`;
+    const iconSaidas = `<small><i class="fa-solid fa-arrow-trend-down bg-red-500 p-2 rounded-lg"></i></small>`;
+    const iconSaldoFinal = `<small><i class="fa-solid fa-money-bill-transfer bg-slate-500 p-2 rounded-lg"></i></small>`;
+
+    animateCount('#saldoInicial', 0, parseCurrency(data.saldo_inicial), 1000, iconSaldoInicial);
+    animateCount('#entradas', 0, parseCurrency(data.entradas), 1000, iconEntradas);
+    animateCount('#saidas', 0, parseCurrency(data.saidas), 1000, iconSaidas);
+    animateCount('#saldoFinal', 0, parseCurrency(data.saldo_final), 1000, iconSaldoFinal);
 }
 
 
@@ -200,12 +207,12 @@ const getMonth = () => {
 
 // Função para converter string de moeda brasileira para número
 const parseCurrency = (value) => {
-    return parseFloat(value.replace(/\./g, '').replace(',', '.'))
+    return parseFloat(value.replace(/\./g, '').replace(',', '.'));
 }
 
-//animação
-const animateCount = (selector, start, end, duration) => {
+const animateCount = (selector, start, end, duration, iconHTML) => {
     let current = start;
+
     const increment = (end - start) / (duration / 10); 
 
     const interval = setInterval(() => {
@@ -214,10 +221,10 @@ const animateCount = (selector, start, end, duration) => {
             clearInterval(interval);
             current = end;
         }
-        
-        $(selector).html(`<small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small> R$ ${current.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
+        $(selector).html(`${iconHTML} R$ ${current.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
     }, 10);
 };
+
 
 //Eventos ouvintes
 
