@@ -5,6 +5,7 @@ require "../../../../app/functions.php";
 
 session_start();
 
+
 $usu_id = $_SESSION['user_id'];
 
 // primeiro e ultimo dia do mes atual

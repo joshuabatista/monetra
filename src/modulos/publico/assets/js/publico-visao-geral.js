@@ -1,24 +1,124 @@
 $(() => {
     getSaldos()
+    getSaldosDoDia()
     chartsMovimentationMonth()
-    chartsMovimentationDay()
+    getDay()
+    // chartsMovimentationDay()
 })
 
-const getSaldos = () => {
+let chart
 
-    const url = '/src/modulos/publico/backend/publico-get-saldos.php'
+const getSaldos = async () => {
+    const url = '/src/modulos/publico/backend/publico-get-saldos.php';
 
-    $.ajax({
-        type: 'GET',
-        url: url,
-        dataType: 'json',
-        success: function (response) {
+    const response = await $.getJSON(url);
+    
+    renderSaldos(response.data);
+}
+
+const renderSaldos = (data) => {
+    $('#saldoInicial').html(`<small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small> R$ ${data.saldo_inicial}`);
+    $('#entradas').html(`<small><i class="fa-solid fa-arrow-trend-up bg-green-500 p-2 rounded-lg"></i></small> R$  ${data.entradas}`);
+    $('#saidas').html(`<small><i class="fa-solid fa-arrow-trend-down bg-red-500 p-2 rounded-lg"></i></small> R$  ${data.saidas}`);
+    $('#saldoFinal').html(`<small><i class="fa-solid fa-money-bill-transfer bg-slate-500 p-2 rounded-lg"></i></small> R$  ${data.saldo_final}`);
+}
 
 
-            console.log(response);
-            
+const getSaldosDoDia = async () => {
+
+    const url = '/src/modulos/publico/backend/publico-get-movimentacoes-dia.php'
+
+    const dataInput = $('#dataInicio').val();
+
+    const response = await $.getJSON(url, { dataInput: dataInput })
+
+    chartsMovimentationDay(response)   
+    
+}
+
+
+const chartsMovimentationDay = (response) => {
+
+    if (chart) {
+        chart.destroy();
+    }
+
+    const entradas = response.entradas.map(item => parseFloat(item.valor));
+    const descricoesEntradas = response.entradas.map(item => item.descricao);
+
+    const saidas = response.saidas.map(item => parseFloat(item.valor) * -1);
+    const descricoesSaidas = response.saidas.map(item => item.descricao);
+
+    let dataTransacao = response.entradas.length > 0 ? response.entradas[0].data : (response.saidas.length > 0 ? response.saidas[0].data : null);
+
+
+    const dataFormatada = dataTransacao ? `${dataTransacao.slice(8, 10)}/${dataTransacao.slice(5, 7)}/${dataTransacao.slice(0, 4)}` : 'Data indisponível';
+
+
+    var options = {
+        series: [{
+            name: 'Entradas',
+            data: entradas, // Dados de entradas (valores)
+        }, {
+            name: 'Saídas',
+            data: saidas, // Dados de saídas (valores)
+        }],
+        chart: {
+            type: 'bar',
+            height: 350,
+            toolbar: {
+                show: false
+            },
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '100%',
+                endingShape: 'rounded'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        yaxis: {
+            title: {
+                text: 'Valor (R$)',
+            },
+            labels: {
+                formatter: function (y) {
+                    return "R$ " + Math.abs(y).toFixed(2);
+                }
+            }
+        },
+        xaxis: {
+            categories: [dataFormatada],
+            labels: {
+                rotate: -45
+            },
+            scrollable: true // Permite a rolagem horizontal se houver muitas movimentações
+        },
+        fill: {
+            colors: ['#1E90FF', '#FF6347']
+        },
+        tooltip: {
+
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                // Determina a descrição e o valor baseado na série e no índice do ponto
+                const descricao = seriesIndex === 0 ? descricoesEntradas[dataPointIndex] : descricoesSaidas[dataPointIndex];
+                const valor = series[seriesIndex][dataPointIndex];
+
+                // Retorna o HTML do tooltip com descrição e valor formatado
+                return `
+                    <div style="padding: 10px; font-size: 14px;">
+                        <strong>${descricao}</strong><br/>
+                        Valor: R$ ${Math.abs(valor).toFixed(2)}
+                    </div>`;
+            }
         }
-    })
+    };
+
+    chart = new ApexCharts(document.querySelector("#chartDay"), options);
+    chart.render();
 }
 
 const chartsMovimentationMonth = () => {
@@ -78,57 +178,18 @@ const chartsMovimentationMonth = () => {
     chart.render();
 }
 
-const chartsMovimentationDay = () => {
-    // Definindo os dados para entradas e saídas em um único dia
-    const entradas = [100]; // Exemplo de entrada
-    const saidas = [-70]; // Exemplo de saída (número negativo para representar saídas)
+// pega o dia de hoje
 
-    var options = {
-        series: [{
-            name: 'Entradas',
-            data: entradas // Dados de entradas
-        }, {
-            name: 'Saídas',
-            data: saidas // Dados de saídas
-        }],
-        chart: {
-            type: 'bar',
-            height: 350
-        },
-        plotOptions: {
-            bar: {
-                columnWidth: '30%',
-                endingShape: 'rounded'
-            }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        yaxis: {
-            title: {
-                text: 'Valor (R$)', // Título do eixo Y
-            },
-            labels: {
-                formatter: function (y) {
-                    return "R$ " + Math.abs(y).toFixed(2); // Formato dos rótulos no eixo Y
-                }
-            }
-        },
-        xaxis: {
-            categories: ['Dia 1'], // Nome da categoria representando um dia
-        },
-        fill: {
-            colors: ['#1E90FF', '#FF6347'] // Azul para entradas e laranja para saídas
-        },
-        tooltip: {
-            y: {
-                formatter: function (val) {
-                    return "R$ " + Math.abs(val); // Formato do tooltip
-                }
-            }
-        }
-    };
+const getDay = () => {
+    const today = new Date();
+    const dia = String(today.getDate()).padStart(2, '0'); // Pega o dia e adiciona um zero à esquerda se necessário
+    const mes = String(today.getMonth() + 1).padStart(2, '0'); // Pega o mês (0-11) e adiciona um zero à esquerda
+    const ano = today.getFullYear(); // Pega o ano
 
-    var chart = new ApexCharts(document.querySelector("#chartDay"), options);
-    chart.render();
+    const dataHoje = `${ano}-${mes}-${dia}`; // Formata como YYYY-MM-DD
+    $('#dataInicio').val(dataHoje); // Define o valor do input
 }
+
+//Eventos ouvintes
+
+$(document).on('change', '#dataInicio', getSaldosDoDia)
