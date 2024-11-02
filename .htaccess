@@ -17,4 +17,5 @@ RewriteRule ^save-movimentation$ /src/modulos/publico/backend/publico-salvar-mov
 RewriteRule ^get-plano$ /src/modulos/publico/backend/publico-get-plano-contas.php [L] 
 RewriteRule ^get-movimentation-card$ /src/modulos/publico/backend/publico-get-movimentacoes-card.php [L] 
 RewriteRule ^save-movimentation-card$ /src/modulos/publico/backend/publico-salvar-movimentacao-card.php [L] 
+RewriteRule ^get-movimentation-month$ /src/modulos/publico/backend/publico-get-movimentacoes-mes.php [L] 
 

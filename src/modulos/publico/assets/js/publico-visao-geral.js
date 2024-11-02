@@ -1,10 +1,9 @@
 $(() => {
     getSaldos()
     getSaldosDoDia()
-    chartsMovimentationMonth()
     getDay()
     getMonth()
-    // chartsMovimentationDay()
+    getMovimentationMonth()
 })
 
 let chart
@@ -14,8 +13,6 @@ const getSaldos = async () => {
     const response = await $.getJSON(url);
     renderSaldos(response.data);
 }
-
-
 
 const renderSaldos = (data) => {
     
@@ -65,10 +62,10 @@ const chartsMovimentationDay = (response) => {
     var options = {
         series: [{
             name: 'Entradas',
-            data: entradas, // Dados de entradas (valores)
+            data: entradas, 
         }, {
             name: 'Saídas',
-            data: saidas, // Dados de saídas (valores)
+            data: saidas, 
         }],
         chart: {
             type: 'bar',
@@ -102,7 +99,7 @@ const chartsMovimentationDay = (response) => {
             labels: {
                 rotate: -45
             },
-            scrollable: true // Permite a rolagem horizontal se houver muitas movimentações
+            scrollable: true 
         },
         fill: {
             colors: ['#1E90FF', '#FF6347']
@@ -110,11 +107,11 @@ const chartsMovimentationDay = (response) => {
         tooltip: {
 
             custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                // Determina a descrição e o valor baseado na série e no índice do ponto
+                
                 const descricao = seriesIndex === 0 ? descricoesEntradas[dataPointIndex] : descricoesSaidas[dataPointIndex];
                 const valor = series[seriesIndex][dataPointIndex];
 
-                // Retorna o HTML do tooltip com descrição e valor formatado
+                
                 return `
                     <div style="padding: 10px; font-size: 14px;">
                         <strong>${descricao}</strong><br/>
@@ -128,18 +125,48 @@ const chartsMovimentationDay = (response) => {
     chart.render();
 }
 
-const chartsMovimentationMonth = () => {
-    // Definindo os dados para os 31 dias do mês
-    const entradas = [100, 150, 200, 120, 90, 300, 80, 200, 150, 220, 130, 140, 90, 100, 210, 180, 120, 90, 150, 240, 300, 280, 230, 200, 190, 160, 140, 220, 250, 300, 280, 260, 290]; // Exemplo de dados de entradas
-    const saidas = [80, 120, 150, 100, 70, 200, 60, 180, 130, 210, 100, 90, 80, 120, 160, 170, 110, 80, 120, 230, 250, 200, 190, 170, 160, 140, 120, 210, 240, 260, 230, 220, 200]; // Exemplo de dados de saídas
+const getMovimentationMonth = async () => {
+
+    const url = 'get-movimentation-month';
+
+    const response = await $.getJSON(url);
+
+    chartsMovimentationMonth(response)
+
+}
+
+const chartsMovimentationMonth = (response) => {
+    
+    const entradas = Array(31).fill(0);
+    const saidas = Array(31).fill(0);
+
+    
+    response.somaEntradasPorDia.forEach(entry => {
+        if (entry.dia >= 1 && entry.dia <= 31) {
+            
+            entradas[entry.dia - 1] += parseFloat(entry.somaEntrada.replace('.', '').replace(',', '.'));
+        }
+    });
+
+    
+    response.somaSaidasPorDia.forEach(exit => {
+        if (exit.dia >= 1 && exit.dia <= 31) {
+            
+            saidas[exit.dia - 1] += parseFloat(exit.somaSaida.replace('.', '').replace(',', '.'));
+        }
+    });
+
+    const formatarValor = (valor) => {
+        return `R$ ${valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    };
 
     var options = {
         series: [{
-            name: 'Entradas', // Nome da série para entradas
-            data: entradas // Dados de entradas
+            name: 'Entradas',
+            data: entradas 
         }, {
-            name: 'Saídas', // Nome da série para saídas
-            data: saidas // Dados de saídas
+            name: 'Saídas',
+            data: saidas 
         }],
         chart: {
             type: 'bar',
@@ -165,17 +192,17 @@ const chartsMovimentationMonth = () => {
         },
         yaxis: {
             title: {
-                text: 'R$ (em reais)' // Título do eixo Y
+                text: 'R$ (em reais)'
             }
         },
         fill: {
             opacity: 1,
-            colors: ['#008ffb', '#feb019'] // Azul para entradas e laranja para saídas
+            colors: ['#008ffb', '#FF6347'] 
         },
         tooltip: {
             y: {
                 formatter: function (val) {
-                    return "R$ " + val; // Formato do tooltip
+                    return formatarValor(val); 
                 }
             }
         }
@@ -184,6 +211,11 @@ const chartsMovimentationMonth = () => {
     var chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
 }
+
+
+
+
+
 
 // pega o dia de hoje
 const getDay = () => {

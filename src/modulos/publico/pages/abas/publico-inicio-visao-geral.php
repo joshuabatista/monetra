@@ -7,11 +7,9 @@
                     </div>
                 </div>
 
-                <div class="filters-period flex flex-row bg-gray-100 p-5 rounded-xl shadow-xl justify-between">
+                <div class="filters-period flex flex-row bg-gray-100 p-5 rounded-xl shadow-xl w-full justify-center">
                     <div class="col-data-inicio">
-                        <label for="data-inicio" class="label">Selecione o período</label>
-                        <input type="month" id="data-inicio" name="data-inicio"
-                            class=" px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        <input type="month" id="data-inicio" name="data-inicio" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                     </div>
                 </div>
                 
@@ -55,7 +53,7 @@
                 
             </div>
 
-            <div class=" mr-4">
+            <div class="mr-4 ml-4 mt-4">
                 <div>
                     <h1 class="mb-2 text-2xl text-center font-semibold">Movimentação mensal</h1>
                     <div id="chart"></div>
