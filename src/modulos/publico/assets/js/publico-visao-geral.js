@@ -9,8 +9,11 @@ $(() => {
 let chart
 
 const getSaldos = async () => {
+
+    let periodo = $('#data-inicio').val()
+
     const url = 'get-saldos';
-    const response = await $.getJSON(url);
+    const response = await $.getJSON(url, {periodo: periodo});
     renderSaldos(response.data);
 }
 
@@ -261,3 +264,4 @@ const animateCount = (selector, start, end, duration, iconHTML) => {
 //Eventos ouvintes
 
 $(document).on('change', '#dataInicio', getSaldosDoDia)
+$(document).on('change', '#data-inicio', getSaldos)

@@ -1,63 +1,86 @@
 <?php
-
 require "../.././../../public_html/config/conexao.php";
 require "../../../../app/functions.php";
 
 session_start();
 
-
 $usu_id = $_SESSION['user_id'];
-
-// primeiro e ultimo dia do mes atual
+$periodo = $_GET['periodo'] ?? null;
 $dataAtual = new DateTime();
+
+if (!empty($periodo)) {
+    $dataAtual = new DateTime($periodo);
+}
+
+// Calcula o primeiro e o último dia do mês atual
 $primeiroDiaMes = $dataAtual->format('Y-m-01');
 $ultimoDiaMes = $dataAtual->format('Y-m-t');
 
-// saldo inicial do mes atual
-$sqlSaldoInicial = "SELECT valor AS saldo_inicial FROM movimentacoes 
-                    WHERE usu_id = ? AND categoria = 'Inicial'
-                    ORDER BY data ASC LIMIT 1";
+// Calcula o primeiro e o último dia do mês anterior
+$primeiroDiaMesAnterior = (clone $dataAtual)->modify('-1 month')->format('Y-m-01');
+$ultimoDiaMesAnterior = (clone $dataAtual)->modify('-1 month')->format('Y-m-t');
 
-$querySaldoInicial = prepareAll($sqlSaldoInicial, [$usu_id]);
+// Verificar se existe um saldo inicial cadastrado
+$sqlInicial = "SELECT valor AS saldo_inicial 
+                FROM movimentacoes 
+                WHERE usu_id = ? AND categoria = 'Inicial'
+                ORDER BY data ASC LIMIT 1";
 
-$saldoInicial = $querySaldoInicial->data[0]->saldo_inicial ?? 0;
+$queryInicial = prepareAll($sqlInicial, [$usu_id]);
+$saldoInicialCheck = $queryInicial->data[0]->saldo_inicial ?? 0;
 
-// Se houver um saldo final do mês anterior, usar como saldo inicial
-$sqlSaldoFinalMesAnterior = "SELECT (SUM(CASE WHEN tipo = '2' THEN valor ELSE 0 END) - SUM(CASE WHEN tipo = '1' THEN valor ELSE 0 END)) AS saldo_final
-                             FROM movimentacoes 
-                             WHERE usu_id = ? AND cartao_credito = '0'
-                             AND data BETWEEN DATE_SUB(?, INTERVAL 1 MONTH) 
-                             AND LAST_DAY(DATE_SUB(?, INTERVAL 1 MONTH))";
+// Verificar saldo final do mês anterior para usá-lo como saldo inicial do mês atual
+$sqlSaldoFinalMesAnterior = "SELECT (
+                                SUM(CASE WHEN tipo = '2' THEN valor ELSE 0 END) +
+                                 SUM(CASE WHEN categoria = 'Inicial' THEN valor ELSE 0 END) -
+                                SUM(CASE WHEN tipo = '1' THEN valor ELSE 0 END)
+                            ) AS saldo_final
+                            FROM movimentacoes 
+                            WHERE usu_id = ? 
+                            AND cartao_credito = '0'
+                            AND data BETWEEN '2024-01-01' AND ?";
 
-$querySaldoFinalAnterior = prepareAll($sqlSaldoFinalMesAnterior, [$usu_id, $primeiroDiaMes, $primeiroDiaMes]);
+$querySaldoFinalAnterior = prepareAll($sqlSaldoFinalMesAnterior, [$usu_id, $ultimoDiaMesAnterior]);
 
-$saldoFinalAnterior = $querySaldoFinalAnterior->data[0]->saldo_final ?? 0;
+// echo '<pre>';
+// die(var_dump($querySaldoFinalAnterior));
+// echo '</pre>';
 
-if ($saldoFinalAnterior != 0) {
-    $saldoInicial = $saldoFinalAnterior;
-}
+$saldoFinalAnterior = $querySaldoFinalAnterior->data[0]->saldo_final;
 
-// Calcular entradas do mes atual
-$sqlEntradas = "SELECT SUM(valor) AS entradas FROM movimentacoes 
-                WHERE usu_id = ? AND tipo = '2' AND cartao_credito = '0'
-                AND data BETWEEN ? AND ?";
+
+// Calcular entradas do mês atual
+$sqlEntradas = "SELECT SUM(valor) AS entradas 
+    FROM movimentacoes 
+    WHERE usu_id = ? 
+      AND tipo = '2' 
+      AND cartao_credito = '0'
+      AND data BETWEEN ? AND ?";
 
 $queryEntradas = prepareAll($sqlEntradas, [$usu_id, $primeiroDiaMes, $ultimoDiaMes]);
-
 $entradas = $queryEntradas->data[0]->entradas ?? 0;
 
-//Calcular saídas do mês atual
-$sqlSaidas = "SELECT SUM(valor) AS saidas FROM movimentacoes 
-              WHERE usu_id = ? AND tipo = '1' AND cartao_credito = '0'
-              AND data BETWEEN ? AND ?";
+
+
+// Calcular saídas do mês atual
+$sqlSaidas = "SELECT SUM(valor) AS saidas 
+    FROM movimentacoes 
+    WHERE usu_id = ? 
+      AND tipo = '1' 
+      AND cartao_credito = '0'
+      AND data BETWEEN ? AND ?";
 
 $querySaidas = prepareAll($sqlSaidas, [$usu_id, $primeiroDiaMes, $ultimoDiaMes]);
-
 $saidas = $querySaidas->data[0]->saidas ?? 0;
 
-// Calcular saldo final
-$saldoFinal = $saldoInicial + $entradas - $saidas;
 
+// Definindo o saldo inicial do mês atual
+$saldoInicial = ($saldoFinalAnterior !== null) ? $saldoFinalAnterior : $saldoInicialCheck ;
+
+// Calcular saldo final do mês atual
+$saldoFinal = ($saldoInicial + $entradas) - $saidas;
+
+// Retornar os dados para o frontend
 response([
     'status' => true,
     'data' => [
