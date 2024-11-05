@@ -12,7 +12,7 @@ let chartMonth
 const getSaldos = async () => {
 
     $('.saldos').addClass('hidden')
-    $('.loading').removeClass('hidden')
+    $('.animate-pulse').removeClass('hidden')
 
     let periodo = $('#data-inicio').val()
 
@@ -34,7 +34,7 @@ const renderSaldos = (data) => {
     animateCount('#saldoFinal', 0, parseCurrency(data.saldo_final), 1000, iconSaldoFinal);
 
     $('.saldos').removeClass('hidden')
-    $('.loading').addClass('hidden')
+    $('.animate-pulse').addClass('hidden')
 
 }
 

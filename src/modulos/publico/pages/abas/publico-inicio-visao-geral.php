@@ -15,11 +15,12 @@
                 
                 <br>
                 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-1">
                     <div class=" bg-gray-100 inline-flex flex-col gap-8 p-5 rounded-xl shadow-xl">
                         <div class="flex flex-col text-center justify-center">
                             <label for="" class="text-xl mt-0 font-semibold">Saldos</label>
                         </div>
+
                         <div class="saldos inline-flex flex-col gap-8 p-2 mb-2">
                             <div>
                                 <label for="" class="text-xl italic text-zinc-600">Saldo Inicial</label>
@@ -38,10 +39,25 @@
                                 <h1 class="text-xl" id="saldoFinal"><small><i class="fa-solid fa-money-bill-transfer bg-slate-500 p-2 rounded-lg"></i></small></h1>
                             </div>
                         </div>
-                                                
-                        <div class="loading justify-center hidden flex">
-                            <img src="/public_html/assets/images/monetra-loading.png" alt="loading" class=" w-14 animate-spin">
+                        <div role="status" class="max-w-sm animate-pulse hidden">
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gra:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gra:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gra:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                            <span class="sr-only">Loading...</span>
                         </div>
+                                                
+                        <!-- <div class="loading justify-center hidden flex">
+                            <img src="/public_html/assets/images/monetra-loading.png" alt="loading" class=" w-14 animate-spin">
+                        </div> -->
                         
                     </div>
         

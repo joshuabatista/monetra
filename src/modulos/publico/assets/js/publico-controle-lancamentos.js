@@ -167,6 +167,9 @@ const addMovimentation = () => {
         },
         success: function (response) {
             getMovimentation(); 
+            getSaldos()
+            getSaldosDoDia()
+            getMovimentationMonth()
         }
     });
 
