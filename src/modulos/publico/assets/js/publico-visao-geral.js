@@ -7,8 +7,12 @@ $(() => {
 })
 
 let chart
+let chartMonth
 
 const getSaldos = async () => {
+
+    $('.saldos').addClass('hidden')
+    $('.loading').removeClass('hidden')
 
     let periodo = $('#data-inicio').val()
 
@@ -28,6 +32,10 @@ const renderSaldos = (data) => {
     animateCount('#entradas', 0, parseCurrency(data.entradas), 1000, iconEntradas);
     animateCount('#saidas', 0, parseCurrency(data.saidas), 1000, iconSaidas);
     animateCount('#saldoFinal', 0, parseCurrency(data.saldo_final), 1000, iconSaldoFinal);
+
+    $('.saldos').removeClass('hidden')
+    $('.loading').addClass('hidden')
+
 }
 
 
@@ -130,15 +138,23 @@ const chartsMovimentationDay = (response) => {
 
 const getMovimentationMonth = async () => {
 
+    let periodo = $('#data-inicio').val()
+
     const url = 'get-movimentation-month';
 
-    const response = await $.getJSON(url);
+    const response = await $.getJSON(url, {periodo: periodo});
 
     chartsMovimentationMonth(response)
 
 }
 
 const chartsMovimentationMonth = (response) => {
+
+    if (chartMonth) {
+        chartMonth.destroy();
+    }
+
+    $('#chart').removeClass('hidden')
     
     const entradas = Array(31).fill(0);
     const saidas = Array(31).fill(0);
@@ -211,8 +227,8 @@ const chartsMovimentationMonth = (response) => {
         }
     };
 
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
+    chartMonth = new ApexCharts(document.querySelector("#chart"), options);
+    chartMonth.render();
 }
 
 
@@ -264,4 +280,5 @@ const animateCount = (selector, start, end, duration, iconHTML) => {
 //Eventos ouvintes
 
 $(document).on('change', '#dataInicio', getSaldosDoDia)
+$(document).on('change', '#data-inicio', getMovimentationMonth)
 $(document).on('change', '#data-inicio', getSaldos)

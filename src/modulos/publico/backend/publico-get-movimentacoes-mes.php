@@ -9,8 +9,21 @@ date_default_timezone_set('America/Sao_Paulo');
 
 $usu_id = $_SESSION['user_id'];
 
+$periodo = $_GET['periodo'];
+
+list($ano, $mes) = explode('-', $periodo);
+
 $mesAtual = date('m');
 $anoAtual = date('Y');
+
+if(!empty($periodo)) {
+
+    $mesAtual = $mes;
+    $anoAtual = $ano;
+
+}
+
+
 
 // Consulta para obter as movimentações
 $sqlMovimentacoes = "SELECT pc.descricao, m.*    
