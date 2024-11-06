@@ -22,7 +22,7 @@ if(!empty($dataInput)) {
 $sqlEntradas = "SELECT pc.descricao, m.*
                 FROM movimentacoes m
                 JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
-                where DATA = '{$hoje}' AND m.categoria = 'Receita' AND m.tipo = '2'";
+                where DATA = '{$hoje}' AND m.categoria = 'Receita' AND m.tipo = '2' AND m.usu_id = $usu_id";
 
 $queryEntradas = prepareAll($sqlEntradas);
 
@@ -31,7 +31,7 @@ $entradas = $queryEntradas->data;
 $sqlSaidas = "SELECT pc.descricao, m.*
             FROM movimentacoes m
             JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
-            where DATA = '{$hoje}' AND m.categoria = 'Despesa' AND m.tipo = '1'";
+            where DATA = '{$hoje}' AND m.categoria = 'Despesa' AND m.tipo = '1' AND m.usu_id = $usu_id";
 
 $querySaidas = prepareAll($sqlSaidas);
 
@@ -39,7 +39,7 @@ $saidas = $querySaidas->data;
 
 $sqlSomaEntradas = "SELECT SUM(m.valor) somaEntradas
                     FROM movimentacoes m
-                    where DATA = '{$hoje}' AND m.categoria = 'Receita' AND m.tipo = '2'";
+                    where DATA = '{$hoje}' AND m.categoria = 'Receita' AND m.tipo = '2' AND m.usu_id = $usu_id";
 
 $querySomaEntradas = prepareAll($sqlSomaEntradas);
 
@@ -47,7 +47,7 @@ $entradasSoma = $querySomaEntradas->data;
 
 $sqlSomaSaidas = "SELECT SUM(m.valor) somaSaidas
                   FROM movimentacoes m
-                  where DATA = '{$hoje}' AND m.categoria = 'Despesa' AND m.tipo = '1'";
+                  where DATA = '{$hoje}' AND m.categoria = 'Despesa' AND m.tipo = '1' AND m.usu_id = $usu_id";
 
 $querySomaSaidas = prepareAll($sqlSomaSaidas);
 

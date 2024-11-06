@@ -86,7 +86,6 @@ const getMovimentation = async (page = 1) => {
             }
         }
     } catch (error) {
-        console.error("Erro ao buscar movimentações:", error);
         $('.loading').removeClass('flex').addClass('hidden');
     }
 

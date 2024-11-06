@@ -12,8 +12,11 @@ const getInfo = async () => {
 
 const hiddenButton = (data) => {
 
-    if(data.saldo_inicial == '' || data.saldo_inicial == null) {
+    if(data.saldo_inicial == '0,00' || data.saldo_inicial == null) {
         $('.btn-start').removeClass('hidden')
+        $('.controle-init').addClass('hidden')
     }
 
 }
+
+
