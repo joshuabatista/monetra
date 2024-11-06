@@ -12,9 +12,10 @@ const getInfo = async () => {
 
 const hiddenButton = (data) => {
 
-    if(data.saldo_inicial == '0,00' || data.saldo_inicial == null) {
-        $('.btn-start').removeClass('hidden')
-        $('.controle-init').addClass('hidden')
+    if(data.saldo_inicial === '0,00' || data.saldo_inicial === null) {
+
+        $('#lctos-tabs').prop('disabled', true)
+        $('#dashboard-styled-tab').trigger('click').focus()
     }
 
 }

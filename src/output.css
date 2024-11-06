@@ -1280,6 +1280,14 @@ input:checked + .toggle-bg {
   margin-bottom: 0.625rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
+}
+
 .block {
   display: block;
 }
