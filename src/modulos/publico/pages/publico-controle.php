@@ -17,7 +17,7 @@
             <div class="max-w-md mx-auto mt-4">
                 <label for="saldoInicialLabel" class="label">Saldo inicial</label>
                 <div class="form-control">
-                    <input type="saldoInicial" id="saldoInicial" class="input w-[14rem]" />
+                    <input type="saldoInicial" id="saldoInicial" class="input w-[14rem] saldoInicial" />
                 </div>
             </div>
             <div class="max-w-md mx-auto mt-4">

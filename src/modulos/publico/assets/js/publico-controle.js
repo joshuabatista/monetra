@@ -92,7 +92,7 @@ const renderCreditCardFields = (cards = []) => {
 
 const validation = (event) => {
 
-    let openingBalance = $('#saldoInicial').val()
+    let openingBalance = $('.saldoInicial').val()
     let cardName = $('#nameCard1').val()
     
     if(openingBalance == '' || openingBalance == null || cardName == '') {
@@ -137,8 +137,8 @@ const getSaldo = () => {
             const data = response.data.data
 
             if (saldo) {
-                $('#saldoInicial').val(saldo); 
-                $('#saldoInicial').prop('disabled', true);
+                $('.saldoInicial').val(saldo); 
+                $('.saldoInicial').prop('disabled', true);
                 $('#dataSaldo').val(data); 
                 $('#dataSaldo').prop('disabled', true);
             }
