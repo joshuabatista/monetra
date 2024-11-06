@@ -61,7 +61,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#saldoInicial').mask('000000000,00', { reverse: true });
+            $('.saldoInicial').mask('000000000,00', { reverse: true });
         });
     </script>
 

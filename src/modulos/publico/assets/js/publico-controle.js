@@ -114,7 +114,7 @@ const validation = (event) => {
 
 const saveSaldo = () => {
 
-    const saldo  = $('#saldoInicial').val()
+    const saldo  = $('.saldoInicial').val()
     const data = $('#dataSaldo').val()
 
     $.ajax({
