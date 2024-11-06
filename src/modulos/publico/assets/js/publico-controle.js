@@ -129,24 +129,17 @@ const getSaldo = () => {
     const url = 'get-saldo-inicial';
 
     $.getJSON(url, function(response) {
+        if (response.data && response.data.saldo) {
+            const saldo = response.data.saldo;
+            const data = response.data.data;
 
-        
-        if (response.status) {
-            
-            const saldo = response.data.saldo; 
-            const data = response.data.data
-
-            if (saldo) {
-                $('.saldoInicial').val(saldo); 
-                $('.saldoInicial').prop('disabled', true);
-                $('#dataSaldo').val(data); 
-                $('#dataSaldo').prop('disabled', true);
-            }
-        } else {
-            console.error("Erro ao recuperar saldo: ", response.message);
+            $('.saldoInicial').val(saldo);
+            $('.saldoInicial').prop('disabled', true);
+            $('#dataSaldo').val(data);
+            $('#dataSaldo').prop('disabled', true);
         }
     });
-}
+};
 
 
 const saveCreditCard = () => {
