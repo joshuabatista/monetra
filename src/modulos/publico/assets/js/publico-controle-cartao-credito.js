@@ -251,14 +251,13 @@ const getCards = async () => {
     const response = await $.getJSON(url)
 
     renderCards(response)
+
+    disableTabCard(response)
     
 }
 
 
 const renderCards = (response) => {
-
-    // console.log(response);
-    
 
     let select  = $('.cartao')
 
@@ -273,6 +272,18 @@ const renderCards = (response) => {
         select.append('<option value"">Nenhum cartão encontrado!</option>')
     }
 
+}
+
+const disableTabCard = (response) => {
+
+    console.log(response);
+    
+
+    if(response.data.length === 0) {
+
+        $('#fevereiro-tab').prop('disabled', true).addClass('cursor-not-allowed')
+        // $('#dashboard-styled-tab').trigger('click').focus()
+    }
 }
 
 
