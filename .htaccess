@@ -18,4 +18,5 @@ RewriteRule ^get-plano$ /src/modulos/publico/backend/publico-get-plano-contas.ph
 RewriteRule ^get-movimentation-card$ /src/modulos/publico/backend/publico-get-movimentacoes-card.php [L] 
 RewriteRule ^save-movimentation-card$ /src/modulos/publico/backend/publico-salvar-movimentacao-card.php [L] 
 RewriteRule ^get-movimentation-month$ /src/modulos/publico/backend/publico-get-movimentacoes-mes.php [L] 
+RewriteRule ^get-cards$ /src/modulos/publico/backend/publico-get-cartoes.php [L] 
 

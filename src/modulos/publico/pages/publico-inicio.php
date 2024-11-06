@@ -98,9 +98,11 @@
 
     <?php require"../../../includes/footer.php"?>
     <script src="/src/modulos/publico/assets/js/publico-visao-geral.js"></script>
-    <script src="/src/modulos/publico/assets/js/publico-inicio.js"></script>
     <script src="/src/modulos/publico/assets/js/publico-controle-lancamentos.js"></script>
     <script src="/src/modulos/publico/assets/js/publico-controle-cartao-credito.js"></script>
+    <script src="/src/modulos/publico/assets/js/publico-inicio.js"></script>
+
+
 
 </body>
 

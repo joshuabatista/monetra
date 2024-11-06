@@ -2,14 +2,6 @@
 
 $usu_id = $_SESSION['user_id'];
 
-$sql = "SELECT id, cartao
-        FROM cartao_credito
-        WHERE usu_id = $usu_id";
-
-$query = prepareAll($sql);
-
-$data = $query->data;
-
 $sqlPlan = "SELECT *
         FROM plano_contas_analitico 
         ORDER BY descricao ASC";
@@ -104,9 +96,6 @@ $plano = $queryPlan->data;
                 <label for="" class="label">Cartão * </label>
                 <select name="cartao" id="cartao" class="select cartao w-48 ">
                     <option value="">Selecione</option>
-                    <?php foreach($data as $cartao) {
-                        echo '<option value = "'.$cartao->id.'">'.$cartao->cartao.'</option>';
-                    } ?>
                 </select>
             </div>
             <div>
@@ -172,9 +161,6 @@ $plano = $queryPlan->data;
             <select id="filtro-card" name="filtro-card"
                 class=" w-64 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 <option value="">Selecione</option>
-                <?php foreach($data as $cartao) {
-                        echo '<option value = "'.$cartao->id.'">'.$cartao->cartao.'</option>';
-                    } ?>
             </select>
         </div>
         <div class="col-plano-contas-card">

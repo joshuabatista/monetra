@@ -1,5 +1,6 @@
 $(() => {
     getMovimentationCard()
+    getCards()
 })
 
 var currentPage, totalPages
@@ -138,7 +139,7 @@ const addMovimentationCard = () => {
     let beneficiario = $('.beneficiarioCartao').val();
     let tipo = $('#tipoCartao').val();
     let valor = $('#valorCartao').val();
-    let cartao = $('#cartao').val()
+    let cartao = $('.cartao').val()
     let parcelamento = $('#quantidade').val()
     let dataFormatada = formatarData(data);
 
@@ -176,6 +177,8 @@ const addMovimentationCard = () => {
         },
         success: function (response) {
             getMovimentationCard(); 
+            getSaldosDoDia()
+            getMovimentationMonth()
         }
     });
 
@@ -185,7 +188,7 @@ const addMovimentationCard = () => {
     $('.beneficiarioCartao').val('');
     $('#tipoCartao').val('');
     $('#valorCartao').val('');
-    $('#cartao').val()
+    $('.cartao').val()
     $('#quantidade').val(1)
 };
 
@@ -240,6 +243,41 @@ const changePlanoContasCartao = () => {
         })
     }
 }
+
+const getCards = async () => {
+
+    const url = 'get-cards'
+
+    const response = await $.getJSON(url)
+
+    renderCards(response)
+    
+}
+
+
+const renderCards = (response) => {
+
+    // console.log(response);
+    
+
+    let select  = $('.cartao')
+
+    select.empty()
+
+    select.append('<option value"">Selecione</option>')
+    if(response.data || response.data.length > 0) {
+        response.data.forEach(cards=> {
+            select.append(`<option value="${cards.id}">${cards.cartao}</option>`)
+        })
+    } else {
+        select.append('<option value"">Nenhum cartão encontrado!</option>')
+    }
+
+}
+
+
+
+
 
 $(document).on('click', '.btn-show-filters-card', function() {
     $('.filters-card').hide().removeClass('hidden').slideDown(); 

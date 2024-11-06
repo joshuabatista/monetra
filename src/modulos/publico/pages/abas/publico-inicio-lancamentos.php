@@ -1,24 +1,3 @@
-<!-- <?php
-
-$usu_id = $_SESSION['user_id'];
-
-$sql = "SELECT id, cartao
-        FROM cartao_credito
-        WHERE usu_id = $usu_id";
-
-$query = prepareAll($sql);
-
-$data = $query->data;
-
-$sqlPlan = "SELECT *
-        FROM plano_contas_analitico 
-        ORDER BY descricao ASC";
-
-$queryPlan = prepareAll($sqlPlan);
-
-$plano = $queryPlan->data;
-
-?> -->
 
 <div class="hidden rounded-lg dark:bg-gray-800" id="lctos-tab" role="tabpanel" aria-labelledby="profile-tab">
     <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
@@ -157,9 +136,6 @@ $plano = $queryPlan->data;
                         <label for="" class="label">Cartão * </label>
                         <select name="cartao" id="cartao" class="select cartao w-full ">
                             <option value="">Selecione</option>
-                            <?php foreach($data as $cartao) {
-                                echo '<option value = "'.$cartao->id.'">'.$cartao->cartao.'</option>';
-                            } ?>
                         </select>
                     </div>
                 </div>

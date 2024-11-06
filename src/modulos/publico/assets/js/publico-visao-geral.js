@@ -6,6 +6,7 @@ $(() => {
     getMovimentationMonth()
 })
 
+
 let chart
 let chartMonth
 
@@ -125,7 +126,7 @@ const chartsMovimentationDay = (response) => {
                 
                 return `
                     <div style="padding: 10px; font-size: 14px;">
-                        <strong>${descricao}</strong><br/>
+                        <strong>${descricao}</strong>
                         Valor: R$ ${Math.abs(valor).toFixed(2)}
                     </div>`;
             }
@@ -277,8 +278,15 @@ const animateCount = (selector, start, end, duration, iconHTML) => {
 };
 
 
+
 //Eventos ouvintes
 
 $(document).on('change', '#dataInicio', getSaldosDoDia)
 $(document).on('change', '#data-inicio', getMovimentationMonth)
 $(document).on('change', '#data-inicio', getSaldos)
+
+
+
+
+
+
