@@ -6,13 +6,12 @@ $(() => {
   getEntradasAno()
   getSaidasAno()
   chartsEntradasSaidas()
+  chartsSaldoFinalMensal()
+  getSaldosMensal()
 
 })
 
 Apex.dataLabels = {enabled: false}
-
-
-
 
 const getSaldoInicialAno = () => {
   const url = 'get-saldos-ano';
@@ -70,7 +69,6 @@ const getSaldoInicialAno = () => {
     new ApexCharts(document.querySelector("#spark1"), spark1).render();
   })
 };
-
 
 const getEntradasAno = () => {
   const url = 'get-saldos-ano';
@@ -258,21 +256,8 @@ const getSaldoFinalAno = () => {
 
 }
 
-var generateDayWiseTimeSeries = function (baseval, count, yrange) {
-  var i = 0;
-  var series = [];
-  while (i < count) {
-    var x = baseval;
-    var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-
-    series.push([x, y]);
-    baseval += 86400000;
-    i++;
-  }
-  return series;
-}
-
 const getSaldosEntradasSaidas = async () => {
+
   const url = 'get-saldos-ano';
 
   const response = await $.getJSON(url);
@@ -288,6 +273,7 @@ const getSaldosEntradasSaidas = async () => {
   }));
 
   chartsEntradasSaidas(entradasMensal, saidasMensal);
+
 };
 
 const chartsEntradasSaidas = (entradasMensal, saidasMensal) => {
@@ -346,5 +332,86 @@ const chartsEntradasSaidas = (entradasMensal, saidasMensal) => {
   var chart = new ApexCharts(document.querySelector("#chartsEntradasSaidas"), options);
   chart.render();
 };
+
+const getSaldosMensal = async () => {
+  const url = 'get-saldos-ano';
+  
+  const response = await $.getJSON(url);
+
+  let saldoFinalMensal = Array(12).fill(0);  
+
+  response.data.entradas_mensal.forEach(item => {
+
+    const mes = item.mes - 1;  
+
+    saldoFinalMensal[mes] += parseFloat(item.total_entradas);
+
+  });
+
+  response.data.saidas_mensal.forEach(item => {
+
+    const mes = item.mes - 1;
+
+    saldoFinalMensal[mes] -= parseFloat(item.total_saidas);
+
+  });
+
+  let saldoAcumulado = parseFloat(response.data.saldo_inicial.replace(",", "."));
+
+  saldoFinalMensal = saldoFinalMensal.map(saldoMensal => {
+
+    saldoAcumulado += saldoMensal;
+
+    return saldoAcumulado;
+    
+  });
+
+  chartsSaldoFinalMensal(saldoFinalMensal);
+};
+
+const chartsSaldoFinalMensal = (saldoFinalMensal) => {
+  const options = {
+    series: [{
+      name: "Saldo Final",
+      data: saldoFinalMensal
+    }],
+    chart: {
+      type: 'bar',
+      height: 380
+    },
+    xaxis: {
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      title: {
+        text: 'Meses do Ano'
+      }
+    },
+    yaxis: {
+      title: {
+        text: 'Saldo Final (R$)'
+      },
+      labels: {
+        formatter: function(value) {
+          return `R$${value.toFixed(2)}`;
+        }
+      }
+    },
+    title: {
+
+    },
+    tooltip: {
+      y: {
+        formatter: function(val) {
+          return `R$${val.toFixed(2)}`;
+        }
+      }
+    },
+    colors: ['#008FFB']
+  };
+
+  const chart = new ApexCharts(document.querySelector("#chartsSaldoFinalMensal"), options);
+  chart.render();
+};
+
+
 
 

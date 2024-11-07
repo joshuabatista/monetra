@@ -27,10 +27,15 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-2 gap-2">
         <div>
             <h1 class="text-xl text-center font-semibold mt-4">Entradas x Saídas</h1>
             <div id="chartsEntradasSaidas" class="shadow-lg"></div>
+        </div>
+
+        <div>
+            <h1 class="text-xl text-center font-semibold mt-4">Saldo Final Mensal</h1>
+            <div id="chartsSaldoFinalMensal" class="shadow-lg"></div>
         </div>
 
     </div>
