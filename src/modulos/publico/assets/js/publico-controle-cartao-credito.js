@@ -276,9 +276,6 @@ const renderCards = (response) => {
 
 const disableTabCard = (response) => {
 
-    console.log(response);
-    
-
     if(response.data.length === 0) {
 
         $('#fevereiro-tab').prop('disabled', true).addClass('cursor-not-allowed')
