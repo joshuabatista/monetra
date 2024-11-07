@@ -169,6 +169,10 @@ const addMovimentation = () => {
             getSaldos()
             getSaldosDoDia()
             getMovimentationMonth()
+            getSaldoInicialAno()
+            getSaldoFinalAno()
+            getEntradasAno()
+            getSaidasAno()
         }
     });
 

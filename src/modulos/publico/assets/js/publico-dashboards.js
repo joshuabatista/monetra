@@ -1,42 +1,16 @@
 $(() => {
 
+  getSaldosEntradasSaidas()
   getSaldoInicialAno()
   getSaldoFinalAno()
   getEntradasAno()
   getSaidasAno()
+  chartsEntradasSaidas()
 
 })
 
+Apex.dataLabels = {enabled: false}
 
-
-Apex.dataLabels = {
-    enabled: false
-  }
-
-
-
-
-var sparklineData = [1, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46];
-
-var randomizeArray = function (arg) {
-    var array = arg.slice();
-    var currentIndex = array.length, temporaryValue, randomIndex;
-  
-    while (0 !== currentIndex) {
-  
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-  
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-  
-    return array;
-  }
-
-
-var colorPalette = ['#00D8B6','#008FFB',  '#FEB019', '#FF4560', '#775DD0']
 
 
 
@@ -96,10 +70,6 @@ const getSaldoInicialAno = () => {
     new ApexCharts(document.querySelector("#spark1"), spark1).render();
   })
 };
-
-
-
-
 
 
 const getEntradasAno = () => {
@@ -224,20 +194,6 @@ const getSaidasAno = () => {
   });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const getSaldoFinalAno = () => {
 
   const url = 'get-saldos-ano';
@@ -302,10 +258,93 @@ const getSaldoFinalAno = () => {
 
 }
 
+var generateDayWiseTimeSeries = function (baseval, count, yrange) {
+  var i = 0;
+  var series = [];
+  while (i < count) {
+    var x = baseval;
+    var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+    series.push([x, y]);
+    baseval += 86400000;
+    i++;
+  }
+  return series;
+}
+
+const getSaldosEntradasSaidas = async () => {
+  const url = 'get-saldos-ano';
+
+  const response = await $.getJSON(url);
+
+  const entradasMensal = response.data.entradas_mensal.map(item => ({
+    x: new Date(new Date().getFullYear(), item.mes - 1, 1),  
+    y: parseFloat(item.total_entradas)
+  }));
+
+  const saidasMensal = response.data.saidas_mensal.map(item => ({
+    x: new Date(new Date().getFullYear(), item.mes - 1, 1),
+    y: parseFloat(item.total_saidas)
+  }));
+
+  chartsEntradasSaidas(entradasMensal, saidasMensal);
+};
+
+const chartsEntradasSaidas = (entradasMensal, saidasMensal) => {
+  var options = {
+    series: [
+      {
+        name: 'Entradas Mensais',
+        data: entradasMensal
+      },
+      {
+        name: 'Saídas Mensais',
+        data: saidasMensal
+      }
+    ],
+    chart: {
+      type: 'area',
+      height: 350,
+      stacked: true,
+    },
+    colors: ['#008FFB', '#FF4560'], 
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        opacityFrom: 0.6,
+        opacityTo: 0.8,
+      }
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left'
+    },
+    xaxis: {
+      type: 'datetime',
+      labels: {
+        format: 'MMM'  
+      }
+    },
+    yaxis: {
+      title: {
+        text: 'Valores (R$)'
+      },
+      labels: {
+        formatter: function (value) {
+          return `R$${value.toFixed(2)}`;
+        }
+      }
+    }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chartsEntradasSaidas"), options);
+  chart.render();
+};
 
 
-
-// new ApexCharts(document.querySelector("#spark1"), spark1).render();
-// new ApexCharts(document.querySelector("#spark2"), spark2).render();
-// new ApexCharts(document.querySelector("#spark3"), spark3).render();
-// new ApexCharts(document.querySelector("#spark4"), spark4).render();
