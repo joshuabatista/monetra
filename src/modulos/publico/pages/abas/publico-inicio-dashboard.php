@@ -1,7 +1,31 @@
-<div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel"
-                    aria-labelledby="dashboard-tab">
-                    <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
-                            class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated
-                            content</strong>. Clicking another tab will toggle the visibility of this one for the next.
-                        The tab JavaScript swaps classes to control the content visibility and styling.</p>
+<div class="hidden p-4 rounded-lg" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+
+    <div class="">
+        <div class="sparkboxes mt-4 mb-4 flex justify-around">
+            <div class="col-md-4">
+                <div class="box box1">
+                    <div id="spark1" class=" shadow-lg"></div>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box box2">
+                    <div id="spark2" class=" shadow-lg"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box box3">
+                    <div id="spark3" class=" shadow-lg"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box box3">
+                    <div id="spark4" class=" shadow-lg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="/src/modulos/publico/assets/js/publico-dashboards.js"></script>
