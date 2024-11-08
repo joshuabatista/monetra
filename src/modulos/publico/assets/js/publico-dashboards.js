@@ -1,5 +1,6 @@
 $(() => {
-
+  
+  getPorcentagem()
   getSaldosEntradasSaidas()
   getSaldoInicialAno()
   getSaldoFinalAno()
@@ -8,6 +9,7 @@ $(() => {
   chartsEntradasSaidas()
   chartsSaldoFinalMensal()
   getSaldosMensal()
+  renderChartDonuts()
 
 })
 
@@ -363,7 +365,7 @@ const getSaldosMensal = async () => {
     saldoAcumulado += saldoMensal;
 
     return saldoAcumulado;
-    
+
   });
 
   chartsSaldoFinalMensal(saldoFinalMensal);
@@ -414,4 +416,61 @@ const chartsSaldoFinalMensal = (saldoFinalMensal) => {
 
 
 
+const getPorcentagem = async () => {
+  const url = 'get-porcentagem'; // Ajuste a URL conforme necessário
 
+  const response = await $.getJSON(url);
+
+  // Verifica se a resposta contém status, despesas e total_despesas
+  if (response && response.status && Array.isArray(response.despesas) && response.total_despesas) {
+    const totalDespesas = parseFloat(response.total_despesas);  // Total das despesas recebido, convertido para float
+    const despesas = response.despesas;
+
+    console.log(response);
+
+    // Chama a função renderChartDonuts passando os dados corretamente
+    renderChartDonuts(despesas, totalDespesas);
+  } else {
+    console.error("Dados de resposta inválidos", response);
+  }
+}
+
+const renderChartDonuts = (despesas, totalDespesas) => {
+  if (!Array.isArray(despesas) || despesas.length === 0 || !totalDespesas) {
+    console.error("Dados de despesas ou total inválidos");
+    return;
+  }
+
+  // Agrupa despesas por descrição e soma os valores para evitar duplicações
+  const despesasAgrupadas = despesas.reduce((acc, despesa) => {
+    if (!acc[despesa.descricao]) {
+      acc[despesa.descricao] = 0;
+    }
+    acc[despesa.descricao] += parseFloat(despesa.valor);
+    return acc;
+  }, {});
+
+  // Extrai os valores e as descrições para o gráfico
+  const despesasValues = Object.values(despesasAgrupadas);
+  const despesasLabels = Object.keys(despesasAgrupadas);
+
+  // Calcula a porcentagem para cada despesa
+  const porcentagens = despesasValues.map(valor => (valor / totalDespesas) * 100);
+
+  // Configura as opções do gráfico
+  const options = {
+    series: porcentagens,  // Passa as porcentagens calculadas
+    chart: {
+      type: 'donut',
+    },
+    labels: despesasLabels,  // Usando as descrições para os labels
+  };
+
+  const chartElement = document.querySelector("#chartPorcentagem");
+  if (chartElement) {
+    var chart = new ApexCharts(chartElement, options);
+    chart.render();
+  } else {
+    console.error("Elemento do gráfico não encontrado");
+  }
+}

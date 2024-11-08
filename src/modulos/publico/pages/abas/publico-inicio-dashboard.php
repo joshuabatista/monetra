@@ -40,6 +40,14 @@
 
     </div>
 
+    <div class="grid grid-cols-2">
+        <div>
+            <h1 class="text-xl text-center font-semibold mt-4">Porcentagem de Gastos</h1>
+            <div id="chartPorcentagem"></div>
+        </div>
+
+    </div>
+
 </div>
 
 
