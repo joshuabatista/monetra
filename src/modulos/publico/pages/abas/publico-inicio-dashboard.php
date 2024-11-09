@@ -29,12 +29,12 @@
 
     <div class="grid grid-cols-2 gap-2">
         <div>
-            <h1 class="text-xl text-center font-semibold mt-4">Entradas x Saídas</h1>
+            <h1 class="text-xl text-center font-semibold mt-4 mb-2">Entradas x Saídas</h1>
             <div id="chartsEntradasSaidas" class="shadow-lg"></div>
         </div>
 
         <div>
-            <h1 class="text-xl text-center font-semibold mt-4">Saldo Final Mensal</h1>
+            <h1 class="text-xl text-center font-semibold mt-4 mb-2">Saldo Final Mensal</h1>
             <div id="chartsSaldoFinalMensal" class="shadow-lg"></div>
         </div>
 
@@ -42,8 +42,8 @@
 
     <div class="grid grid-cols-2">
         <div>
-            <h1 class="text-xl text-center font-semibold mt-4">Porcentagem de Gastos</h1>
-            <div id="chartPorcentagem"></div>
+            <h1 class="text-xl text-center font-semibold mt-4 mb-2">Porcentagem de Gastos (mês atual)</h1>
+            <div id="chartPorcentagem" class=" shadow-lg"></div>
         </div>
 
     </div>

@@ -422,22 +422,19 @@ const getPorcentagem = async () => {
   const response = await $.getJSON(url);
 
   // Verifica se a resposta contém status, despesas e total_despesas
-  if (response && response.status && Array.isArray(response.despesas) && response.total_despesas) {
+  if (response && response.status && $.isArray(response.despesas) && !isNaN(parseFloat(response.total_despesas))) {
     const totalDespesas = parseFloat(response.total_despesas);  // Total das despesas recebido, convertido para float
     const despesas = response.despesas;
 
-    console.log(response);
-
     // Chama a função renderChartDonuts passando os dados corretamente
     renderChartDonuts(despesas, totalDespesas);
-  } else {
-    console.error("Dados de resposta inválidos", response);
-  }
+  } 
 }
 
 const renderChartDonuts = (despesas, totalDespesas) => {
-  if (!Array.isArray(despesas) || despesas.length === 0 || !totalDespesas) {
-    console.error("Dados de despesas ou total inválidos");
+
+  // Verifica se 'despesas' é um array válido e 'totalDespesas' é um número positivo
+  if (!Array.isArray(despesas) || despesas.length === 0 || isNaN(totalDespesas) || totalDespesas <= 0) {
     return;
   }
 
@@ -459,18 +456,53 @@ const renderChartDonuts = (despesas, totalDespesas) => {
 
   // Configura as opções do gráfico
   const options = {
-    series: porcentagens,  // Passa as porcentagens calculadas
+    series: porcentagens,
     chart: {
       type: 'donut',
     },
-    labels: despesasLabels,  // Usando as descrições para os labels
+    labels: despesasLabels,
+    tooltip: {
+      y: {
+        formatter: function (value) {
+          return value.toFixed(2) + "%";  // Limita a 2 casas decimais e adiciona o símbolo %
+        }
+      }
+    },
+    plotOptions: {
+      pie: {
+        donut: {
+          labels: {
+            show: true,
+            name: {
+              show: true,
+              formatter: function () {
+                return 'Total';  // Mantém o label "Total" fixo
+              }
+            },
+            value: {
+              show: true,
+              formatter: function () {
+                return "R$ " + totalDespesas.toFixed(2);  // Exibe o total fixo mesmo ao passar o mouse
+              }
+            },
+            total: {
+              show: true,
+              label: 'Total',
+              formatter: function () {
+                return "R$ " + totalDespesas.toFixed(2);  // Exibe o total fixo mesmo ao passar o mouse
+              }
+            }
+          }
+        }
+      }
+    }
   };
 
-  const chartElement = document.querySelector("#chartPorcentagem");
+  const chartElement = $("#chartPorcentagem")[0];
   if (chartElement) {
     var chart = new ApexCharts(chartElement, options);
     chart.render();
-  } else {
-    console.error("Elemento do gráfico não encontrado");
-  }
+  } 
 }
+
+
