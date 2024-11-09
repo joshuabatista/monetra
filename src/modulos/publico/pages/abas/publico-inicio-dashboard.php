@@ -40,10 +40,15 @@
 
     </div>
 
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-2 gap-2">
         <div>
             <h1 class="text-xl text-center font-semibold mt-4 mb-2">Porcentagem de Gastos (mês atual)</h1>
             <div id="chartPorcentagem" class=" shadow-lg"></div>
+        </div>
+
+        <div>
+            <h1 class="text-xl text-center font-semibold mt-4 mb-2">Despesas mensais (mês atual)</h1>
+            <div id="chartDespesas" class=" shadow-lg"></div>
         </div>
 
     </div>

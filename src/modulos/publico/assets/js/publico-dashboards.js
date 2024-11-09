@@ -428,6 +428,7 @@ const getPorcentagem = async () => {
 
     // Chama a função renderChartDonuts passando os dados corretamente
     renderChartDonuts(despesas, totalDespesas);
+    renderChartsDespesas(despesas)
   } 
 }
 
@@ -504,5 +505,89 @@ const renderChartDonuts = (despesas, totalDespesas) => {
     chart.render();
   } 
 }
+
+const renderChartsDespesas = (despesas) => {
+  // Agrupa despesas por descrição e soma os valores
+  const despesasAgrupadas = despesas.reduce((acc, despesa) => {
+    if (!acc[despesa.descricao]) {
+      acc[despesa.descricao] = 0;
+    }
+    acc[despesa.descricao] += parseFloat(despesa.valor);
+    return acc;
+  }, {});
+
+  const despesasLabels = Object.keys(despesasAgrupadas);
+  const despesasValues = Object.values(despesasAgrupadas);
+
+  var options = {
+    series: [{
+      data: despesasValues,  
+    }],
+    chart: {
+      type: 'bar',
+      height: 380,
+    },
+    plotOptions: {
+      bar: {
+        barHeight: '100%',
+        distributed: true,
+        horizontal: true,
+        dataLabels: {
+          position: 'bottom',
+        },
+      }
+    },
+    colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e', '#f48024', '#69d2e7'],
+    dataLabels: {
+      enabled: true,
+      textAnchor: 'start',
+      style: {
+        colors: ['#fff'],
+      },
+      formatter: function (val, opt) {
+        return opt.w.globals.labels[opt.dataPointIndex] + ":  R$ " + val.toFixed(2); // Formata o valor com 2 casas decimais
+      },
+      offsetX: 0,
+      dropShadow: {
+        enabled: true,
+      }
+    },
+    stroke: {
+      width: 1,
+      colors: ['#fff']
+    },
+    xaxis: {
+      categories: despesasLabels,  // Descrições das despesas
+    },
+    yaxis: {
+      labels: {
+        show: false
+      }
+    },
+    title: {
+      // text: 'Despesas por Categoria',
+      align: 'center',
+      floating: true
+    },
+    tooltip: {
+      theme: 'dark',
+      y: {
+        formatter: function (val) {
+          return "R$ " + val.toFixed(2); // Exibe o valor no tooltip com o formato adequado
+        }
+      }
+    }
+  };
+
+  // Renderiza o gráfico no elemento específico
+  const chartElement = document.querySelector("#chartDespesas");
+  if (chartElement) {
+    const chart = new ApexCharts(chartElement, options);
+    chart.render();
+  } else {
+    console.error("Elemento do gráfico não encontrado");
+  }
+}
+
 
 
