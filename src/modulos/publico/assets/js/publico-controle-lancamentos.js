@@ -169,10 +169,10 @@ const addMovimentation = () => {
             getSaldos()
             getSaldosDoDia()
             getMovimentationMonth()
-            getSaldoInicialAno()
-            getSaldoFinalAno()
-            getEntradasAno()
-            getSaidasAno()
+            // getSaldoInicialAno()
+            // getSaldoFinalAno()
+            // getEntradasAno()
+            // getSaidasAno()
         }
     });
 

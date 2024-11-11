@@ -515,7 +515,7 @@ const renderChartsDespesas = (despesas) => {
     }],
     chart: {
       type: 'bar',
-      height: 500,
+      height: 650,
     },
     plotOptions: {
       bar: {

@@ -14,7 +14,6 @@ $sqlSoma = "SELECT SUM(valor) AS soma
             FROM movimentacoes
             WHERE usu_id = $usu_id
             AND tipo = '1'
-            AND cartao_credito = '0'
             AND MONTH(data) = $mesAtual
             AND YEAR(data) = $anoAtual";
 
@@ -34,7 +33,6 @@ $sqlDespesas = "SELECT pc.descricao, m.valor
                 FROM movimentacoes m
                 JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
                 WHERE m.usu_id = $usu_id
-                AND m.cartao_credito = '0'
                 AND m.tipo = '1'
                 AND MONTH(m.data) = $mesAtual
                 AND YEAR(m.data) = $anoAtual";
