@@ -414,19 +414,15 @@ const chartsSaldoFinalMensal = (saldoFinalMensal) => {
   chart.render();
 };
 
-
-
 const getPorcentagem = async () => {
-  const url = 'get-porcentagem'; // Ajuste a URL conforme necessário
+  const url = 'get-porcentagem'; 
 
   const response = await $.getJSON(url);
 
-  // Verifica se a resposta contém status, despesas e total_despesas
   if (response && response.status && $.isArray(response.despesas) && !isNaN(parseFloat(response.total_despesas))) {
-    const totalDespesas = parseFloat(response.total_despesas);  // Total das despesas recebido, convertido para float
+    const totalDespesas = parseFloat(response.total_despesas);  
     const despesas = response.despesas;
 
-    // Chama a função renderChartDonuts passando os dados corretamente
     renderChartDonuts(despesas, totalDespesas);
     renderChartsDespesas(despesas)
   } 
@@ -434,12 +430,10 @@ const getPorcentagem = async () => {
 
 const renderChartDonuts = (despesas, totalDespesas) => {
 
-  // Verifica se 'despesas' é um array válido e 'totalDespesas' é um número positivo
   if (!Array.isArray(despesas) || despesas.length === 0 || isNaN(totalDespesas) || totalDespesas <= 0) {
     return;
   }
 
-  // Agrupa despesas por descrição e soma os valores para evitar duplicações
   const despesasAgrupadas = despesas.reduce((acc, despesa) => {
     if (!acc[despesa.descricao]) {
       acc[despesa.descricao] = 0;
@@ -448,14 +442,11 @@ const renderChartDonuts = (despesas, totalDespesas) => {
     return acc;
   }, {});
 
-  // Extrai os valores e as descrições para o gráfico
   const despesasValues = Object.values(despesasAgrupadas);
   const despesasLabels = Object.keys(despesasAgrupadas);
 
-  // Calcula a porcentagem para cada despesa
   const porcentagens = despesasValues.map(valor => (valor / totalDespesas) * 100);
 
-  // Configura as opções do gráfico
   const options = {
     series: porcentagens,
     chart: {
@@ -465,7 +456,7 @@ const renderChartDonuts = (despesas, totalDespesas) => {
     tooltip: {
       y: {
         formatter: function (value) {
-          return value.toFixed(2) + "%";  // Limita a 2 casas decimais e adiciona o símbolo %
+          return value.toFixed(2) + "%"; 
         }
       }
     },
@@ -477,20 +468,20 @@ const renderChartDonuts = (despesas, totalDespesas) => {
             name: {
               show: true,
               formatter: function () {
-                return 'Total';  // Mantém o label "Total" fixo
+                return 'Total';  
               }
             },
             value: {
               show: true,
               formatter: function () {
-                return "R$ " + totalDespesas.toFixed(2);  // Exibe o total fixo mesmo ao passar o mouse
+                return "R$ " + totalDespesas.toFixed(2);  
               }
             },
             total: {
               show: true,
               label: 'Total',
               formatter: function () {
-                return "R$ " + totalDespesas.toFixed(2);  // Exibe o total fixo mesmo ao passar o mouse
+                return "R$ " + totalDespesas.toFixed(2);  
               }
             }
           }
@@ -507,7 +498,6 @@ const renderChartDonuts = (despesas, totalDespesas) => {
 }
 
 const renderChartsDespesas = (despesas) => {
-  // Agrupa despesas por descrição e soma os valores
   const despesasAgrupadas = despesas.reduce((acc, despesa) => {
     if (!acc[despesa.descricao]) {
       acc[despesa.descricao] = 0;
@@ -525,7 +515,7 @@ const renderChartsDespesas = (despesas) => {
     }],
     chart: {
       type: 'bar',
-      height: 380,
+      height: 500,
     },
     plotOptions: {
       bar: {
@@ -542,10 +532,10 @@ const renderChartsDespesas = (despesas) => {
       enabled: true,
       textAnchor: 'start',
       style: {
-        colors: ['#fff'],
+        colors: ['#ffff'],
       },
       formatter: function (val, opt) {
-        return opt.w.globals.labels[opt.dataPointIndex] + ":  R$ " + val.toFixed(2); // Formata o valor com 2 casas decimais
+        return opt.w.globals.labels[opt.dataPointIndex] + ":  R$ " + val.toFixed(2); 
       },
       offsetX: 0,
       dropShadow: {
@@ -557,7 +547,7 @@ const renderChartsDespesas = (despesas) => {
       colors: ['#fff']
     },
     xaxis: {
-      categories: despesasLabels,  // Descrições das despesas
+      categories: despesasLabels,  
     },
     yaxis: {
       labels: {
@@ -573,13 +563,12 @@ const renderChartsDespesas = (despesas) => {
       theme: 'dark',
       y: {
         formatter: function (val) {
-          return "R$ " + val.toFixed(2); // Exibe o valor no tooltip com o formato adequado
+          return "R$ " + val.toFixed(2); 
         }
       }
     }
   };
 
-  // Renderiza o gráfico no elemento específico
   const chartElement = document.querySelector("#chartDespesas");
   if (chartElement) {
     const chart = new ApexCharts(chartElement, options);
