@@ -18,6 +18,36 @@
             </button>
         </div>
     </div>
+
+    <div class="grid grid-cols-2 gap-3">
+
+        <div class=" bg-slate-50 shadow-lg rounded-lg">
+            <div class="grid grid-cols-3">
+                <div class=" col-span-1">
+                    <small>1.1 - Aluguel</small>
+                </div>
+    
+                <div class=" grid-cols-2">
+                    <div id="chartMinucioso"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class=" bg-slate-50 shadow-lg rounded-lg">
+            <div class="grid grid-cols-3">
+                <div class=" col-span-1">
+                    <small>1.1 - Aluguel</small>
+                </div>
+    
+                <div class=" grid-cols-2">
+                    <div id="chartMinucioso2"></div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+    </div>
 </div>
 
 <script src="/src/modulos/publico/assets/js/publico-minucioso.js"></script>
