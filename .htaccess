@@ -22,4 +22,5 @@ RewriteRule ^get-movimentation-month$ /src/modulos/publico/backend/publico-get-m
 RewriteRule ^get-cards$ /src/modulos/publico/backend/publico-get-cartoes.php [L] 
 RewriteRule ^get-saldos-ano$ /src/modulos/publico/backend/publico-get-saldos-ano.php [L] 
 RewriteRule ^get-porcentagem$ /src/modulos/publico/backend/publico-get-porcentagem-mensal.php [L] 
+RewriteRule ^save-minucioso$ /src/modulos/publico/backend/publico-salvar-minucioso.php [L] 
 
