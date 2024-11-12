@@ -1,6 +1,7 @@
 $(()=> {
     getPlano()
-    chartMinucioso()
+    // chartMinucioso()
+    getMinucioso()
 })
 
 
@@ -84,6 +85,17 @@ const saveMinucioso = () => {
 
 })
 
+}
+
+
+const getMinucioso = async () => {
+
+    const url = 'get-minucioso'
+    
+    const response = await $.getJSON(url)
+
+    console.log(response);
+    
 }
 
 
