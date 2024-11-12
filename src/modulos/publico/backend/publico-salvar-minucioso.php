@@ -9,6 +9,7 @@ $usu_id = $_SESSION['user_id'];
 
 $planoContas = $_POST['planoContas'];
 $limite = $_POST['limite'];
+$limite = str_replace(['.', ','], ['', '.'], $limite);
 
 $pdo->beginTransaction();
 

@@ -6,8 +6,20 @@ require "../../../../app/functions.php";
 session_start();
 
 $usu_id = $_SESSION['user_id'];
+$filtro = $_GET['filtro'];
+
 $mesAtual = date('m');
 $anoAtual = date('Y');
+
+if(!empty($filtro)) {
+
+    list($ano, $mes) = explode('-', $filtro);    
+
+    $mesAtual = $mes;
+    $anoAtual = $ano;
+}
+
+
 
 //pegar controle
 $sqlControle = "SELECT m.plano_contas, pc.descricao, m.limite    
@@ -61,7 +73,8 @@ foreach ($controle as $item) {
         }
     }
 
-    $percentualGasto = ($limite > 0) ? min(($totalGasto / $limite) * 100, 100) : 0;
+    $percentualGasto = ($limite > 0) ? min(round(($totalGasto / $limite) * 100, 2), 100) : 0;
+
 
     $resultado[] = [
         'plano_contas' => $plano,

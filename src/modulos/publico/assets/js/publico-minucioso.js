@@ -4,6 +4,8 @@ $(()=> {
     getMinucioso()
 })
 
+let charts = {};
+
 
 const getPlano = async () => {
 
@@ -76,9 +78,11 @@ const saveMinucioso = () => {
                     icon: 'success',
                     title: 'Sucesso!',
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 1000,
                     timerProgressBar: true,
-                });
+                }).then(() => {
+                    getMinucioso()
+                })
             }
         },
     
@@ -90,54 +94,94 @@ const saveMinucioso = () => {
 
 const getMinucioso = async () => {
 
-    const url = 'get-minucioso'
-    
-    const response = await $.getJSON(url)
+    $('.infoSemMov').addClass('hidden')
+    $('#minuciosoContainer').empty()
+    $('.loadingMinucioso').removeClass('hidden')
+    $('.loadingMinucioso').addClass('flex justify-center')
 
-    console.log(response);
-    
-}
+    let filtro = $('#filtroPeriodo').val()
+
+    const url = 'get-minucioso';
+
+    const response = await $.getJSON(url, {filtro: filtro});
+
+    const container = $('#minuciosoContainer');
+
+    container.empty();
+
+    if (response.controle_minucioso.length === 0) {
+
+        $('.infoSemMov').removeClass('hidden')
+        
+        $('.loadingMinucioso').removeClass('flex justify-center').addClass('hidden');
+        return; 
+    }
+
+    response.controle_minucioso.forEach((item, index) => {
+        const cardHtml = `
+            <div class="bg-white border border-gray-200 rounded-lg shadow-md p-4 text-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">${item.descricao}</h3>
+                <div id="chart-${index}" class="chart mx-auto flex justify-center"></div>
+                <p class="text-sm text-gray-600">Limite: R$${item.limite.toFixed(2)}</p>
+                <p class="text-sm text-gray-600">Gasto: R$${item.total_gasto.toFixed(2)} (${item.percentual_gasto.toFixed(1)}%)</p>
+            </div>
+        `;
+        
+        container.append(cardHtml);
+
+        createChartForItem(index, item.percentual_gasto);
+        $('#selectControle').val('')
+        $('#inputValor').val('')
+    });
+};
 
 
-const chartMinucioso = () => {
 
-    var options = {
-        series: [44, 55, 41, 17, 15],
+
+
+const createChartForItem = (id, percentualGasto) => {
+
+    $('.loadingMinucioso').removeClass('flex justify-center')
+    $('.loadingMinucioso').addClass('hidden')
+
+    if (charts[id]) {
+        charts[id].destroy();
+    }
+
+
+
+    const options = {
+        series: [percentualGasto, 100 - percentualGasto],
         chart: {
             type: 'donut',
-            width: 350,  // Defina a largura desejada
-            height: 350  // Defina a altura desejada
+            width: 200,
+            height: 200
         },
         plotOptions: {
             pie: {
                 startAngle: -90,
                 endAngle: 90,
-                offsetY: 10
-            }
-        },
-        grid: {
-            padding: {
-                bottom: -80
-            }
-        },
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    width: 250  // Ajuste de largura para telas menores
-                },
-                legend: {
-                    position: 'top'
+                offsetY: 10,
+                donut: {
+                    size: '75%',
                 }
             }
-        }]
+        },
+        labels: ['Gasto', 'Restante'],
+        colors: ['#fd7861', '#E0E0E0'],
+        legend: {
+            show: false
+        }
     };
     
-    var chart = new ApexCharts(document.querySelector("#chartMinucioso"), options);
-    chart.render();
-}
+    charts[id] = new ApexCharts(document.querySelector(`#chart-${id}`), options);
+    charts[id].render();
+};
+
+
 
 
 //Eventos
 
 $(document).on('click', '.btn-add-minucioso', saveMinucioso)
+$(document).on('change', '#filtroPeriodo', getMinucioso)
