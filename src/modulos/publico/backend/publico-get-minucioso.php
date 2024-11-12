@@ -10,11 +10,12 @@ $mesAtual = date('m');
 $anoAtual = date('Y');
 
 //pegar controle
-$sqlControle = "SELECT plano_contas, limite    
-                FROM minucioso
-                WHERE usu_id = $usu_id
-                AND MONTH(data) = $mesAtual
-                AND YEAR(data) = $anoAtual";
+$sqlControle = "SELECT m.plano_contas, pc.descricao, m.limite    
+                FROM minucioso m
+                JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
+                WHERE m.usu_id = $usu_id
+                AND MONTH(m.data) = $mesAtual
+                AND YEAR(m.data) = $anoAtual";
 
 $queryCotrole = prepareAll($sqlControle);
 
@@ -29,14 +30,15 @@ foreach($controle as $item) {
 $planoContasList = "'" . implode("', '", $planoContas) . "'";
 
 //pegar despesas referente ao controle
-$sqlDespesas = "SELECT plano_contas, SUM(valor) total_gasto
-                FROM movimentacoes
-                WHERE usu_id = $usu_id
-                AND MONTH(data) = $mesAtual
-                AND YEAR(data) = $anoAtual
-                AND plano_contas IN ($planoContasList)
-                AND tipo = 1
-                GROUP BY plano_contas";
+$sqlDespesas = "SELECT m.plano_contas, pc.descricao, SUM(m.valor) total_gasto
+                FROM movimentacoes m
+                JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
+                WHERE m.usu_id = $usu_id
+                AND MONTH(m.data) = $mesAtual
+                AND YEAR(m.data) = $anoAtual
+                AND m.plano_contas IN ($planoContasList)
+                AND m.tipo = 1
+                GROUP BY m.plano_contas";
 
 $queryDespesas = prepareAll($sqlDespesas);
 
@@ -48,6 +50,7 @@ foreach ($controle as $item) {
     
     $plano = $item->plano_contas;
     $limite = (float) $item->limite;
+    $descicao = $item->descricao;
 
     $totalGasto = 0;
 
@@ -62,6 +65,7 @@ foreach ($controle as $item) {
 
     $resultado[] = [
         'plano_contas' => $plano,
+        'descricao' => $descicao,
         'limite' => $limite,
         'total_gasto' => $totalGasto,
         'percentual_gasto' => $percentualGasto
