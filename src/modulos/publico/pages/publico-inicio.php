@@ -44,8 +44,8 @@
                     <li role="presentation">
                         <button
                             class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                            id="cartao-tab" data-tabs-target="#cartao" type="button" role="tab"
-                            aria-controls="cartao" aria-selected="false">Cartão de Crédito 
+                            id="pagarReceber-tab" data-tabs-target="#pagarReceber" type="button" role="tab"
+                            aria-controls="cartao" aria-selected="false">Pagar / Receber
                         </button>
                     </li>
                 </ul>
