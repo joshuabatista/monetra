@@ -39,7 +39,7 @@
                                 <h1 class="text-xl" id="saldoFinal"><small><i class="fa-solid fa-money-bill-transfer bg-slate-500 p-2 rounded-lg"></i></small></h1>
                             </div>
                         </div>
-                        <div role="status" class="max-w-sm animate-pulse hidden">
+                        <div role="status" class="max-w-sm animate-pulse hidden skeleton-saldos">
                             <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
                             <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
                             <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>

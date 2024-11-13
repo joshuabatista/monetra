@@ -574,7 +574,7 @@ const renderChartsDespesas = (despesas) => {
     const chart = new ApexCharts(chartElement, options);
     chart.render();
   } else {
-    console.error("Elemento do gráfico não encontrado");
+    // console.error("Elemento do gráfico não encontrado");
   }
 }
 

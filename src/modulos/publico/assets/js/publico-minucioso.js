@@ -105,6 +105,8 @@ const getMinucioso = async () => {
 
     const response = await $.getJSON(url, {filtro: filtro});
 
+    showBolinhaMinucioso(response)
+
     const container = $('#minuciosoContainer');
 
     container.empty();
@@ -132,7 +134,11 @@ const getMinucioso = async () => {
         createChartForItem(index, item.percentual_gasto);
         $('#selectControle').val('')
         $('#inputValor').val('')
-    });
+    })
+
+
+
+
 };
 
 
@@ -177,6 +183,15 @@ const createChartForItem = (id, percentualGasto) => {
     charts[id] = new ApexCharts(document.querySelector(`#chart-${id}`), options);
     charts[id].render();
 };
+
+
+const showBolinhaMinucioso = (response) => {
+
+    if(response.controle_minucioso.length > 0) {
+        $('.bolinhaMinucioso').removeClass('hidden')
+    }
+
+}
 
 
 

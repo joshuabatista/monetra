@@ -32,17 +32,21 @@
                             id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
                             aria-controls="dashboard" aria-selected="false">Dashboard</button>
                     </li>
-                    <li class="me-2" role="presentation">
+                    <li class="me-2 relative" role="presentation">
                         <button
                             class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                             id="minucioso-tab" data-tabs-target="#minucioso" type="button" role="tab"
-                            aria-controls="minucioso" aria-selected="false">Controle Minucioso</button>
+                            aria-controls="minucioso" aria-selected="false">
+                            Controle Minucioso
+                        </button>
+                        <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse bolinhaMinucioso hidden"></span>
                     </li>
                     <li role="presentation">
                         <button
                             class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                             id="cartao-tab" data-tabs-target="#cartao" type="button" role="tab"
-                            aria-controls="cartao" aria-selected="false">Cartão de Crédito</button>
+                            aria-controls="cartao" aria-selected="false">Cartão de Crédito 
+                        </button>
                     </li>
                 </ul>
             </div>
