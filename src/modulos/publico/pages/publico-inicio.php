@@ -41,13 +41,17 @@
                         </button>
                         <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse bolinhaMinucioso hidden"></span>
                     </li>
-                    <li role="presentation">
+
+                    <li class="me-2 relative" role="presentation">
                         <button
                             class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                             id="pagarReceber-tab" data-tabs-target="#pagarReceber" type="button" role="tab"
-                            aria-controls="cartao" aria-selected="false">Pagar / Receber
+                            aria-controls="cartao" aria-selected="false">
+                            Pagar / Receber
                         </button>
+                        <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse bolinhaPendentes hidden"></span>
                     </li>
+
                 </ul>
             </div>
             <div id="controle-content">
