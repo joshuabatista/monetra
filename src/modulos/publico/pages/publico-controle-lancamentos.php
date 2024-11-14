@@ -43,6 +43,7 @@
 
     <script src="/src/modulos/publico/assets/js/publico-controle-lancamentos.js"></script>
     <script src="/src/modulos/publico/assets/js/publico-controle-cartao-credito.js"></script>
+    <script src="/src/modulos/publico/assets/js/publico-pagar-receber.js"></script>
     <?php require"../../../includes/footer.php"?>
 </body>
 
