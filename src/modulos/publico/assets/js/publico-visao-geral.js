@@ -255,6 +255,7 @@ const getMonth = () => {
     const month = String(today.getMonth() + 1).padStart(2, '0'); 
 
     $('#data-inicio').val(`${year}-${month}`);
+    $('#filtroPeriodo').val(`${year}-${month}`);
 }
 
 // Função para converter string de moeda brasileira para número
