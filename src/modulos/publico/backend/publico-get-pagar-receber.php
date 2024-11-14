@@ -7,7 +7,7 @@ session_start();
 
 $usu_id = $_SESSION['user_id'];
 
-$sql = "SELECT pc.descricao, m.*, DATE_FORMAT(m.data, '%d/%m/%Y') data_formatada    
+$sql = "SELECT pc.descricao, m.id, m.valor, m.categoria, DATE_FORMAT(m.data, '%d/%m/%Y') data_formatada    
         FROM movimentacoes m 
         JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
         WHERE m.usu_id = $usu_id

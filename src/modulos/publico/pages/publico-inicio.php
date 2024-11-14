@@ -62,7 +62,7 @@
 
                     <?php include "../pages/abas/publico-inicio-minucioso.php" ?>
 
-                    <?php include "../pages/abas/publico-inicio-cartao.php" ?>
+                    <?php include "../pages/abas/publico-inicio-pagar-receber.php" ?>
 
             </div>
         </div>

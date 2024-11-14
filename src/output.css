@@ -1300,6 +1300,10 @@ input:checked + .toggle-bg {
   margin-top: 30px;
 }
 
+.mt-\[25px\] {
+  margin-top: 25px;
+}
+
 .block {
   display: block;
 }
