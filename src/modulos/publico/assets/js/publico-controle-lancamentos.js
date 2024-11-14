@@ -169,6 +169,7 @@ const addMovimentation = () => {
             getSaldos()
             getSaldosDoDia()
             getMovimentationMonth()
+            getInfoPendentes()
             // getSaldoInicialAno()
             // getSaldoFinalAno()
             // getEntradasAno()

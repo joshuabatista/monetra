@@ -102,6 +102,10 @@ const pagarReceber = ({target}) => {
             timerProgressBar: true,
         }).then(() => {
             getInfoPendentes()
+            getMovimentation()
+            getSaldos()
+            getSaldosDoDia()
+            getMovimentationMonth()
         })
     }
 
