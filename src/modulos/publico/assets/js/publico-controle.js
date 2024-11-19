@@ -63,6 +63,9 @@ const showSelectCreditCards = (response) => {
 
 const renderCreditCardFields = (cards = []) => {
 
+    console.log(cards);
+    
+
     
     var qtdLength = cards.length
 
@@ -79,11 +82,19 @@ const renderCreditCardFields = (cards = []) => {
 
     for (var i = 1; i <= totalFields; i++) {
         var cardName = savedCards[i - 1] ? savedCards[i - 1].cartao : '';
+        var cardLimit = savedCards[i - 1]?.limite || '';
+        var consumedLimit = savedCards[i - 1]?.limite_consumido || '';
 
         container.append(`
-            <div class="form-control mt-2">
+            <div class="form-control mt-4">
                 <label for="nameCard${i}" class="label">Nome do Cartão ${i}</label>
                 <input type="text" id="nameCard${i}" name="nameCard${i}" value="${cardName}" class="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-[14rem]" />
+
+                <label for="limitCard${i}" class="label mt-2">Limite do Cartão ${i}</label>
+                <input type="number" id="limitCard${i}" name="limitCard${i}" value="${cardLimit}" class="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-[14rem]" />
+
+                <label for="consumedLimitCard${i}" class="label mt-2">Limite Consumido do Cartão ${i}</label>
+                <input type="number" id="consumedLimitCard${i}" name="consumedLimitCard${i}" value="${consumedLimit}" class="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-[14rem]" />
             </div>
         `);
     }
@@ -149,6 +160,17 @@ const saveCreditCard = () => {
     let cartao3 = $('#nameCard3').val()
     let cartao4 = $('#nameCard4').val()
     let cartao5 = $('#nameCard5').val()
+    let limit1 = $('#limitCard1').val()
+    let limit2 = $('#limitCard2').val()
+    let limit3 = $('#limitCard3').val()
+    let limit4 = $('#limitCard4').val()
+    let limit5 = $('#limitCard5').val()
+    let consumed1 = $('#consumedLimitCard1').val()
+    let consumed2 = $('#consumedLimitCard2').val()
+    let consumed3 = $('#consumedLimitCard3').val()
+    let consumed4 = $('#consumedLimitCard4').val()
+    let consumed5 = $('#consumedLimitCard5').val()
+
     let switchAvancar = $('#switch-avançar').is(':checked')
 
     const data = {
@@ -157,6 +179,16 @@ const saveCreditCard = () => {
         cartao3: cartao3,
         cartao4: cartao4,
         cartao5: cartao5,
+        limit1: limit1,
+        limit2: limit2,
+        limit3: limit3,
+        limit4: limit4,
+        limit5: limit5,
+        consumed1: consumed1,
+        consumed2: consumed2,
+        consumed3: consumed3,
+        consumed4: consumed4,
+        consumed5: consumed5,
         switchAvancar: switchAvancar
     }
 

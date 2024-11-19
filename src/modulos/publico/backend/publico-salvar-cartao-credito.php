@@ -7,43 +7,40 @@ session_start();
 
 $usu_id = $_SESSION['user_id'];
 
-$cartoes = [
-    !empty($_POST['cartao1']) ? $_POST['cartao1'] : null,
-    !empty($_POST['cartao2']) ? $_POST['cartao2'] : null,
-    !empty($_POST['cartao3']) ? $_POST['cartao3'] : null,
-    !empty($_POST['cartao4']) ? $_POST['cartao4'] : null,
-    !empty($_POST['cartao5']) ? $_POST['cartao5'] : null
-];
+// Recebendo os dados dos cartões
+$cartoes = [];
+for ($i = 1; $i <= 5; $i++) {
+    $cartoes[] = [
+        'cartao' => $_POST["cartao{$i}"] ?? null,
+        'limite' => $_POST["limit{$i}"] ?? null,
+        'limite_consumido' => $_POST["consumed{$i}"] ?? null,
+    ];
+}
 
+// Verifica se o switch para avançar está desligado
 $switch = $_POST['switchAvancar'];
-
-if($switch === "false") {
+if ($switch === "false") {
     response([
-        'status'=>true,
-        'message'=>'Usuario sem cartão de credito'
+        'status' => true,
+        'message' => 'Usuário sem cartão de crédito'
     ]);
     exit;
 }
 
-$sqlCheck = "SELECT cartao
-            FROM cartao_credito
-            WHERE usu_id = $usu_id";
+// Verifica os cartões já cadastrados no banco
+$sqlCheck = "SELECT cartao FROM cartao_credito WHERE usu_id = ?";
+$queryCheck = prepareAll($sqlCheck, [$usu_id]);
 
-$queryCheck = prepareAll($sqlCheck);
+$cartoesExistentes = array_map(fn($cartao) => $cartao->cartao, $queryCheck->data);
 
-$cartoesExistentes = [];
-
-foreach ($queryCheck->data as $cartaoCadastrado) {
-    $cartoesExistentes[] = $cartaoCadastrado->cartao;
-}
-
+// Verifica se o limite de 5 cartões já foi atingido
 if (count($cartoesExistentes) >= 5) {
     $todosCartoesJaCadastrados = true;
 
     foreach ($cartoes as $novoCartao) {
-        if ($novoCartao && !in_array($novoCartao, $cartoesExistentes)) {
+        if ($novoCartao['cartao'] && !in_array($novoCartao['cartao'], $cartoesExistentes)) {
             $todosCartoesJaCadastrados = false;
-            break; 
+            break;
         }
     }
 
@@ -62,24 +59,24 @@ if (count($cartoesExistentes) >= 5) {
     }
 }
 
-foreach ($cartoes as $novoCartao) {
-
-    if ($novoCartao && !in_array($novoCartao, $cartoesExistentes)) {
-        $sql = "INSERT INTO cartao_credito SET 
-                usu_id = ?,
-                cartao = ?";
-
+// Salvar os novos cartões
+foreach ($cartoes as $cartao) {
+    // Verifica se o cartão é válido e não está cadastrado
+    if ($cartao['cartao'] && !in_array($cartao['cartao'], $cartoesExistentes)) {
+        $sql = "INSERT INTO cartao_credito (usu_id, cartao, limite, limite_consumido) 
+                VALUES (?, ?, ?, ?)";
         $columns = [
             $usu_id,
-            $novoCartao
+            $cartao['cartao'],
+            $cartao['limite'] ?? 0,
+            $cartao['limite_consumido'] ?? 0
         ];
 
-        prepareAll($sql, $columns); 
+        prepareAll($sql, $columns);
     }
-
 }
 
-response ([
-    'status'=>true,
-    'message'=>'Cartão cadastrado com sucesso!'
+response([
+    'status' => true,
+    'message' => 'Cartões cadastrados com sucesso!'
 ]);
