@@ -26,4 +26,5 @@ RewriteRule ^save-minucioso$ /src/modulos/publico/backend/publico-salvar-minucio
 RewriteRule ^get-minucioso$ /src/modulos/publico/backend/publico-get-minucioso.php [L] 
 RewriteRule ^get-pagar-receber$ /src/modulos/publico/backend/publico-get-pagar-receber.php [L] 
 RewriteRule ^pagar-receber$ /src/modulos/publico/backend/publico-pagar-receber.php [L] 
+RewriteRule ^get-saldos-cartao$ /src/modulos/publico/backend/publico-get-saldos-cartao.php [L] 
 

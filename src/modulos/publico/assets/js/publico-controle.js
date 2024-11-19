@@ -63,9 +63,6 @@ const showSelectCreditCards = (response) => {
 
 const renderCreditCardFields = (cards = []) => {
 
-    console.log(cards);
-    
-
     
     var qtdLength = cards.length
 

@@ -1,7 +1,21 @@
 
 $(() => {
-    chartCartao()
+    // chartCartao()
+    getCartao()
 })
+
+
+const getCartao = async () => {
+
+  const url = 'get-saldos-cartao'
+
+  const response  = await $.getJSON(url)
+
+  console.log(response);
+  
+}
+
+
 
 const chartCartao = () => {
 
