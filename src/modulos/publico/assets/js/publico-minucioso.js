@@ -173,7 +173,7 @@ const createChartForItem = (id, percentualGasto) => {
                 }
             }
         },
-        labels: ['Gasto', 'Restante'],
+        labels: ['Gasto (%)', 'Restante (%)'],
         colors: ['#fd7861', '#E0E0E0'],
         legend: {
             show: false

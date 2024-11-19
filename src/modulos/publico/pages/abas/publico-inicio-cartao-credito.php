@@ -1,6 +1,6 @@
 <div class="hidden p-4 rounded-lg" id="cartao" role="tabpanel" aria-labelledby="cartao-tab">    
 
-    <div class="grid grid-cols-4">
+    <div id="chartsContainerCartao" class="grid grid-cols-4 gap-4">
         <div class="chartCartao">
 
             <div id="chartCartao"></div>

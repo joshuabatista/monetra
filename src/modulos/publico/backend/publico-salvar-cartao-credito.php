@@ -9,7 +9,7 @@ $usu_id = $_SESSION['user_id'];
 
 // Recebendo os dados dos cartões
 $cartoes = [];
-for ($i = 1; $i <= 5; $i++) {
+for ($i = 1; $i <= 4; $i++) {
     $cartoes[] = [
         'cartao' => $_POST["cartao{$i}"] ?? null,
         'limite' => $_POST["limit{$i}"] ?? null,
@@ -33,8 +33,9 @@ $queryCheck = prepareAll($sqlCheck, [$usu_id]);
 
 $cartoesExistentes = array_map(fn($cartao) => $cartao->cartao, $queryCheck->data);
 
-// Verifica se o limite de 5 cartões já foi atingido
-if (count($cartoesExistentes) >= 5) {
+// Verifica se o limite de 4 cartões já foi atingido
+if (count($cartoesExistentes) >= 4) {
+
     $todosCartoesJaCadastrados = true;
 
     foreach ($cartoes as $novoCartao) {
@@ -53,7 +54,7 @@ if (count($cartoesExistentes) >= 5) {
     } else {
         response([
             'status' => false,
-            'message' => 'Limite de 5 cartões já cadastrados. Não é possível adicionar mais.'
+            'message' => 'Limite de 4 cartões já cadastrados. Não é possível adicionar mais.'
         ]);
         exit;
     }
