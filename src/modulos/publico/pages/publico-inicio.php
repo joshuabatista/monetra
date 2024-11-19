@@ -51,6 +51,11 @@
                         </button>
                         <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse bolinhaPendentes hidden"></span>
                     </li>
+                    <li class="me-2" role="presentation">
+                        <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                            id="cartao-tab" data-tabs-target="#cartao" type="button" role="tab"
+                            aria-controls="cartao" aria-selected="false">Cartão de Crédito</button>
+                    </li>
 
                 </ul>
             </div>
@@ -63,6 +68,8 @@
                     <?php include "../pages/abas/publico-inicio-minucioso.php" ?>
 
                     <?php include "../pages/abas/publico-inicio-pagar-receber.php" ?>
+
+                    <?php include "../pages/abas/publico-inicio-cartao-credito.php" ?>
 
             </div>
         </div>
