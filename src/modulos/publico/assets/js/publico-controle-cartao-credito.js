@@ -179,6 +179,7 @@ const addMovimentationCard = () => {
             getMovimentationCard(); 
             getSaldosDoDia()
             getMovimentationMonth()
+            getMinucioso()
         }
     });
 
