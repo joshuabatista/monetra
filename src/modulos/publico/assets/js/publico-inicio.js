@@ -1,7 +1,7 @@
 $(() => {
     getInfo()
+    getInfoCartao()
 })
-
 
 
 const getInfo = async () => {
@@ -21,6 +21,27 @@ const hiddenButton = (data) => {
         $('#dashboard-styled-tab').trigger('click').focus()
         
     }
+
+}
+
+const getInfoCartao = async () => {
+
+    const url = "get-cards"
+
+    const response = await $.getJSON(url)
+
+    hiddenTab(response.data)
+}
+
+const hiddenTab = (data) => {
+
+    let length = data.length
+
+    if(length === 0) {
+        $('#cartao-tab').prop('disabled', true).addClass('cursor-not-allowed')
+        $('.tab-cartao-inicio').prop('disabled', true).addClass('cursor-not-allowed')
+    }
+    
 
 }
 

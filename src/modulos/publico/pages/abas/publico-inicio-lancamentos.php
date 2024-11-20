@@ -13,7 +13,7 @@
             </li>
             <li class="me-2" role="presentation">
                 <button
-                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    class="tab-cartao-inicio inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                     id="dashboard-styled-tab" data-tabs-target="#credito-tab" type="button" role="tab"
                     aria-controls="dashboard" aria-selected="false">Crédito</button>
             </li>
