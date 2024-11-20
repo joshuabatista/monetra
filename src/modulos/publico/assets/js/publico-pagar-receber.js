@@ -107,6 +107,7 @@ const pagarReceber = ({target}) => {
             getSaldos()
             getSaldosDoDia()
             getMovimentationMonth()
+            getMinucioso()
         })
     }
 
