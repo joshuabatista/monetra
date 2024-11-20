@@ -21,9 +21,10 @@ const renderPendentes = (response) => {
 
     let html = ''
 
-    if(response.data.length === 0) {
+    if(response.data.length <= 0) {
         $('.infoSemPendentes').removeClass('hidden')
     } else {
+        $('.infoSemPendentes').addClass('hidden')
         response.data.forEach(item => {
 
             const botaoTexto = item.categoria === "Despesa" ? "Pagar" : "Receber"
