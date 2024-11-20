@@ -57,10 +57,13 @@ const createChartForCartao = (id, percentualGasto) => {
         chartCartao[id].destroy();
     }
 
+    const restante = parseFloat((100 - percentualGasto).toFixed(1));
+    percentualGasto = parseFloat(percentualGasto.toFixed(1));
+
 
 
     const options = {
-        series: [percentualGasto, 100 - percentualGasto],
+        series: [percentualGasto, restante],
         chart: {
             type: "donut",
             width: 200,
