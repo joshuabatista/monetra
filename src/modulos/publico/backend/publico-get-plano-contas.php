@@ -9,7 +9,7 @@ $sql = "SELECT *
         FROM plano_contas_analitico pc
         WHERE pc.tipo = ?
         AND pc.status = '1'
-        ORDER BY pc.codigo, pc.descricao asc";
+        ORDER BY pc.descricao asc";
 
 $query = prepareAll($sql, [$categoria]);
 
