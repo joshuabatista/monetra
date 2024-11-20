@@ -7,16 +7,16 @@
                     </div>
                 </div>
 
-                <div class="filters-period flex flex-row bg-gray-100 p-5 rounded-xl shadow-xl w-full justify-center">
+                <div class="filters-period flex flex-row bg-gray-100 p-5 rounded-xl shadow-xl w-full justify-center border border-gray-200"">
                     <div class="col-data-inicio">
                         <input type="month" id="data-inicio" name="data-inicio" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                     </div>
                 </div>
                 
-                <br>
                 
-                <div class="grid grid-cols-2 gap-1">
-                    <div class=" bg-gray-100 inline-flex flex-col gap-8 p-5 rounded-xl shadow-xl">
+                
+                <div class="grid grid-cols-2 gap-2 mt-3 ">
+                    <div class=" bg-gray-100 inline-flex flex-col gap-8 p-5 rounded-xl shadow-xl border border-gray-200">
                         <div class="flex flex-col text-center justify-center">
                             <label for="" class="text-xl mt-0 font-semibold">Saldos</label>
                         </div>
@@ -24,19 +24,19 @@
                         <div class="saldos inline-flex flex-col gap-8 p-2 mb-2">
                             <div>
                                 <label for="" class="text-xl italic text-zinc-600">Saldo Inicial</label>
-                                <h1 class="text-xl" id="saldoInicial"><small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small></h1>
+                                <h1 class=" text-lg" id="saldoInicial"><small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small></h1>
                             </div>
                             <div>
                                 <label for="" class="text-xl text-zinc-600 italic">Entradas</label>
-                                <h1 class="text-xl" id="entradas"><small><i class="fa-solid fa-arrow-trend-up bg-green-500 p-2 rounded-lg"></i></small></h1>
+                                <h1 class="text-lg" id="entradas"><small><i class="fa-solid fa-arrow-trend-up bg-green-500 p-2 rounded-lg"></i></small></h1>
                             </div>
                             <div>
                                 <label for="" class="text-xl text-zinc-600 italic">Saidas</label>
-                                <h1 class="text-xl" id="saidas"><small><i class="fa-solid fa-arrow-trend-down bg-red-500 p-2 rounded-lg"></i></small></h1>
+                                <h1 class="text-lg" id="saidas"><small><i class="fa-solid fa-arrow-trend-down bg-red-500 p-2 rounded-lg"></i></small></h1>
                             </div>
                             <div>
                                 <label for="" class="text-xl text-zinc-600 italic">Saldo Final</label>
-                                <h1 class="text-xl" id="saldoFinal"><small><i class="fa-solid fa-money-bill-transfer bg-slate-500 p-2 rounded-lg"></i></small></h1>
+                                <h1 class="text-lg" id="saldoFinal"><small><i class="fa-solid fa-money-bill-transfer bg-slate-500 p-2 rounded-lg"></i></small></h1>
                             </div>
                         </div>
                         <div role="status" class="max-w-sm animate-pulse hidden skeleton-saldos">
@@ -61,10 +61,10 @@
                         
                     </div>
         
-                    <div class=" bg-gray-100 inline-flex flex-col rounded-xl shadow-xl">
-                        <div class="flex flex-col text-center justify-center mt-4">
+                    <div class=" bg-gray-100 inline-flex flex-col rounded-xl shadow-xl border border-gray-200">
+                        <div class="flex flex-col text-center justify-center items-center mt-4">
                             <label for="" class="text-xl mb-1 font-semibold">Mov. dia</label>
-                            <input type="date" id="dataInicio" class="mt-2 ml-2 w-48 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            <input type="date" id="dataInicio" class="mt-2 w-40 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                         </div>
                         
                         <div id="chartDay"></div>
