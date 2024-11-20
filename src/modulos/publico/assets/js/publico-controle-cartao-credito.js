@@ -227,7 +227,7 @@ const changePlanoContasCartao = () => {
 
     if(selectCategoria) {
         $.ajax({
-            url: 'get-plano',
+            url: 'get-plano-card',
             type: 'GET',
             data: {selectCategoria: selectCategoria},
             success: function(response){
