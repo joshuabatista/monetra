@@ -17,7 +17,7 @@
 <body>
     <div class="grid grid-cols-4 gap-2">
 
-        <div class=" col-span-3 content rounded-r-xl">
+        <div class=" col-span-3 content rounded-r-xl max-h-fit">
 
             <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="controle"
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="col-span-1 bg-white mt-4 shadow-lg justify-center items-center rounded-l-xl">
+        <div class="col-span-1 bg-white mt-4 shadow-lg justify-center items-center rounded-l-xl max-h-fit">
 
             <div class=" mt-20 btn-start justify-center hidden flex">
                 <a href="controle" class="relative inline-block text-lg group">
