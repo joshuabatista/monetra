@@ -31,4 +31,6 @@ RewriteRule ^get-pagar-receber$ /src/modulos/publico/backend/publico-get-pagar-r
 RewriteRule ^pagar-receber$ /src/modulos/publico/backend/publico-pagar-receber.php [L] 
 RewriteRule ^get-saldos-cartao$ /src/modulos/publico/backend/publico-get-saldos-cartao.php [L] 
 RewriteRule ^pagar-cartao$ /src/modulos/publico/backend/publico-pagar-cartao.php [L] 
+RewriteRule ^info-user$ /src/modulos/publico/backend/publico-get-dados-usu.php [L] 
+RewriteRule ^editar-perfil$ /src/modulos/publico/backend/publico-editar-perfil.php [L] 
 
