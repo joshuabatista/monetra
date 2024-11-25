@@ -5,6 +5,7 @@ RewriteRule ^inicio$ /src/modulos/publico/pages/publico-inicio.php [L]
 RewriteRule ^controle$ /src/modulos/publico/pages/publico-controle.php [L]
 RewriteRule ^lancamentos$ /src/modulos/publico/pages/publico-controle-lancamentos.php [L]
 
+RewriteRule ^logout$ /src/modulos/publico/backend/logout.php [L]
 RewriteRule ^get-saldos$ /src/modulos/publico/backend/publico-get-saldos.php [L]
 RewriteRule ^get-movimentacoes-dia$ /src/modulos/publico/backend/publico-get-movimentacoes-dia.php [L]
 RewriteRule ^login-usu$ /src/modulos/publico/backend/login.php [L]
