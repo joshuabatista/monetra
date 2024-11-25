@@ -1,6 +1,7 @@
 RewriteEngine On
 
 RewriteRule ^login$ /src/modulos/publico/pages/publico-login.php [L]
+RewriteRule ^perfil$ /src/modulos/publico/pages/publico-editar-perfil.php [L]
 RewriteRule ^inicio$ /src/modulos/publico/pages/publico-inicio.php [L]
 RewriteRule ^controle$ /src/modulos/publico/pages/publico-controle.php [L]
 RewriteRule ^lancamentos$ /src/modulos/publico/pages/publico-controle-lancamentos.php [L]
