@@ -6,6 +6,7 @@ RewriteRule ^inicio$ /src/modulos/publico/pages/publico-inicio.php [L]
 RewriteRule ^controle$ /src/modulos/publico/pages/publico-controle.php [L]
 RewriteRule ^lancamentos$ /src/modulos/publico/pages/publico-controle-lancamentos.php [L]
 
+
 RewriteRule ^logout$ /src/modulos/publico/backend/logout.php [L]
 RewriteRule ^get-saldos$ /src/modulos/publico/backend/publico-get-saldos.php [L]
 RewriteRule ^get-movimentacoes-dia$ /src/modulos/publico/backend/publico-get-movimentacoes-dia.php [L]
@@ -33,4 +34,5 @@ RewriteRule ^get-saldos-cartao$ /src/modulos/publico/backend/publico-get-saldos-
 RewriteRule ^pagar-cartao$ /src/modulos/publico/backend/publico-pagar-cartao.php [L] 
 RewriteRule ^info-user$ /src/modulos/publico/backend/publico-get-dados-usu.php [L] 
 RewriteRule ^editar-perfil$ /src/modulos/publico/backend/publico-editar-perfil.php [L] 
+RewriteRule ^criar-usuario$ /src/modulos/publico/backend/publico-criar-usuario.php [L] 
 

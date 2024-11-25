@@ -6,10 +6,14 @@ const login = () => {
 
     if(email == '' || email == null || senha == '' || senha == null) {
         Swal.fire({
+            position: 'top-end',
+            toast: true,
             icon: 'error',
             title: 'Erro',
             text: 'Preencha os campos corretamente',
-            confirmButtonText: 'Entendi'
+            confirmButtonText: 'Entendi',
+            timer: 3000,
+            timerProgressBar: true,
         });
         return
     }
@@ -40,7 +44,7 @@ const login = () => {
                     title: 'Sucesso!',
                     text: 'Logado com sucesso!',
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 2000,
                     timerProgressBar: true,
                 }).then(() => {
                     window.location.href = "inicio"
