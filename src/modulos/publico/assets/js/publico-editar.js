@@ -10,13 +10,16 @@ const getInfoUser = async () => {
     const response = await $.getJSON(url)
 
     renderInfoUser(response.data)
+    
 }
 
 const renderInfoUser = (data) => {
 
+    
+
     $('#emailUsu').prop('disabled', true).addClass('cursor-not-allowed')
 
-    const user = data[0]
+    const user = data
 
     $('#emailUsu').val(user.email)
     $('#nomeUsu').val(user.nome)

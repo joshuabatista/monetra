@@ -1,5 +1,15 @@
 <?php
 
+include_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+// Atualize para o método correto de inicialização
+$dotenv = Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT']);
+$dotenv->load();
+
+$key = $_ENV['KEY'];
+
 class Route 
 {
 
@@ -191,4 +201,29 @@ function dd($var) {
     print_r($var);
     echo "</pre>";
     die; 
+}
+
+
+function encryptData($data, $key) {
+    $cipher = "AES-256-CBC";
+    $iv = random_bytes(openssl_cipher_iv_length($cipher));
+    $encrypted = openssl_encrypt($data, $cipher, $key, 0, $iv);
+    return base64_encode($encrypted . '::' . $iv);
+}
+
+function decryptData($data, $key) {
+
+    $cipher = "AES-256-CBC"; 
+
+    if (strpos(base64_decode($data), '::') === false) {
+        return false; 
+    }
+
+    list($encryptedData, $iv) = explode('::', base64_decode($data), 2);
+
+    if (!isset($encryptedData, $iv)) {
+        return false;
+    }
+
+    return openssl_decrypt($encryptedData, $cipher, $key, 0, $iv);
 }

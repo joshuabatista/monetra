@@ -6,7 +6,12 @@
  require '../../../includes/head.php'; 
  require "../../../../app/functions.php";
 
-?> <link href="/src/modulos/publico/assets/css/main.css" rel="stylesheet">
+
+
+?> 
+
+
+<link href="/src/modulos/publico/assets/css/main.css" rel="stylesheet">
 
 
 <body>

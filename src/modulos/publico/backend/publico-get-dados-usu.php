@@ -7,7 +7,7 @@ session_start();
 
 $usu_id = $_SESSION['user_id'];
 
-$sql = "SELECT *    
+$sql = "SELECT email, senha, nome, sobrenome, celular    
         FROM users
         WHERE id = ?";
 
@@ -22,7 +22,16 @@ if(!empty($query->exception)) {
     ]);
 }
 
+$info = $info[0];
+
+$decrypt = [
+    'email' => decryptData($info->email, $key),
+    'nome' => decryptData($info->nome, $key),
+    'sobrenome' => decryptData($info->sobrenome, $key),
+    'celular' => decryptData($info->celular, $key)
+];
+
 response([
     'status'=>true,
-    'data'=>$info
+    'data'=>$decrypt
 ]);

@@ -36,6 +36,12 @@ if($password1 != $password2) {
     ]);
 }
 
+$hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
+
+$encryptedEmail = encryptData($email, $key);
+$encryptedNome = encryptData($nome, $key);
+$encryptedSobrenome = encryptData($sobrenome, $key);
+
 $sqlEmails = "SELECT email
             FROM users";
 
@@ -59,6 +65,7 @@ foreach ($emailBanco as $emails) {
     }
 }
 
+
 $sql = "INSERT INTO users set
         email = ?,
         senha = ?,
@@ -66,10 +73,10 @@ $sql = "INSERT INTO users set
         sobrenome = ?";
 
 $columns = [
-    $email,
-    $password1,
-    $nome,
-    $sobrenome
+    $encryptedEmail,
+    $hashedPassword,
+    $encryptedNome,
+    $encryptedSobrenome
 ];
 
 $query = prepare($sql, $columns);
@@ -100,8 +107,6 @@ $_SESSION['user_id'] = $info->id;
 $_SESSION['user_name'] = $info->nome;
 $_SESSION['user_lastName'] = $info->sobrenome;
 $_SESSION['user_email'] = $info->email;
-
-
 
 $pdo->commit();
 
