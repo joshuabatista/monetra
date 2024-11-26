@@ -35,10 +35,10 @@
                     <label for="" class="label">Sobrenome</label>
                     <input type="" name="sobrenomeUsu" id="sobrenomeUsu" class="input">
                 </div>
-                <div class="area-celular mt-2">
+                <!-- <div class="area-celular mt-2">
                     <label for="" class="label">Celular</label>
                     <input type="text" name="celularUsu" id="celularUsu" class="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-                </div>
+                </div> -->
             </form>
 
 

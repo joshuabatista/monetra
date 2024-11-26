@@ -24,7 +24,7 @@ const renderInfoUser = (data) => {
     $('#emailUsu').val(user.email)
     $('#nomeUsu').val(user.nome)
     $('#sobrenomeUsu').val(user.sobrenome)
-    $('#celularUsu').val(user.celular)
+    // $('#celularUsu').val(user.celular)
 
     $('.email-usuario').html(user.email)
     $('.nome-usuario').html(user.nome + ' ' + user.sobrenome)
