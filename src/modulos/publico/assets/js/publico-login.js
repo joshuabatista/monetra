@@ -22,6 +22,8 @@ const login = () => {
 
     const data = new FormData(form)
 
+    data.append('password', btoa(senha))
+
     const url = 'login-usu'
 
 

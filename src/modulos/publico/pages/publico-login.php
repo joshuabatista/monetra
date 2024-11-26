@@ -37,7 +37,7 @@
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Senha" id="password" name="password">
+                                <input type="password" placeholder="Senha" id="password">
                             </div>
                             <div class="text"><a href="#">Esqueceu sua senha?</a></div>
                             <div class="button input-box">
