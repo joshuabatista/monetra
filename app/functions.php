@@ -1,5 +1,15 @@
 <?php
 
+include_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+// Atualize para o método correto de inicialização
+$dotenv = Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT']);
+$dotenv->load();
+
+$key = $_ENV['KEY'];
+
 class Route 
 {
 
@@ -191,4 +201,43 @@ function dd($var) {
     print_r($var);
     echo "</pre>";
     die; 
+}
+
+
+function encryptData($data, $key) {
+    $cipher = "AES-256-CBC";
+    $iv = random_bytes(openssl_cipher_iv_length($cipher));
+    $encrypted = openssl_encrypt($data, $cipher, $key, 0, $iv);
+    return base64_encode($encrypted . '::' . $iv);
+}
+
+function decryptData($encryptedEmail, $key) {
+    $cipher = "AES-256-CBC";
+
+
+  
+    // Verifica se a string contém o separador '::'
+    if (strpos(base64_decode($encryptedEmail), '::') === false) {
+        return false; // Se não tiver '::', os dados estão corrompidos
+    }
+    
+
+    list($encryptedData, $iv) = explode('::', base64_decode($encryptedEmail), 2); // Separa os dados criptografados do IV
+
+    
+
+    // Verifica se ambos os componentes estão presentes
+    if (!isset($encryptedData, $iv)) {
+        return false;
+    }
+
+    // Verifica o comprimento do IV
+    $ivLength = openssl_cipher_iv_length($cipher);
+    if (strlen($iv) !== $ivLength) {
+        return false; // Se o IV não tiver o tamanho correto
+    }
+
+
+    // Descriptografa o email
+    return openssl_decrypt($encryptedData, $cipher, $key, 0, $iv);
 }

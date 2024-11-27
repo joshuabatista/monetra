@@ -11,7 +11,8 @@
         <div class=" flex items-end justify-end mb-[1rem]">
 
             <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full" type="button">
-                <img class=" w-[3rem] h-[3rem] mr-2 rounded-full" src="../../../../public_html/assets/images/foto-usuario.png" alt="user photo">Joshua Batista
+                <img class=" w-[3rem] h-[3rem] mr-2 rounded-full" src="../../../../public_html/assets/images/foto-usuario.png" alt="user photo">
+                <p class="nome-usuario"></p>
                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -24,21 +25,16 @@
                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                 <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
                     <div class="font-medium ">Usuário</div>
-                    <div class="truncate">joshuabatista@live.com</div>
+                    <div class="truncate email-usuario"></div>
                 </div>
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                    aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
                     <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Configurações</a>
+                        <a href="perfil"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Perfil</a>
                     </li>
                 </ul>
                 <div class="py-2">
-                    <a href="#"
+                    <a href="logout"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sair</a>
                 </div>
             </div>
@@ -48,5 +44,7 @@
 </header>
 
 <body class=" bg-gray-200">
+
+    <script src="/src/modulos/publico/assets/js/publico-editar.js"></script>
     
 </body>

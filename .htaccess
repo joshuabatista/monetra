@@ -1,10 +1,13 @@
 RewriteEngine On
 
 RewriteRule ^login$ /src/modulos/publico/pages/publico-login.php [L]
+RewriteRule ^perfil$ /src/modulos/publico/pages/publico-editar-perfil.php [L]
 RewriteRule ^inicio$ /src/modulos/publico/pages/publico-inicio.php [L]
 RewriteRule ^controle$ /src/modulos/publico/pages/publico-controle.php [L]
 RewriteRule ^lancamentos$ /src/modulos/publico/pages/publico-controle-lancamentos.php [L]
 
+
+RewriteRule ^logout$ /src/modulos/publico/backend/logout.php [L]
 RewriteRule ^get-saldos$ /src/modulos/publico/backend/publico-get-saldos.php [L]
 RewriteRule ^get-movimentacoes-dia$ /src/modulos/publico/backend/publico-get-movimentacoes-dia.php [L]
 RewriteRule ^login-usu$ /src/modulos/publico/backend/login.php [L]
@@ -30,4 +33,8 @@ RewriteRule ^pagar-receber$ /src/modulos/publico/backend/publico-pagar-receber.p
 RewriteRule ^get-saldos-cartao$ /src/modulos/publico/backend/publico-get-saldos-cartao.php [L] 
 RewriteRule ^pagar-cartao$ /src/modulos/publico/backend/publico-pagar-cartao.php [L] 
 RewriteRule ^get-saldo-final-mensal$ /src/modulos/publico/backend/publico-get-saldo-final-ano.php [L] 
+RewriteRule ^info-user$ /src/modulos/publico/backend/publico-get-dados-usu.php [L] 
+RewriteRule ^editar-perfil$ /src/modulos/publico/backend/publico-editar-perfil.php [L] 
+RewriteRule ^criar-usuario$ /src/modulos/publico/backend/publico-criar-usuario.php [L] 
+
 

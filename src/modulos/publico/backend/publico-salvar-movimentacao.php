@@ -16,8 +16,6 @@ $usu_id = $_SESSION['user_id'];
 
 $dataConvertida = DateTime::createFromFormat('d/m/Y', $data)->format('Y-m-d');
 
-$pdo->beginTransaction();
-
 $valor = str_replace(',', '.', $valor);
 
 if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo)){
@@ -27,6 +25,21 @@ if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo)){
         'message' => "Preencha os campos corretamente [01]"
     ]);
 }
+
+// function encryptData($data, $key)
+// {
+//     $cipher = "AES-256-CBC"; 
+//     $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher)); 
+//     $encrypted = openssl_encrypt($data, $cipher, $key, 0, $iv); 
+//     return base64_encode($encrypted . '::' . $iv); 
+// }
+
+// $encryptionKey = 'teste';
+
+// $valorEncrypted = encryptData($valor, $encryptionKey);
+
+$pdo->beginTransaction();
+
 
 $sql = "INSERT INTO movimentacoes SET
         usu_id = ?,
@@ -48,6 +61,7 @@ $columns = [
 ];
 
 $query = prepare($sql, $columns);
+
 
 if(!empty($query->exception)){
     $pdo->rollBack();

@@ -8,6 +8,7 @@ require "../../../../app/functions.php";
 $email = mb_strtolower(trim($_POST['email'])) ?? null;
 $password = $_POST['password'] ?? null;
 
+
 if(empty($email)){
     response([
         'status'=>false,
@@ -29,32 +30,53 @@ if(empty($password)){
     ]);
 }
 
-$sql = "SELECT *
-        FROM users
-        WHERE email = ?";
 
-$query = prepare($sql, [$email]);
+$sql = "SELECT *
+        FROM users";
+
+$query = prepareAll($sql, []);
 
 $info = $query->data;
 
-if(empty($query->data)){
+$usuario = New stdClass;
+
+foreach ($info as $k => $value) {
+
+    $decryptEmail = decryptData($value->email, $key);
+
+    $userEncontrado = $decryptEmail == $email ? true : false;
+
+    if(!$userEncontrado)
+        continue;
+
+    $usuario->id = $value->id;
+    $usuario->email = decryptData($value->email, $key);
+    $usuario->nome = decryptData($value->nome, $key);
+    $usuario->sobrenome = decryptData($value->sobrenome, $key);
+    $usuario->senha = $value->senha;
+}
+
+if(!$userEncontrado){
     response([
-        'status'=>false,
-        'message'=>"Usuário e/ou senha invalidos![001]"
+        'status' => false,
+        'message' => "Usuário não encontrado"
     ]);
 }
 
-if(($password !== $info->senha)){
+$password = base64_decode($password);
+
+
+if(!password_verify($password, $usuario->senha)){
     response([
         'status'=>false,
         'message'=>'Usuário e/ou senha invalidos![002]'
     ]);
 }
 
-$_SESSION['user_id'] = $info->id;
-$_SESSION['user_name'] = $info->nome;
-$_SESSION['user_lastName'] = $info->sobrenome;
-$_SESSION['user_email'] = $info->email;
+$_SESSION['user_id'] = $usuario->id;
+$_SESSION['user_name'] = $usuario->nome;
+$_SESSION['user_lastName'] = $usuario->sobrenome;
+$_SESSION['user_email'] = $usuario->email;
 
 
 response([
