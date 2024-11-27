@@ -77,7 +77,7 @@ const getMovimentationCard = async (page = 1) => {
                     });
 
                     $('#tabelaCartoes tbody').append(`
-                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
+                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b tabela-mov-card" data-id="${movimentacao.id}">
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.descricao}</td>
@@ -87,6 +87,7 @@ const getMovimentationCard = async (page = 1) => {
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.tipo}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Despesa' ? movimentacao.valor : ''}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Receita' ? movimentacao.valor : ''}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center "><button class="btn-excluir-mov-card rounded-md shadow-lg bg-slate-100 p-2"><i class="fa-regular fa-trash-can"></i></button></td>
                         </tr>
                     `);
                 });
@@ -283,6 +284,65 @@ const disableTabCard = (response) => {
         // $('#dashboard-styled-tab').trigger('click').focus()
     }
 }
+
+const deleteMovCard = ({target}) => {
+
+    const elm = $(target).closest('.tabela-mov-card')
+
+    const id = elm.data('id')
+
+    const url = 'delete-mov'
+
+    Swal.fire({
+        title: "Certeza?",
+        text: "Você excluirá sua movimentação e esta ação é irreversível",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if(result.isConfirmed) {
+            $.get(url, {id: id}).done((response) => {
+                if(response.status === false) {
+                    return Swal.fire({
+                        position: 'top-end',
+                        toast: true,
+                        icon: 'error',
+                        title: 'Opss!',
+                        text: response.message,
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                    });
+                }
+
+                
+                Swal.fire({
+                    position: 'top-end',
+                    toast: true,
+                    icon: 'success',
+                    title: 'Sucesso!',
+                    text: response.message,
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                }).then(() => {
+                    getMovimentationCard()
+                });
+
+
+            })
+
+        }
+    })
+
+}
+
+
+
+$(document).on('click', '.btn-excluir-mov-card', deleteMovCard)
 
 
 

@@ -148,6 +148,7 @@ $plano = $query->data;
             <th class="px-6 py-3 text-center" scope="col">Tipo</th>
             <th class="px-6 py-3 text-center" scope="col">Debito</th>
             <th class="px-6 py-3 text-center" scope="col">Crédito</th>
+            <th class="px-6 py-3 text-center" scope="col">Excluir</th>
             <!-- <th class="px-6 py-3 text-center" scope="col">Saldo</th> -->
             </tr>
         </thead>

@@ -36,5 +36,6 @@ RewriteRule ^get-saldo-final-mensal$ /src/modulos/publico/backend/publico-get-sa
 RewriteRule ^info-user$ /src/modulos/publico/backend/publico-get-dados-usu.php [L] 
 RewriteRule ^editar-perfil$ /src/modulos/publico/backend/publico-editar-perfil.php [L] 
 RewriteRule ^criar-usuario$ /src/modulos/publico/backend/publico-criar-usuario.php [L] 
+RewriteRule ^delete-mov$ /src/modulos/publico/backend/publico-delete-movimentation.php [L] 
 
 
