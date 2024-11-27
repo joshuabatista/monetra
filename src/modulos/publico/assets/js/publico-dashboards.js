@@ -342,14 +342,12 @@ const chartsEntradasSaidas = (entradasMensal, saidasMensal) => {
 const getSaldoFinalMensal = () => {
   const url = 'get-saldo-final-mensal';
 
-  // Faz a requisição ao backend
   $.getJSON(url, (response) => {
     if (response.status) {
-      // Extrai os saldos finais e os meses do backend
+
       const saldoFinalMensal = response.data.map(item => item.saldoFinal);
       const meses = response.data.map(item => item.mes);
 
-      // Gera o gráfico com os dados recebidos
       chartsSaldoFinalMensal(saldoFinalMensal, meses);
     } else {
     }

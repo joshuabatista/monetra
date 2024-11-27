@@ -34,7 +34,7 @@
         </div>
 
         <div>
-            <h1 class="text-xl text-center font-semibold mt-4 mb-2">Saldo Final Mensal</h1>
+            <h1 class="text-xl text-center font-semibold mt-4 mb-2">Saldo Final Mensal (Entradas - Saídas)</h1>
             <div id="chartsSaldoFinalMensal" class="shadow-lg"></div>
         </div>
 
