@@ -8,8 +8,9 @@ $(() => {
   getSaidasAno()
   chartsEntradasSaidas()
   chartsSaldoFinalMensal()
-  getSaldosMensal()
+  // getSaldosMensal()
   renderChartDonuts()
+  getSaldoFinalMensal()
 
 })
 
@@ -335,43 +336,30 @@ const chartsEntradasSaidas = (entradasMensal, saidasMensal) => {
   chart.render();
 };
 
-const getSaldosMensal = async () => {
-  const url = 'get-saldos-ano';
-  
-  const response = await $.getJSON(url);
 
-  let saldoFinalMensal = Array(12).fill(0);  
 
-  response.data.entradas_mensal.forEach(item => {
 
-    const mes = item.mes - 1;  
+const getSaldoFinalMensal = () => {
+  const url = 'get-saldo-final-mensal';
 
-    saldoFinalMensal[mes] += parseFloat(item.total_entradas);
+  // Faz a requisição ao backend
+  $.getJSON(url, (response) => {
+    if (response.status) {
+      // Extrai os saldos finais e os meses do backend
+      const saldoFinalMensal = response.data.map(item => item.saldoFinal);
+      const meses = response.data.map(item => item.mes);
 
+      // Gera o gráfico com os dados recebidos
+      chartsSaldoFinalMensal(saldoFinalMensal, meses);
+    } else {
+    }
+  }).fail((error) => {
   });
-
-  response.data.saidas_mensal.forEach(item => {
-
-    const mes = item.mes - 1;
-
-    saldoFinalMensal[mes] -= parseFloat(item.total_saidas);
-
-  });
-
-  let saldoAcumulado = parseFloat(response.data.saldo_inicial.replace(",", "."));
-
-  saldoFinalMensal = saldoFinalMensal.map(saldoMensal => {
-
-    saldoAcumulado += saldoMensal;
-
-    return saldoAcumulado;
-
-  });
-
-  chartsSaldoFinalMensal(saldoFinalMensal);
 };
 
-const chartsSaldoFinalMensal = (saldoFinalMensal) => {
+
+
+const chartsSaldoFinalMensal = (saldoFinalMensal, meses) => {
   const options = {
     series: [{
       name: "Saldo Final",
@@ -382,7 +370,7 @@ const chartsSaldoFinalMensal = (saldoFinalMensal) => {
       height: 380
     },
     xaxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      categories: meses, // Usa os meses recebidos do backend
       title: {
         text: 'Meses do Ano'
       }
@@ -393,27 +381,24 @@ const chartsSaldoFinalMensal = (saldoFinalMensal) => {
       },
       labels: {
         formatter: function(value) {
-          return `R$${value.toFixed(2)}`;
+          return `R$${value.toFixed(2)}`; // Formata valores em reais
         }
       }
-    },
-    title: {
-
     },
     tooltip: {
       y: {
         formatter: function(val) {
-          return `R$${val.toFixed(2)}`;
+          return `R$${val.toFixed(2)}`; // Formata o tooltip em reais
         }
       }
     },
     colors: ['#008FFB']
   };
 
+  // Renderiza o gráfico no elemento "#chartsSaldoFinalMensal"
   const chart = new ApexCharts(document.querySelector("#chartsSaldoFinalMensal"), options);
   chart.render();
 };
-
 const getPorcentagem = async () => {
   const url = 'get-porcentagem'; 
 
