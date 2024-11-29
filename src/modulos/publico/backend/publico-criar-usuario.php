@@ -2,6 +2,7 @@
 
 require "../.././../../public_html/config/conexao.php";
 require "../../../../app/functions.php";
+include "../backend/send-email.php";
 
 session_start();
 
@@ -131,6 +132,18 @@ $_SESSION['user_id'] = $info->id;
 $_SESSION['user_name'] = $info->nome;
 $_SESSION['user_lastName'] = $info->sobrenome;
 $_SESSION['user_email'] = $info->email;
+
+//Envia email
+
+$assunto = "Bem-vindo(a) ao Monetra, $nome";
+
+$mensagem = "
+    <h1>Ola, $nome!</h1>
+    <p>Obrigado por se cadastrar no nosso sistema de gerenciamento financeiro.</p>
+    <p>Estamos felizes em ter você conosco!</p>
+";
+
+$resultado = enviarEmail($email, $nome, $assunto, $mensagem);
 
 $pdo->commit();
 
