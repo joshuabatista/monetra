@@ -2,6 +2,7 @@ RewriteEngine On
 
 RewriteRule ^login$ /src/modulos/publico/pages/publico-login.php [L]
 RewriteRule ^perfil$ /src/modulos/publico/pages/publico-editar-perfil.php [L]
+RewriteRule ^alterar-senha$ /src/modulos/publico/pages/publico-alterar-senha.php [L]
 RewriteRule ^inicio$ /src/modulos/publico/pages/publico-inicio.php [L]
 RewriteRule ^controle$ /src/modulos/publico/pages/publico-controle.php [L]
 RewriteRule ^lancamentos$ /src/modulos/publico/pages/publico-controle-lancamentos.php [L]
@@ -37,5 +38,6 @@ RewriteRule ^info-user$ /src/modulos/publico/backend/publico-get-dados-usu.php [
 RewriteRule ^editar-perfil$ /src/modulos/publico/backend/publico-editar-perfil.php [L] 
 RewriteRule ^criar-usuario$ /src/modulos/publico/backend/publico-criar-usuario.php [L] 
 RewriteRule ^delete-mov$ /src/modulos/publico/backend/publico-delete-movimentation.php [L] 
+RewriteRule ^edit-password$ /src/modulos/publico/backend/publico-change-password.php [L] 
 
 
