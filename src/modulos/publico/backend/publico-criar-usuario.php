@@ -137,11 +137,33 @@ $_SESSION['user_email'] = $info->email;
 
 $assunto = "Bem-vindo(a) ao Monetra, $nome";
 
-$mensagem = "
-    <h1>Ola, $nome!</h1>
-    <p>Obrigado por se cadastrar no nosso sistema de gerenciamento financeiro.</p>
-    <p>Estamos felizes em ter você conosco!</p>
-";
+$mensagem = '
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boas vindas!</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+    <div style="background-color: #4b50d1; padding: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; text-align: center;">
+        monetra - transformando Dados em Decisões
+    </div>
+    <div style="padding: 20px; color: #333; line-height: 1.6;">
+        <p>Ola, ' . $nome . '!</p>
+        <p>Obrigado por se cadastrar no nosso sistema de gerenciamento financeiro.</p>
+        <p>Estamos felizes em ter você conosco!</p>
+        <p>Controle seu dinheiro, seu cartão de crédito, faça controles minuciosos e muito mais!</p>
+        <p>Tenha seu controle financeiro na palma da sua mão (disponível também em navegadores mobile).</p>
+        <p>Dúvidas e sugestões, entre em contato com a gente via e-mail: 
+            <span style="font-style: italic; color: #6b7280;">monetrafin@gmail.com</span>
+        </p>
+        <small style="font-size: 12px; color: #6b7280; font-style: italic;">(Não responda este e-mail)</small>
+    </div>
+</body>
+</html>
+';
+
 
 $resultado = enviarEmail($email, $nome, $assunto, $mensagem);
 
