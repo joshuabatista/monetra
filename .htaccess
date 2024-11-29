@@ -39,5 +39,6 @@ RewriteRule ^editar-perfil$ /src/modulos/publico/backend/publico-editar-perfil.p
 RewriteRule ^criar-usuario$ /src/modulos/publico/backend/publico-criar-usuario.php [L] 
 RewriteRule ^delete-mov$ /src/modulos/publico/backend/publico-delete-movimentation.php [L] 
 RewriteRule ^edit-password$ /src/modulos/publico/backend/publico-change-password.php [L] 
+RewriteRule ^esqueceu-senha$ /src/modulos/publico/backend/publico-esqueceu-senha.php [L] 
 
 
