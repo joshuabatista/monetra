@@ -53,11 +53,15 @@ const login = () => {
                 })
             } else {
                 Swal.fire({
+                    position: 'top-end',
+                    toast: true,
                     icon: 'error',
-                    title: 'Erro',
-                    text: 'Usuário ou senha incorretos!',
-                    confirmButtonText: 'Entendi'
-                });
+                    title: 'Opss..',
+                    text: response.message,
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                })
             }
         }
 

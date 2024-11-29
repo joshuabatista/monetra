@@ -36,11 +36,20 @@ if($password1 != $password2) {
     ]);
 }
 
-$hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
+if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password1)) {
+    $pdo->rollBack();
+    response([
+        'status' => false,
+        'message' => 'A senha deve ter no mínimo 8 caracteres, incluindo uma letra maiúscula, uma minúscula, um número e um caractere especial.'
+    ]);
+}
 
+
+$hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
 $encryptedEmail = encryptData($email, $key);
 $encryptedNome = encryptData($nome, $key);
 $encryptedSobrenome = encryptData($sobrenome, $key);
+$emailHash = hash_hmac('sha256', $email, $key);
 
 $sqlEmails = "SELECT email
             FROM users";
@@ -52,8 +61,23 @@ $emailBanco = $queryEmails->data;
 $emailExiste = false;
 
 
+
+
+$emailCriptografado = encryptData($email, $key); // Criptografa o e-mail recebido
+
+$emailExiste = false;
+
+
 foreach ($emailBanco as $emails) {
-    if (strcasecmp(trim($emails->email), trim($email)) === 0) {
+
+    $emailDescriptografado = decryptData($emails->email, $key);
+
+
+    if ($emailDescriptografado === false) {
+        continue; 
+    }
+
+    if (strcasecmp(trim($emailDescriptografado), trim($email)) === 0) {
         $emailExiste = true;
 
         $pdo->rollBack();
@@ -61,7 +85,7 @@ foreach ($emailBanco as $emails) {
             'status' => false,
             'message' => 'Já existe uma conta cadastrada neste Email.'
         ]);
-        break;
+        break; // Encerra o loop
     }
 }
 

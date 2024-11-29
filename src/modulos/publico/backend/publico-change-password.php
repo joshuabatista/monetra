@@ -28,6 +28,14 @@ if($novaSenha1 != $novaSenha2){
     ]);
 }
 
+if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/', $novaSenha1)) {
+    $pdo->rollBack();
+    response([
+        'status' => false,
+        'message' => 'A senha deve ter no mínimo 8 caracteres, incluindo uma letra maiúscula, uma minúscula, um número e um caractere especial.'
+    ]);
+}
+
 $sqlSenhaAntiga = "SELECT senha FROM users WHERE id = ?";
 
 $querySenhaAntiga = prepare($sqlSenhaAntiga, [$usu_id]);

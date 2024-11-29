@@ -41,22 +41,26 @@ $info = $query->data;
 $usuario = New stdClass;
 
 foreach ($info as $k => $value) {
-
+    // Descriptografa o e-mail armazenado no banco
     $decryptEmail = decryptData($value->email, $key);
 
-    $userEncontrado = $decryptEmail == $email ? true : false;
-
-    if(!$userEncontrado)
-        continue;
-
-    $usuario->id = $value->id;
-    $usuario->email = decryptData($value->email, $key);
-    $usuario->nome = decryptData($value->nome, $key);
-    $usuario->sobrenome = decryptData($value->sobrenome, $key);
-    $usuario->senha = $value->senha;
+    // Compara o e-mail descriptografado com o e-mail fornecido
+    if ($decryptEmail == $email) {
+        $userEncontrado = true;
+        
+        // Preenche os dados do usuário
+        $usuario->id = $value->id;
+        $usuario->email = $decryptEmail; // Ou use $email se quiser o valor original
+        $usuario->nome = decryptData($value->nome, $key);
+        $usuario->sobrenome = decryptData($value->sobrenome, $key);
+        $usuario->senha = $value->senha;
+        
+        break; // Sai do loop após encontrar o usuário
+    }
 }
 
-if(!$userEncontrado){
+// Se o usuário não for encontrado, retorna um erro
+if (!isset($userEncontrado)) {
     response([
         'status' => false,
         'message' => "Usuário não encontrado"
