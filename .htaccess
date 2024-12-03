@@ -6,6 +6,7 @@ RewriteRule ^alterar-senha$ /src/modulos/publico/pages/publico-alterar-senha.php
 RewriteRule ^inicio$ /src/modulos/publico/pages/publico-inicio.php [L]
 RewriteRule ^controle$ /src/modulos/publico/pages/publico-controle.php [L]
 RewriteRule ^lancamentos$ /src/modulos/publico/pages/publico-controle-lancamentos.php [L]
+RewriteRule ^nova-senha$ /src/modulos/publico/pages/publico-setar-nova-senha.php [L]
 
 
 RewriteRule ^logout$ /src/modulos/publico/backend/logout.php [L]
@@ -40,5 +41,6 @@ RewriteRule ^criar-usuario$ /src/modulos/publico/backend/publico-criar-usuario.p
 RewriteRule ^delete-mov$ /src/modulos/publico/backend/publico-delete-movimentation.php [L] 
 RewriteRule ^edit-password$ /src/modulos/publico/backend/publico-change-password.php [L] 
 RewriteRule ^esqueceu-senha$ /src/modulos/publico/backend/publico-esqueceu-senha.php [L] 
-
+RewriteRule ^valida-codigo$ /src/modulos/publico/backend/publico-valida-codigo-esqueceu-senha.php [L] 
+RewriteRule ^setar-nova-senha$ /src/modulos/publico/backend/publico-nova-senha.php [L] 
 

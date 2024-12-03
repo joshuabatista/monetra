@@ -80,4 +80,147 @@ const esqueceuSenha = () => {
         })
 };
 
+
+
+const validaCodigo = () => {
+
+    const n1 = $('#verification1').val()
+    const n2 = $('#verification2').val()
+    const n3 = $('#verification3').val()
+    const n4 = $('#verification4').val()
+    const n5 = $('#verification5').val()
+    const n6 = $('#verification6').val()
+
+    if(n1 === '' || n2 === '' || n3 === '' || n4 === '' || n5 === '' || n6 === '') {
+        Swal.fire({
+            position: 'top-end',
+            toast: true,
+            icon: 'info',
+            title: 'Opss...',
+            text: 'Preencha os campos corretamente',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        })
+    }
+
+    const url = 'valida-codigo'
+
+    $.getJSON(url, {
+        n1: n1,
+        n2: n2,
+        n3: n3,
+        n4: n4,
+        n5: n5,
+        n6: n6,
+    }).then((response) => {
+        if(response.status === true) {
+            Swal.fire({
+                position: 'top-end',
+                toast: true,
+                icon: 'success',
+                title: 'Sucesso!',
+                text: 'Codigo validado com sucesso!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            }).then(() => {
+                window.location.href = response.redirect_url
+            })
+        } else {
+            Swal.fire({
+                position: 'top-end',
+                toast: true,
+                icon: 'error',
+                title: 'Opss..',
+                text: response.message,
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            })
+        }
+    })
+}
+
+const alterarSenha = () => {
+
+    const senha1 = $('#novaSenha1').val()
+    const senha2 = $('#novaSenha2').val()
+
+    if(senha1 === '' || senha2 === ''){
+        return Swal.fire({
+            position: 'top-end',
+            toast: true,
+            icon: 'info',
+            title: 'Opss...',
+            text: 'Preencha todos os campos',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        })
+    }
+
+    const form = $('#form-setar-senha')[0]
+    const data = new FormData(form)
+    const url = 'setar-nova-senha'
+    data.append('usu_id', usu_id)
+
+    Swal.fire({
+        title: "Certeza?",
+        text: "Sua senha será alterada",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: url,
+                type: 'POST', 
+                data: data, 
+                contentType: false, 
+                processData: false, 
+                success: (response) => {
+                    if (response.status == false) {
+                        Swal.fire({
+                            position: 'top-end',
+                            toast: true,
+                            icon: 'error',
+                            title: 'Opss!',
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                        });
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            toast: true,
+                            icon: 'success',
+                            title: 'Sucesso!',
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 1000,
+                            timerProgressBar: true,
+                        }).then(() => {
+                            location.href = 'inicio'
+                        })
+                    }
+
+                }
+            });
+        }
+    });
+
+    
+    
+    
+}
+
 $(document).on('click', '.btn-esqueceu-senha', esqueceuSenha)
+$(document).on('click', '.btn-verification-code', validaCodigo)
+$(document).on('click', '.btn-nova-senha', alterarSenha)
+
+

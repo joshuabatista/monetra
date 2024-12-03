@@ -39,8 +39,6 @@ const alterarSenha = () => {
                 contentType: false, 
                 processData: false, 
                 success: (response) => {
-                    console.log(response.status);
-                    
                     if (response.status == false) {
                         Swal.fire({
                             position: 'top-end',
