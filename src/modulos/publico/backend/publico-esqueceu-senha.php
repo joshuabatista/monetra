@@ -91,8 +91,8 @@ $mensagem = '
         <title>Recuperar senha</title>
     </head>
     <body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
-        <div style="background-color: #4b50d1; padding: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; text-align: center;">
-            monetra - Transformando dados em decisões
+        <div style="background-color: #4b50d1; padding: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; text-align: center; color: white;">
+            Monetra - Transformando dados em decisões
         </div>
         <div style="padding: 20px; color: #333; line-height: 1.6;">
             <p>Ola!</p>
