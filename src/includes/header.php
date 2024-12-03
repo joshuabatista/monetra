@@ -11,7 +11,7 @@
         <div class=" flex items-end justify-end mb-[1rem]">
 
             <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full" type="button">
-                <img class=" w-[3rem] h-[3rem] mr-2 rounded-full" src="../../../../public_html/assets/images/foto-usuario.png" alt="user photo">
+                <img class=" w-[3rem] h-[3rem] mr-2 rounded-full" src="../../../../public_html/assets/images/monetra-only-logo-royal.png" alt="user photo">
                 <p class="nome-usuario"></p>
                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 10 6">
