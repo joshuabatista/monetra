@@ -56,7 +56,7 @@ if($agora <= $created_at || $agora >= $expires_at){
 }
 
 $usu_id = $code->usu_id;
-$expiry = strtotime('+10 minutes'); // Define validade do link
+$expiry = strtotime('+5 minutes'); // Define validade do link
 $tokenData = json_encode(['usu_id' => $usu_id, 'expiry' => $expiry]);
 $encryptedToken = base64_encode(openssl_encrypt($tokenData, 'AES-128-CTR', $key, 0, '1234567891011121'));
 

@@ -44,7 +44,7 @@ const esqueceuSenha = () => {
                     $('.btn-verification-code').removeClass('hidden')
                 });
 
-                    let timeLeft = 5 * 60; // 5 minutos 
+                    let timeLeft = 5 * 60; 
                     const countdownDisplay = $('.codigo'); 
     
                     const updateCountdown = () => {
@@ -54,7 +54,6 @@ const esqueceuSenha = () => {
                         
                         if (timeLeft <= 0) {
                             clearInterval(countdownInterval);
-                            // Aqui você pode adicionar um alerta ou ação quando o tempo expirar
                         }
     
                         timeLeft--;
@@ -213,9 +212,6 @@ const alterarSenha = () => {
             });
         }
     });
-
-    
-    
     
 }
 
@@ -223,4 +219,24 @@ $(document).on('click', '.btn-esqueceu-senha', esqueceuSenha)
 $(document).on('click', '.btn-verification-code', validaCodigo)
 $(document).on('click', '.btn-nova-senha', alterarSenha)
 
+$(document).ready(function () {
+    $(".grid input").on("input", function () {
+        const maxLength = 1;
+        const inputValue = $(this).val();
+
+        if (inputValue.length > maxLength) {
+            $(this).val(inputValue.slice(0, maxLength));
+        }
+
+        if (inputValue.length === maxLength) {
+            $(this).closest("div").next("div").find("input").focus();
+        }
+    });
+
+    $(".grid input").on("keydown", function (e) {
+        if (e.key === "Backspace" && $(this).val() === "") {
+            $(this).closest("div").prev("div").find("input").focus();
+        }
+    });
+});
 

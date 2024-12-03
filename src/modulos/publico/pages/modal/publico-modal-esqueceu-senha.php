@@ -32,22 +32,22 @@
                         <label for="" class="label mb-4 text-center">Informe o código recebido no email cadastrado</label>
                         <div class="grid grid-cols-6 text-center">
                             <div>
-                                <input type="" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification1">
+                                <input type="text" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification1">
                             </div>
                             <div>
-                                <input type="" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification2">
+                                <input type="text" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification2">
                             </div>
                             <div>
-                                <input type="" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification3">
+                                <input type="text" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification3">
                             </div>
                             <div>
-                                <input type="" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification4">
+                                <input type="text" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification4">
                             </div>
                             <div>
-                                <input type="" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification5">
+                                <input type="text" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification5">
                             </div>
                             <div>
-                                <input type="" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification6">
+                                <input type="text" class=" border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-12 h-12 text-center" id="verification6">
                             </div>
                         </div>
                         <div class="flex justify-center items-center mt-4">
