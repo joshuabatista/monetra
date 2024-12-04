@@ -1,5 +1,9 @@
 const crirarNovoUsuario = () => {
 
+    const spinner = $('.loading-cadastrar')
+
+    spinner.removeClass('hidden')
+
     if (
         $('#email-criar').val() == '' ||
         $('#email-criar').val() == null ||
@@ -21,7 +25,9 @@ const crirarNovoUsuario = () => {
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
-        });
+        }).then(() => {
+            spinner.addClass('hidden')
+        })
     }
 
     const form = $('#form-cadastrar')[0]
@@ -66,9 +72,8 @@ const crirarNovoUsuario = () => {
 
         }
 
-
-
-
+    }).always(() => {
+        spinner.addClass('hidden')
     })
 
 

@@ -66,12 +66,12 @@ const login = () => {
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
-                }).alwais(() => {
-                    spinner.addClass('hidden')
                 })
             }
         }
 
+    }).always(() => {
+        spinner.addClass('hidden')
     })
 
 } 
