@@ -75,7 +75,7 @@
         </div>
 
         <div class="col-span-1 bg-white mt-4 shadow-lg justify-center items-center rounded-l-xl max-h-fit">
-
+<!-- 
             <div class=" mt-20 btn-start justify-center hidden flex">
                 <a href="controle" class="relative inline-block text-lg group">
                     <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
@@ -85,7 +85,7 @@
                     </span>
                     <span class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-primary rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
                 </a>
-            </div>
+            </div> -->
 
             <div class=" border-b border-gray-200 dark:border-gray-700 controle-init ">
                 <ul class="flex flex-wrap justify-around -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#tabs-lctos" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
