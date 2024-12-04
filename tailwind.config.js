@@ -8,7 +8,8 @@ module.exports = {
     extend: {
       colors: {
         primary: '#4b50d1',
-        secondary: '#d5ed86'
+        secondary: '#d5ed86',
+        primary_dark: '#4248d6'
       },
       animation: {
         spin: 'spin 5s linear infinite',

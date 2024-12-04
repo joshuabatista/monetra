@@ -3,6 +3,9 @@ const login = () => {
 
     const email = $('#email').val()
     const senha = $('#password').val()
+    const spinner = $('.loading-logar')
+
+    spinner.removeClass('hidden')
 
     if(email == '' || email == null || senha == '' || senha == null) {
         Swal.fire({
@@ -14,7 +17,9 @@ const login = () => {
             confirmButtonText: 'Entendi',
             timer: 3000,
             timerProgressBar: true,
-        });
+        }).then(() => {
+            spinner.addClass('hidden')
+        })
         return
     }
 
@@ -61,6 +66,8 @@ const login = () => {
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
+                }).alwais(() => {
+                    spinner.addClass('hidden')
                 })
             }
         }
