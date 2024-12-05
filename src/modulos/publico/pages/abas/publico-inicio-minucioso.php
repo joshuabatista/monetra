@@ -1,4 +1,10 @@
 <div class="hidden p-4 rounded-lg" id="minucioso" role="tabpanel" aria-labelledby="minucioso-tab">
+
+    <div class="flex justify-start mt-0 mb-0 ml-4 text-zinc-500  ">
+        <?php include(__DIR__ . '/../drawer/publico-drawer-minucioso.php'); ?>
+    </div>
+
+
     <div class="w-full grid grid-cols-6 gap-5 p-4">
         <div class=" col-span-3 ">
             <label for="" class="label">Selecione um Plano de Contas</label>
@@ -23,7 +29,8 @@
 
     <div class="p-4">
         <label for="" class="label">Selecione um período</label>
-        <input type="month" id="filtroPeriodo" name="filtroPeriodo" class="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+        <input type="month" id="filtroPeriodo" name="filtroPeriodo"
+            class="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
     </div>
 
     <div class="">

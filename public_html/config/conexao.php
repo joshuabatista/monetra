@@ -1,11 +1,12 @@
 <?php   
 $host = 'localhost';
-// $db = 'monetra';
 $db = 'atenas65_monetra';
-// $username = 'root';
 $username = 'atenas65_monetra';
-// $password = '';
 $password = 'rootZada@@Pcsp';
+
+// $db = 'monetra';
+// $username = 'root';
+// $password = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $username, $password);

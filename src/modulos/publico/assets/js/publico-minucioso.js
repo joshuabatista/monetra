@@ -192,6 +192,34 @@ const showBolinhaMinucioso = (response) => {
 }
 
 
+$(document).ready(function () {
+    const $drawer = $('#drawer-minucioso'); 
+    const $body = $('body'); 
+
+    function showDrawer() {
+        $drawer.removeClass('-translate-x-full').addClass('translate-x-0');
+        $body.append('<div class="drawer-backdrop-minucioso bg-gray-900/50 fixed inset-0 z-30"></div>');
+    }
+
+    function hideDrawer() {
+        $drawer.removeClass('translate-x-0').addClass('-translate-x-full');
+        $('.drawer-backdrop-minucioso').remove(); 
+    }
+
+    $('#drawer-trigger').on('click', function () {
+        showDrawer();
+    });
+
+    $('#drawer-hide').on('click', function () {
+        hideDrawer();
+    });
+
+    $(document).on('click', '.drawer-backdrop-minucioso', function () {
+        hideDrawer();
+    });
+});
+
+
 
 
 //Eventos
