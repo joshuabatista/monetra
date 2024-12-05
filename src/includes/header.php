@@ -4,15 +4,14 @@
     <div class="grid grid-cols-2 justify-between">
         <div class="logo-monetra">
             <a href="inicio">
-                <img class=" w-48" src="../../../../public_html/assets/images/monetra-logo-azul-royal-sem-margem.png" alt="Logo-Monetra" >
+                <img class=" w-36 lg:w-48" src="../../../../public_html/assets/images/monetra-logo-azul-royal-sem-margem.png" alt="Logo-Monetra" >
             </a>
         </div>
 
         <div class=" flex items-end justify-end mb-[1rem]">
 
             <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full" type="button">
-                <img class=" w-[3rem] h-[3rem] mr-2 rounded-full" src="../../../../public_html/assets/images/monetra-only-logo-royal.png" alt="user photo">
-                <p class="nome-usuario"></p>
+                <p class="nome-usuario text-zinc-100"></p>
                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -35,6 +34,10 @@
                     <li>
                         <a href="alterar-senha"
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Alterar Senha</a>
+                    </li>
+                    <li class="block lg:hidden">
+                        <a href="controle"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Controle</a>
                     </li>
                 </ul>
                 <div class="py-2">
