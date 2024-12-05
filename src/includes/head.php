@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Se o usuário já estiver na página de login, não redireciona.
+if (!isset($_SESSION['user_id']) && $_SERVER['REQUEST_URI'] !== '/login') {
+    header("Location: /login");
+    exit;
+}
+
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +24,3 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
-<?php
-session_start();
-
-// Se o usuário já estiver na página de login, não redireciona.
-if (!isset($_SESSION['user_id']) && $_SERVER['REQUEST_URI'] !== '/login') {
-    header("Location: /login");
-    exit;
-}
