@@ -113,4 +113,31 @@ const pagarReceber = ({target}) => {
 
 }
 
+$(document).ready(function () {
+    const $drawer = $('#drawer-pagar-receber'); 
+    const $body = $('body'); 
+
+    function showDrawerPagar() {
+        $drawer.removeClass('-translate-x-full').addClass('translate-x-0');
+        $body.append('<div class="drawer-backdrop-pagar bg-gray-900/50 fixed inset-0 z-30"></div>');
+    }
+
+    function hideDrawerPagar() {
+        $drawer.removeClass('translate-x-0').addClass('-translate-x-full');
+        $('.drawer-backdrop-pagar').remove(); 
+    }
+
+    $('#drawer-trigger-pagar').on('click', function () {
+        showDrawerPagar();
+    });
+
+    $('#drawer-hide-pagar').on('click', function () {
+        hideDrawerPagar();
+    });
+
+    $(document).on('click', '.drawer-backdrop-pagar', function () {
+        hideDrawerPagar();
+    });
+});
+
 $(document).on('click', '.btn-pagar-receber', pagarReceber)

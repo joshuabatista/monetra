@@ -1,4 +1,9 @@
+
 <div class="hidden p-4 rounded-lg" id="pagarReceber" role="tabpanel" aria-labelledby="PagarReceber-tab">
+
+    <div class="flex justify-start mt-0 mb-0 ml-4 text-zinc-500">
+        <?php include(__DIR__ . '/../drawer/publico-drawer-pagar-receber.php'); ?>
+    </div>
 
     <div class="infoSemPendentes hidden">
         <div class="text-center italic text-gray-600">
