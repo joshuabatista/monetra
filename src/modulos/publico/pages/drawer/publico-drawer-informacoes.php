@@ -45,8 +45,8 @@
         </div>
         <div class="mt-4 block lg:hidden">
             <a href="perfil" class="text-lg font-normal flex items-center justify-center space-x-2">
-                <i class="fa-solid fa-sack-dollar"></i>
-                <span>Controle</span>
+                <i class="fa-solid fa-cash-register"></i>
+                <span>Lançamentos</span>
             </a>
         </div>
         <div class="mt-4">
