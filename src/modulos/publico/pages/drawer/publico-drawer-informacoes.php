@@ -23,27 +23,47 @@
     </button>
 
     <div class="flex flex-col">
-        <div class="saudacao flex-col text-center mt-2">
-            <p class=" text-xl">Olá, <small id="nomeUsuInicio" class="text-xl font-bold"></small><small class="text-xl" id="saudacaoMensagem"></small></p>
-        </div> 
-        <hr class="mt-4">
-        <div class="text-center">
-            <div class="mt-4">
-                <a href="perfil" class="text-lg font-normal mt-2">Meu Perfil</a>
-            </div>
-            <div class="mt-4 block lg:hidden">
-                <a href="perfil" class="text-lg font-normal">Controle</a>
-            </div>
-            <div class="mt-4">
-                <a href="alterar-senha" class="text-lg font-normal">Alterar Senha</a>
-            </div>
-            <hr class="mt-4">
-            <div class="mt-4">
-                <a href="logout" class="text-lg font-normal">Sair</a>
-            </div>
-        </div>
-
+    <div class="saudacao flex-col text-center mt-2">
+        <p class="text-xl">
+            Olá, <small id="nomeUsuInicio" class="text-xl font-bold"></small>
+            <small class="text-xl" id="saudacaoMensagem"></small>
+        </p>
     </div>
+    <hr class="mt-4">
+    <div class="text-center">
+        <div class="mt-4">
+            <a href="inicio" class="text-lg font-normal mt-2 flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-house"></i>
+                <span>Página inicial</span>
+            </a>
+        </div>
+        <div class="mt-4">
+            <a href="perfil" class="text-lg font-normal mt-2 flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-user"></i>
+                <span>Meu Perfil</span>
+            </a>
+        </div>
+        <div class="mt-4 block lg:hidden">
+            <a href="perfil" class="text-lg font-normal flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <span>Controle</span>
+            </a>
+        </div>
+        <div class="mt-4">
+            <a href="alterar-senha" class="text-lg font-normal flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-lock"></i>
+                <span>Alterar Senha</span>
+            </a>
+        </div>
+        <hr class="mt-4">
+        <div class="mt-4">
+            <a href="logout" class="text-lg font-normal flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sair</span>
+            </a>
+        </div>
+    </div>
+</div>
 
     
 </div>
