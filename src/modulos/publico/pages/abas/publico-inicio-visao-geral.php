@@ -1,4 +1,4 @@
-    <div class="hidden p-4 rounded-lg" id="visao-geral" role="tabpanel" aria-labelledby="visao-tab">
+    <div class="hidden p-4 rounded-lg mb-4" id="visao-geral" role="tabpanel" aria-labelledby="visao-tab">
         <div class="block sm:grid grid-cols-[30%_70%]">
             <div class="ml-4 flex flex-col lg:block mobile:ml-0">
                 <div class="hidden lg:block">
@@ -21,7 +21,7 @@
 
                     <div class="inline-flex bg-gray-100 flex-col gap-0 sm:gap-8 p-5 rounded-xl shadow-xl border border-gray-200">
                         <div class="flex flex-col text-center justify-center">
-                            <label for="" class="text-xl mt-0 font-semibold">Saldos</label>
+                            <label for="" class="text-xl mt-0 font-semibold">Saldo</label>
                         </div>
 
                         <div class="saldos inline-flex flex-col gap-8 p-2 mb-2 mobile:!flex-row mobile:!flex mobile:!justify-center mobile:!items-center">
@@ -63,7 +63,7 @@
                             <div class="flex flex-col text-center items-center lg:!text-start lg:!items-start">
                                 <label for="" class="text-xl text-zinc-600 italic">
                                     <p class="hidden lg:block">
-                                        Final
+                                        Saldo final
                                     </p>
                                     <p class="block lg:hidden text-sm">
                                         Final
@@ -96,28 +96,48 @@
                         
                     </div>
         
-                    <div class=" bg-gray-100 flex-col rounded-xl shadow-xl border border-gray-200 hidden lg:block ">
+                    <div class=" bg-gray-100 flex-col rounded-xl shadow-xl border border-gray-200 flex">
                         <div class="flex flex-col text-center justify-center items-center mt-4">
-                            <label for="" class="text-xl mb-1 font-semibold">Mov. dia</label>
+                            <label for="" class="text-xl mb-1 font-semibold"><p class="hidden ms:block">Mov. dia</p><p class="block sm:hidden">Movimentação do dia</p></label>
                             <input type="date" id="dataInicio" class="mt-2 w-40 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                         </div>
-                        
-                        <div id="chartDay"></div>
-        
-                    
+
+                        <div role="status" class="max-w-sm animate-pulse hidden skeleton-saldos-dia gap-8 p-5">
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5 mt-4"></div>
+                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                            <div class="hidden lg:block">
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gra:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gra:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                                <div class="h-2 bg-gray-200 rounded-full dark:bg-gra:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                            </div>
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="chartsMovDia">
+                            <div id="chartDay"></div>
+                        </div>
                     </div>
                 </div>
                 
             </div>
 
-            <div class="mr-4 ml-4 mt-4">
+            <div class="mr-0 ml-0 sm:mr-4 sm:ml-4 mt-4">
                 <div>
-                    <h1 class="mb-2 text-2xl text-center font-semibold">Movimentação mensal</h1>
+                    <h1 class="text-xl sm:text-2xl mb-2 text-center font-semibold">Movimentação mensal</h1>
+                    
                     <div id="chart"></div>
 
                 </div>
 
             </div>
+
+            
         </div>
 
     </div>
