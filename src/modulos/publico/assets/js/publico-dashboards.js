@@ -589,7 +589,6 @@ const getSaldos = async () => {
 }
 
 const renderSaldos = (data) => {
-  
   const iconSaldoInicial = `<small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small>`;
   const iconEntradas = `<small><i class="fa-solid fa-arrow-trend-up bg-green-500 p-2 rounded-lg"></i></small>`;
   const iconSaidas = `<small><i class="fa-solid fa-arrow-trend-down bg-red-500 p-2 rounded-lg"></i></small>`;
@@ -840,7 +839,7 @@ const animateCount = (selector, start, end, duration, iconHTML) => {
           clearInterval(interval);
           current = end;
       }
-      $(selector).html(`${iconHTML} R$ ${current.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
+      $(selector).html(`${iconHTML} ${current.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
   }, 10);
 };
 
