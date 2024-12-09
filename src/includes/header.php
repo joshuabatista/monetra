@@ -8,19 +8,26 @@
             </a>
         </div>
 
-        <div class=" flex items-end justify-end mb-[1rem]">
+        <div class=" flex items-end justify-end mb-0 lg:mb-[1rem]">
 
-            <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full" type="button">
+            <!-- <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full" type="button">
                 <p class="nome-usuario text-zinc-100"></p>
                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="m1 1 4 4 4-4" />
                 </svg>
-            </button>
+            </button> -->
+
+            <div class="flex justify-start mt-0 mb-0 ml-4 text-zinc-500  ">
+
+
+            <?php include(__DIR__ . '/../modulos/publico/pages/drawer/publico-drawer-informacoes.php'); ?>
+
+            </div>
 
             <!-- Dropdown menu -->
-            <div id="dropdownAvatarName"
+            <!-- <div id="dropdownAvatarName"
                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                 <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
                     <div class="font-medium ">Usuário</div>
@@ -44,7 +51,7 @@
                     <a href="logout"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sair</a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

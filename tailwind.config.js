@@ -13,7 +13,10 @@ module.exports = {
       },
       animation: {
         spin: 'spin 5s linear infinite',
-      }
+      },
+      screens: {
+        mobile: { max: '639px' },
+      },
     },
   },
   plugins: [

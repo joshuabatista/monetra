@@ -23,6 +23,7 @@ const renderInfoUser = (data) => {
 
     $('#emailUsu').val(user.email)
     $('#nomeUsu').val(user.nome)
+    $('#nomeUsuInicio').html(user.nome)
     $('#sobrenomeUsu').val(user.sobrenome)
     // $('#celularUsu').val(user.celular)
 
@@ -77,5 +78,65 @@ const editarPerfil = () => {
         }
     })
  }
+
+//  $(document).ready(function () {
+//     const $drawer = $('#drawer-informacoes'); 
+//     const $body = $('body'); 
+
+//     function showDrawerInfo() {
+//         $drawer.removeClass('-translate-x-full').addClass('translate-x-0');
+//         $body.append('<div class="drawer-backdrop-informacoes bg-gray-900/50 fixed inset-0 z-30"></div>');
+//     }
+
+//     function hideDrawerInfo() {
+//         $drawer.removeClass('translate-x-0').addClass('-translate-x-full');
+//         $('.drawer-backdrop-informacoes').remove(); 
+//     }
+
+//     $('#drawer-trigger-info').on('click', function () {
+//         showDrawerInfo();
+//     });
+
+//     $('#drawer-hide-info').on('click', function () {
+//         hideDrawerInfo();
+//     });
+
+//     $(document).on('click', '.drawer-backdrop-informacoes', function () {
+//         hideDrawerInfo();
+//     });
+// });
+
+
+
+$(document).ready(function() {
+
+    function getSaudacao() {
+        const now = new Date(); // Cria um objeto Date com a data e hora atuais
+        const hora = now.getHours(); // Obtém a hora atual (de 0 a 23)
+
+        // Verifica o período do dia e retorna a saudação correspondente
+        if (hora >= 0 && hora < 12) {
+            return "Bom dia"; // De 00:00 a 11:59
+        } else if (hora >= 12 && hora < 18) {
+            return "Boa tarde"; // De 12:00 a 17:59
+        } else {
+            return "Boa noite"; // De 18:00 a 23:59
+        }
+    }
+
+    // Função para atualizar a saudação com o nome do usuário
+    function atualizarSaudacao() {
+        // Pega o nome do usuário da página
+        const nome = $('#nomeUsuInicio').text();
+
+        // Atualiza a saudação com base no horário
+        const saudacao = getSaudacao();
+        $('#saudacaoMensagem').text(`, ${saudacao}!`);
+    }
+
+    // Atualiza a saudação quando a página carregar
+    atualizarSaudacao();
+
+});
 
  $(document).on('click', '.btn-editar-info', editarPerfil)

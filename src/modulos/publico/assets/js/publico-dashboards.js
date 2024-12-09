@@ -589,7 +589,6 @@ const getSaldos = async () => {
 }
 
 const renderSaldos = (data) => {
-  
   const iconSaldoInicial = `<small><i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg"></i></small>`;
   const iconEntradas = `<small><i class="fa-solid fa-arrow-trend-up bg-green-500 p-2 rounded-lg"></i></small>`;
   const iconSaidas = `<small><i class="fa-solid fa-arrow-trend-down bg-red-500 p-2 rounded-lg"></i></small>`;
@@ -608,6 +607,9 @@ const renderSaldos = (data) => {
 
 const getSaldosDoDia = async () => {
 
+  $('.chartsMovDia').addClass('hidden')
+  $('.skeleton-saldos-dia').removeClass('hidden')
+
   const url = 'get-movimentacoes-dia'
 
   const dataInput = $('#dataInicio').val();
@@ -620,6 +622,9 @@ const getSaldosDoDia = async () => {
 
 
 const chartsMovimentationDay = (response) => {
+
+  $('.chartsMovDia').removeClass('hidden')
+  $('.skeleton-saldos-dia').addClass('hidden')
 
   if (chartMovDay) {
       chartMovDay.destroy();
@@ -716,87 +721,85 @@ const getMovimentationMonth = async () => {
 }
 
 const chartsMovimentationMonth = (response) => {
-
   if (chartMonth) {
-      chartMonth.destroy();
+    chartMonth.destroy();
   }
 
-  $('#chart').removeClass('hidden')
-  
+  $('#chart').removeClass('hidden');
+
   const entradas = Array(31).fill(0);
   const saidas = Array(31).fill(0);
 
-  
   response.somaEntradasPorDia.forEach(entry => {
-      if (entry.dia >= 1 && entry.dia <= 31) {
-          
-          entradas[entry.dia - 1] += parseFloat(entry.somaEntrada.replace('.', '').replace(',', '.'));
-      }
+    if (entry.dia >= 1 && entry.dia <= 31) {
+      entradas[entry.dia - 1] += parseFloat(entry.somaEntrada.replace('.', '').replace(',', '.'));
+    }
   });
 
-  
   response.somaSaidasPorDia.forEach(exit => {
-      if (exit.dia >= 1 && exit.dia <= 31) {
-          
-          saidas[exit.dia - 1] += parseFloat(exit.somaSaida.replace('.', '').replace(',', '.'));
-      }
+    if (exit.dia >= 1 && exit.dia <= 31) {
+      saidas[exit.dia - 1] += parseFloat(exit.somaSaida.replace('.', '').replace(',', '.'));
+    }
   });
 
   const formatarValor = (valor) => {
-      return `R$ ${valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    return `R$ ${valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   };
 
-  var options = {
-      series: [{
-          name: 'Entradas',
-          data: entradas 
-      }, {
-          name: 'Saídas',
-          data: saidas 
-      }],
-      chart: {
-          type: 'bar',
-          height: 350
-      },
-      plotOptions: {
-          bar: {
-              horizontal: false,
-              columnWidth: '55%',
-              endingShape: 'rounded'
-          },
-      },
-      dataLabels: {
-          enabled: false
-      },
-      stroke: {
-          show: true,
-          width: 2,
-          colors: ['transparent']
-      },
-      xaxis: {
-          categories: Array.from({ length: 31 }, (_, i) => `${i + 1}`), // Dias de 1 a 31
-      },
-      yaxis: {
-          title: {
-              text: 'R$ (em reais)'
-          }
-      },
-      fill: {
-          opacity: 1,
-          colors: ['#008ffb', '#FF6347'] 
-      },
-      tooltip: {
-          y: {
-              formatter: function (val) {
-                  return formatarValor(val); 
-              }
-          }
+  // Verifica se é mobile
+  const isMobile = window.innerWidth <= 768;
+
+  const options = {
+    series: [{
+      name: 'Entradas',
+      data: entradas
+    }, {
+      name: 'Saídas',
+      data: saidas
+    }],
+    chart: {
+      type: 'bar',
+      height: isMobile ? 600 : 350
+    },
+    plotOptions: {
+      bar: {
+        horizontal: isMobile, // Alterna entre colunas e barras horizontais
+        columnWidth: isMobile ? '90%' : '55%',
+        endingShape: 'rounded'
       }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      show: true,
+      width: 2,
+      colors: ['transparent']
+    },
+    xaxis: {
+      categories: Array.from({ length: 31 }, (_, i) => `${i + 1}`), // Dias de 1 a 31
+    },
+    yaxis: {
+      title: {
+        text: isMobile ? '' : 'R$ (em reais)'
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['#008ffb', '#FF6347']
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+          return formatarValor(val);
+        }
+      }
+    }
   };
 
   chartMonth = new ApexCharts(document.querySelector("#chart"), options);
   chartMonth.render();
-}
+};
 
 
 
@@ -840,7 +843,7 @@ const animateCount = (selector, start, end, duration, iconHTML) => {
           clearInterval(interval);
           current = end;
       }
-      $(selector).html(`${iconHTML} R$ ${current.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
+      $(selector).html(`${iconHTML} ${current.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
   }, 10);
 };
 
