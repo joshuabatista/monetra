@@ -20,15 +20,22 @@ const getSaldoInicialAno = () => {
   const url = 'get-saldos-ano';
 
   $.getJSON(url, (response) => {
-    
     const saldoInicial = response.data.saldo_inicial;
+
+    // Verifica se a tela é mobile
+    const isMobile = window.innerWidth <= 768;
+
+    // Ajusta a altura e largura do gráfico
+    const chartHeight = isMobile ? 80 : 160; // Altura menor no mobile
+    const chartWidth = isMobile ? '80%' : '100%'; // Largura proporcional
 
     var spark1 = {
       chart: {
         id: 'sparkline1',
         group: 'sparklines',
         type: 'area',
-        height: 160,
+        height: chartHeight,
+        width: chartWidth,
         sparkline: {
           enabled: true
         },
@@ -40,56 +47,70 @@ const getSaldoInicialAno = () => {
         opacity: 1,
       },
       series: [{
-        name: 'Saldo inicial',
-        // data: [saldoInicialValor], // Passa o saldo inicial como dado
+        name: 'Saldo inicial'
+        // data: [saldoInicial]
       }],
-      labels: ['Inicio'], // Apenas um rótulo, não é necessário usar datas
+      labels: ['Inicio'],
       yaxis: {
         min: 0
       },
       xaxis: {
-        categories: ['Inicio'], // Pode usar uma categoria simples
+        categories: ['Inicio'],
       },
       colors: ['#DCE6EC'],
       title: {
         text: `R$${saldoInicial}`,
-        offsetX: 30,
+        offsetX: isMobile ? 5 : 20,
         style: {
-          fontSize: '24px',
+          fontSize: isMobile ? '12px' : '24px',
           cssClass: 'apexcharts-yaxis-title'
         }
       },
       subtitle: {
         text: 'Saldo inicial',
-        offsetX: 30,
+        offsetX: isMobile ? 5 : 20,
         style: {
-          fontSize: '14px',
+          fontSize: isMobile ? '10px' : '14px',
           cssClass: 'apexcharts-yaxis-title'
         }
       }
     };
 
     new ApexCharts(document.querySelector("#spark1"), spark1).render();
-  })
-};
+  });
+}
 
 const getEntradasAno = () => {
   const url = 'get-saldos-ano';
 
   $.getJSON(url, (response) => {
     const entradas = response.data.entradas;
-    
+
     const entradasMensal = Array(12).fill(0);
     response.data.entradas_mensal.forEach(item => {
       entradasMensal[item.mes - 1] = parseFloat(item.total_entradas);
     });
+
+    // Verifica se é mobile
+    const isMobile = window.innerWidth <= 768;
+
+    // Ajusta a altura e largura do gráfico
+    const chartHeight = isMobile ? 80 : 160; // Altura menor no mobile
+    const chartWidth = '100%'; // Preenche o contêiner
+
+    // Ajusta o tamanho das fontes
+    const titleFontSize = isMobile ? '12px' : '24px';
+    const subtitleFontSize = isMobile ? '10px' : '14px';
+    const offsetX = isMobile ? 5 : 30;
+
     // Configuração do gráfico de entradas
     var spark2 = {
       chart: {
         id: 'sparkline2',
         group: 'sparklines',
         type: 'area',
-        height: 160,
+        height: chartHeight,
+        width: chartWidth,
         sparkline: {
           enabled: true
         },
@@ -104,27 +125,29 @@ const getEntradasAno = () => {
         name: 'Entradas',
         data: entradasMensal
       }],
-      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+               'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
       yaxis: {
         min: 0
       },
       xaxis: {
-        categories: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+                     'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
       },
       colors: ['#008FFB'],
       title: {
         text: `R$${entradas}`,
-        offsetX: 30,
+        offsetX: offsetX,
         style: {
-          fontSize: '24px',
+          fontSize: titleFontSize,
           cssClass: 'apexcharts-yaxis-title'
         }
       },
       subtitle: {
         text: 'Entradas',
-        offsetX: 30,
+        offsetX: offsetX,
         style: {
-          fontSize: '14px',
+          fontSize: subtitleFontSize,
           cssClass: 'apexcharts-yaxis-title'
         }
       }
@@ -132,7 +155,8 @@ const getEntradasAno = () => {
 
     new ApexCharts(document.querySelector("#spark2"), spark2).render();
   });
-}
+};
+
 
 const getSaidasAno = () => {
   const url = 'get-saldos-ano';
@@ -144,13 +168,27 @@ const getSaidasAno = () => {
     response.data.saidas_mensal.forEach(item => {
       saidasMensal[item.mes - 1] = parseFloat(item.total_saidas);
     });
+
+    // Verifica se é mobile
+    const isMobile = window.innerWidth <= 768;
+
+    // Ajusta a altura e largura do gráfico
+    const chartHeight = isMobile ? 80 : 160; // Altura menor no mobile
+    const chartWidth = '100%'; // Preenche o contêiner
+
+    // Ajusta o tamanho das fontes
+    const titleFontSize = isMobile ? '12px' : '24px';
+    const subtitleFontSize = isMobile ? '10px' : '14px';
+    const offsetX = isMobile ? 5 : 30;
+
     // Configuração do gráfico de saídas
     var spark3 = {
       chart: {
         id: 'sparkline3',
         group: 'sparklines',
         type: 'area',
-        height: 160,
+        height: chartHeight,
+        width: chartWidth,
         sparkline: {
           enabled: true
         },
@@ -165,27 +203,29 @@ const getSaidasAno = () => {
         name: 'Saídas',
         data: saidasMensal
       }],
-      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+               'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
       yaxis: {
         min: 0
       },
       xaxis: {
-        categories: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+                     'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
       },
       colors: ['#FF4560'],
       title: {
         text: `R$${saidas}`,
-        offsetX: 30,
+        offsetX: offsetX,
         style: {
-          fontSize: '24px',
+          fontSize: titleFontSize,
           cssClass: 'apexcharts-yaxis-title'
         }
       },
       subtitle: {
         text: 'Saídas',
-        offsetX: 30,
+        offsetX: offsetX,
         style: {
-          fontSize: '14px',
+          fontSize: subtitleFontSize,
           cssClass: 'apexcharts-yaxis-title'
         }
       }
@@ -193,13 +233,21 @@ const getSaidasAno = () => {
 
     new ApexCharts(document.querySelector("#spark3"), spark3).render();
   });
-}
+};
+
 
 const getSaldoFinalAno = () => {
 
   const url = 'get-saldos-ano';
 
   $.getJSON(url, (response) =>  {
+
+        // Verifica se a tela é mobile
+        const isMobile = window.innerWidth <= 768;
+
+        // Ajusta a altura e largura do gráfico
+        const chartHeight = isMobile ? 80 : 160; // Altura menor no mobile
+        const chartWidth = isMobile ? '80%' : '100%'; // Largura proporcional
 
     const saldoFinal = response.data.saldo_final;
 
@@ -208,7 +256,8 @@ const getSaldoFinalAno = () => {
         id: 'sparkline4',
         group: 'sparklines',
         type: 'area',
-        height: 160,
+        height: chartHeight,
+        width: chartWidth,
         sparkline: {
           enabled: true
         },
@@ -236,17 +285,17 @@ const getSaldoFinalAno = () => {
       //colors: ['#5564BE'],
       title: {
         text: `R$${saldoFinal}`,
-        offsetX: 30,
+        offsetX: isMobile ? 5 : 20,
         style: {
-          fontSize: '24px',
+          fontSize: isMobile ? '12px' : '24px',
           cssClass: 'apexcharts-yaxis-title'
         }
       },
       subtitle: {
         text: 'Saldo final',
-        offsetX: 30,
+        offsetX: isMobile ? 5 : 20,
         style: {
-          fontSize: '14px',
+          fontSize: isMobile ? '10px' : '14px',
           cssClass: 'apexcharts-yaxis-title'
         }
       }
@@ -358,6 +407,9 @@ const getSaldoFinalMensal = () => {
 
 
 const chartsSaldoFinalMensal = (saldoFinalMensal, meses) => {
+
+  const isMobile = window.innerWidth <= 768;
+
   const options = {
     series: [{
       name: "Saldo Final",
@@ -366,6 +418,12 @@ const chartsSaldoFinalMensal = (saldoFinalMensal, meses) => {
     chart: {
       type: 'bar',
       height: 380
+    },
+    plotOptions: {
+      bar: {
+        columnWidth: isMobile ? '90%' : '55%',
+        endingShape: 'rounded'
+      }
     },
     xaxis: {
       categories: meses, // Usa os meses recebidos do backend

@@ -2,12 +2,6 @@ RewriteEngine On
 
 RewriteRule ^$ /login [L,R=301]
 
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-</IfModule>
-
 RewriteRule ^login$ /src/modulos/publico/pages/publico-login.php [L]
 RewriteRule ^perfil$ /src/modulos/publico/pages/publico-editar-perfil.php [L]
 RewriteRule ^alterar-senha$ /src/modulos/publico/pages/publico-alterar-senha.php [L]
