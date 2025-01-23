@@ -18,7 +18,7 @@ $dataConvertida = DateTime::createFromFormat('d/m/Y', $data)->format('Y-m-d');
 
 $valor = str_replace(',', '.', $valor);
 
-if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo)){
+if(empty($data) || empty($planoContas) || empty($tipo)){
     $pdo->rollBack();
     response([
         'status' => false,

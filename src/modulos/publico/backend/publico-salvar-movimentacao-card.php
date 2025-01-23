@@ -22,7 +22,7 @@ $dataConvertida = DateTime::createFromFormat('d/m/Y', $data)->format('Y-m-d');
 
 $pdo->beginTransaction();
 
-if(empty($data) || empty($planoContas) || empty($beneficiario) || empty($tipo) || empty($valor) || empty($cartao) || empty($parcelamento)){
+if(empty($data) || empty($planoContas) || empty($tipo) || empty($valor) || empty($cartao) || empty($parcelamento)){
     $pdo->rollBack();
     response([
         'status' => false,

@@ -10,7 +10,7 @@
     
                     <div class="filters-period flex flex-row bg-gray-100 p-5 rounded-xl shadow-xl w-full justify-center border border-gray-200"">
                         <div class="col-data-inicio">
-                            <input type="month" id="data-inicio" name="data-inicio" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            <input type="month" id="data-inicio" name="data-inicio" class="data-inicio w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                         </div>
                     </div>
                 </div>
@@ -18,6 +18,21 @@
                 
                 
                 <div class="flex flex-col sm:grid grid-cols-2 gap-2 mt-3 ">
+<!-- 
+                    <div class="">
+                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+                    </div> -->
+
+                    <div class="block sm:hidden">
+                        <div class="filters-period flex flex-col bg-gray-100 p-5 rounded-xl shadow-xl w-full justify-center border border-gray-200"">
+                            <div class="mb-2 justify-center text-center">
+                                <h1 class=" font-semibold text-xl">Periodo</h1>
+                            </div>
+                            <div class="col-data-inicio">
+                                <input type="month" id="data-inicio" name="data-inicio" class="data-inicio w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="inline-flex bg-gray-100 flex-col gap-0 sm:gap-8 p-5 rounded-xl shadow-xl border border-gray-200">
                         <div class="flex flex-col text-center justify-center">
@@ -29,9 +44,9 @@
                         <div class="flex flex-col text-center items-center lg:!text-start lg:!items-start">
                             <label for="" class="text-xl italic text-zinc-600">
                                 <p class="hidden lg:block">Saldo Inicial</p>
-                                <p class="block lg:hidden text-sm">Inicial</p>
+                                <p class="block lg:hidden text-xs">Inicial</p>
                             </label>
-                            <h1 class="text-xs sm:text-lg" id="saldoInicial">
+                            <h1 class="text-sm sm:text-lg" id="saldoInicial">
                                 <small>
                                     <i class="fa-solid fa-money-bill-1 bg-slate-500 p-2 rounded-lg text-sm"></i>
                                 </small>
@@ -39,10 +54,10 @@
                         </div>
 
                             <div class="flex flex-col text-center items-center lg:!text-start lg:!items-start">
-                                <label for="" class="text-sm sm:text-xl text-zinc-600 italic">
+                                <label for="" class="text-xs sm:text-xl text-zinc-600 italic">
                                     Entradas
                                 </label>
-                                <h1 class="text-xs sm:text-lg" id="entradas">
+                                <h1 class="text-sm sm:text-lg" id="entradas">
                                     <small>
                                         <i class="fa-solid fa-arrow-trend-up bg-green-500 p-2 rounded-lg text-sm"></i>
                                     </small>
@@ -50,10 +65,10 @@
                             </div>
 
                             <div class="flex flex-col text-center items-center lg:!text-start lg:!items-start">
-                                <label for="" class="text-sm sm:text-xl text-zinc-600 italic">
+                                <label for="" class="text-xs sm:text-xl text-zinc-600 italic">
                                     Saidas
                                 </label>
-                                <h1 class="text-xs sm:text-lg" id="saidas">
+                                <h1 class="text-sm sm:text-lg" id="saidas">
                                     <small>
                                         <i class="fa-solid fa-arrow-trend-down bg-red-500 p-2 rounded-lg text-sm"></i>
                                     </small>
@@ -65,11 +80,11 @@
                                     <p class="hidden lg:block">
                                         Saldo final
                                     </p>
-                                    <p class="block lg:hidden text-sm">
+                                    <p class="block lg:hidden text-xs">
                                         Final
                                     </p>
                                 </label>
-                                <h1 class="text-xs sm:text-lg" id="saldoFinal">
+                                <h1 class="text-sm sm:text-lg" id="saldoFinal">
                                     <small>
                                         <i class="fa-solid fa-money-bill-transfer bg-slate-500 p-2 rounded-lg text-sm"></i>
                                     </small>
@@ -98,7 +113,7 @@
         
                     <div class=" bg-gray-100 flex-col rounded-xl shadow-xl border border-gray-200 flex">
                         <div class="flex flex-col text-center justify-center items-center mt-4">
-                            <label for="" class="text-xl mb-1 font-semibold"><p class="hidden ms:block">Mov. dia</p><p class="block sm:hidden">Movimentação do dia</p></label>
+                            <label for="" class="text-xl mb-1 font-semibold"><p class="hidden sm:block">Mov. dia</p><p class="block sm:hidden">Movimentação do dia</p></label>
                             <input type="date" id="dataInicio" class="mt-2 w-40 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                         </div>
 

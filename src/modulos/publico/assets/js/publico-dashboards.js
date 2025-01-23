@@ -581,7 +581,7 @@ const getSaldos = async () => {
   $('.saldos').addClass('hidden')
   $('.skeleton-saldos').removeClass('hidden')
 
-  let periodo = $('#data-inicio').val()
+  let periodo = $('.data-inicio').val()
 
   const url = 'get-saldos';
   const response = await $.getJSON(url, {periodo: periodo});
@@ -710,7 +710,7 @@ const chartsMovimentationDay = (response) => {
 
 const getMovimentationMonth = async () => {
 
-  let periodo = $('#data-inicio').val()
+  let periodo = $('.data-inicio').val()
 
   const url = 'get-movimentation-month';
 
@@ -823,7 +823,7 @@ const getMonth = () => {
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, '0'); 
 
-  $('#data-inicio').val(`${year}-${month}`);
+  $('.data-inicio').val(`${year}-${month}`);
   $('#filtroPeriodo').val(`${year}-${month}`);
 }
 
@@ -852,8 +852,8 @@ const animateCount = (selector, start, end, duration, iconHTML) => {
 //Eventos ouvintes
 
 $(document).on('change', '#dataInicio', getSaldosDoDia)
-$(document).on('change', '#data-inicio', getMovimentationMonth)
-$(document).on('change', '#data-inicio', getSaldos)
+$(document).on('change', '.data-inicio', getMovimentationMonth)
+$(document).on('change', '.data-inicio', getSaldos)
 
 
 
