@@ -455,6 +455,7 @@ const chartsSaldoFinalMensal = (saldoFinalMensal, meses) => {
   const chart = new ApexCharts(document.querySelector("#chartsSaldoFinalMensal"), options);
   chart.render();
 };
+
 const getPorcentagem = async () => {
   const url = 'get-porcentagem'; 
 
@@ -488,6 +489,12 @@ const renderChartDonuts = (despesas, totalDespesas) => {
 
   const porcentagens = despesasValues.map(valor => (valor / totalDespesas) * 100);
 
+  // Define estilos diferentes para mobile e desktop
+  const isMobile = window.innerWidth <= 768; // Mobile para telas <= 768px
+  const fontSizeName = isMobile ? '12px' : '16px';
+  const fontSizeValue = isMobile ? '14px' : '18px';
+  const fontSizeTotal = isMobile ? '16px' : '20px';
+
   const options = {
     series: porcentagens,
     chart: {
@@ -508,12 +515,20 @@ const renderChartDonuts = (despesas, totalDespesas) => {
             show: true,
             name: {
               show: true,
+              style: {
+                fontSize: fontSizeName, // Tamanho da fonte do nome
+                fontWeight: 600,
+              },
               formatter: function () {
                 return 'Total';  
               }
             },
             value: {
               show: true,
+              style: {
+                fontSize: fontSizeValue, // Tamanho da fonte do valor
+                fontWeight: 700,
+              },
               formatter: function () {
                 return "R$ " + totalDespesas.toFixed(2);  
               }
@@ -521,6 +536,10 @@ const renderChartDonuts = (despesas, totalDespesas) => {
             total: {
               show: true,
               label: 'Total',
+              style: {
+                fontSize: fontSizeTotal, // Tamanho da fonte do total
+                fontWeight: 800,
+              },
               formatter: function () {
                 return "R$ " + totalDespesas.toFixed(2);  
               }
