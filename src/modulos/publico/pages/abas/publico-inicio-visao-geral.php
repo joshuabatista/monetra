@@ -1,4 +1,4 @@
-    <div class="hidden p-4 rounded-lg mb-4" id="visao-geral" role="tabpanel" aria-labelledby="visao-tab">
+    <div class="hidden p-4 rounded-lg mb-8" id="visao-geral" role="tabpanel" aria-labelledby="visao-tab">
         <div class="block sm:grid grid-cols-[30%_70%]">
             <div class="ml-4 flex flex-col lg:block mobile:ml-0">
                 <div class="hidden lg:block">

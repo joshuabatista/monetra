@@ -19,32 +19,58 @@
 
         <div class="col-span-4 lg:col-span-3 content rounded-r-xl max-h-fit">
 
-            <div class="border-b border-gray-200 rounded-tr-none lg:rounded-tr-xl dark:border-gray-700 lg:static lg:mb-4 lg:border-b flex justify-between fixed bottom-0 left-0 right-0 bg-zinc-100 lg:bg-white z-50 p-2"
+            <div class=" bg-white lg:bg-gray-200 border-b border-gray-200 rounded-tr-none lg:rounded-tr-xl dark:border-gray-700 lg:static lg:mb-4 lg:border-b flex justify-between fixed bottom-0 left-0 right-0  z-50 p-2"
                 id="controle" data-tabs-toggle="#controle-content" role="tablist">
                 <ul class="flex flex-wrap text-sm font-medium text-center w-full justify-around">
+
                     <li class="flex-1" role="presentation">
-                        <button class="inline-block p-2" id="visao-tab" data-tabs-target="#visao-geral" type="button"
-                            role="tab" aria-controls="visao-geral" aria-selected="false"><p class="hidden lg:block">Visão Geral</p><p class="block lg:hidden"><i class="fa-solid fa-house"></i></p></button>
+                        <button class="inline-block p-2" id="visao-tab" data-tabs-target="#visao-geral" type="button" role="tab" aria-controls="visao-geral" aria-selected="false">
+                            <p class="hidden lg:block">Visão Geral</p>
+                            <p class="lg:hidden text-xs flex flex-col items-center">
+                                <i class="fa-solid fa-house"></i>
+                                <span class="mt-1">Inicio</span>
+                            </p>
+                        </button>
                     </li>
                     <li class="flex-1" role="presentation">
-                        <button class="inline-block p-2" id="dashboard-tab" data-tabs-target="#dashboard" type="button"
-                            role="tab" aria-controls="dashboard" aria-selected="false"><p class="hidden lg:block">Dashboard</p><p class="block lg:hidden"><i class="fa-solid fa-chart-pie"></i></p></button>
+                        <button class="inline-block p-2" id="dashboard-tab" data-tabs-target="#dashboard" type="button"role="tab" aria-controls="dashboard" aria-selected="false">
+                            <p class="hidden lg:block">Dashboard</p>
+                            <p class="lg:hidden text-xs flex flex-col items-center">
+                                <i class="fa-solid fa-chart-pie"></i>
+                                <span class="mt-1">Dashboard</span>
+                            </p>
+                        </button>
                     </li>
                     <li class="flex-1 relative" role="presentation">
-                        <button class="inline-block p-2" id="minucioso-tab" data-tabs-target="#minucioso" type="button"
-                            role="tab" aria-controls="minucioso" aria-selected="false"><p class="hidden lg:block">Controle Minucioso</p><p class="block lg:hidden"><i class="fa-solid fa-sack-dollar"></i></p></button>
+                        <button class="inline-block p-2" id="minucioso-tab" data-tabs-target="#minucioso" type="button" role="tab" aria-controls="minucioso" aria-selected="false">
+                            <p class="hidden lg:block">Controle Minucioso</p>
+                            <p class="lg:hidden text-xs flex flex-col items-center">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                                <span class="mt-1">Minucioso</span>
+                            </p>
+                        </button>
                         <span
                             class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse bolinhaMinucioso hidden"></span>
                     </li>
                     <li class="flex-1 relative" role="presentation">
-                        <button class="inline-block p-2" id="pagarReceber-tab" data-tabs-target="#pagarReceber"
-                            type="button" role="tab" aria-controls="cartao" aria-selected="false"><p class="hidden lg:block">Pagar / Receber</p><p class="block lg:hidden"><i class="fa-solid fa-hand-holding-dollar"></i></p></button>
+                        <button class="inline-block p-2" id="pagarReceber-tab" data-tabs-target="#pagarReceber" type="button" role="tab" aria-controls="cartao" aria-selected="false">
+                            <p class="hidden lg:block">Pagar / Receber</p>
+                            <p class="lg:hidden text-xs flex flex-col items-center">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                                <span class="mt-1">PagRec</span>
+                            </p>
+                        </button>
                         <span
                             class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse bolinhaPendentes hidden"></span>
                     </li>
                     <li class="flex-1" role="presentation">
-                        <button class="inline-block p-2" id="cartao-tab" data-tabs-target="#cartao" type="button"
-                            role="tab" aria-controls="cartao" aria-selected="false"><p class="hidden lg:block">Cartão de Crédito</p><p class="block lg:hidden"><i class="fa-solid fa-credit-card"></i></p></button>
+                        <button class="inline-block p-2" id="cartao-tab" data-tabs-target="#cartao" type="button" role="tab" aria-controls="cartao" aria-selected="false">
+                            <p class="hidden lg:block">Cartão de Crédito</p>
+                            <p class="lg:hidden text-xs flex flex-col items-center">
+                                <i class="fa-solid fa-credit-card"></i>
+                                <span class="mt-1">Cartão</span>
+                            </p>
+                        </button>
                     </li>
                 </ul>
             </div>
