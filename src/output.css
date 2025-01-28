@@ -2927,6 +2927,10 @@ input:checked + .toggle-bg {
     display: block;
   }
 
+  .lg\:flex {
+    display: flex;
+  }
+
   .lg\:hidden {
     display: none;
   }

@@ -18,13 +18,15 @@
                 
                 
                 <div class="flex flex-col sm:grid grid-cols-2 gap-2 mt-3 ">
-<!-- 
-                    <div class="">
-                        <i class="fa-solid fa-arrow-down-wide-short"></i>
-                    </div> -->
+
+                    <!-- <div class="flex-row gap-3 mt-4 ml-4 flex lg:hidden">
+                        <small class="text-zinc-600 font-bold text-sm">Filtro </small>
+                        <button class="btn-show-mes-visao"><i class="fa-solid fa-arrow-down-wide-short"></i></button>
+                        <button class="btn-hide-mes-visao hidden"><i class="fa-solid fa-arrow-up-wide-short"></i></button>
+                    </div>
 
                     <div class="block sm:hidden">
-                        <div class="filters-period flex flex-col bg-gray-100 p-5 rounded-xl shadow-xl w-full justify-center border border-gray-200"">
+                        <div class="filters-period hidden sm:flex flex-col bg-gray-100 p-5 rounded-xl shadow-xl w-full justify-center border border-gray-200"">
                             <div class="mb-2 justify-center text-center">
                                 <h1 class=" font-semibold text-xl">Periodo</h1>
                             </div>
@@ -32,7 +34,24 @@
                                 <input type="month" id="data-inicio" name="data-inicio" class="data-inicio w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+
+                    <div class="flex-row gap-3 mt-4 ml-4 flex lg:hidden">
+    <small class="text-zinc-600 font-bold text-sm">Filtro </small>
+    <button class="btn-show-mes-visao"><i class="fa-solid fa-arrow-down-wide-short"></i></button>
+    <button class="btn-hide-mes-visao hidden"><i class="fa-solid fa-arrow-up-wide-short"></i></button>
+</div>
+
+<div class="block sm:hidden">
+    <div class="filters-period hidden sm:flex flex-col bg-gray-100 p-5 rounded-xl shadow-xl w-full justify-center border border-gray-200 opacity-0 transition-opacity duration-300">
+        <div class="mb-2 justify-center text-center">
+            <h1 class="font-semibold text-xl">Periodo</h1>
+        </div>
+        <div class="col-data-inicio">
+            <input type="month" id="data-inicio" name="data-inicio" class="data-inicio w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+        </div>
+    </div>
+</div>
 
                     <div class="inline-flex bg-gray-100 flex-col gap-0 sm:gap-8 p-5 rounded-xl shadow-xl border border-gray-200">
                         <div class="flex flex-col text-center justify-center">

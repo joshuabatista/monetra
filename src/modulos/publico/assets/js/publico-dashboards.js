@@ -878,6 +878,32 @@ const chartsMovimentationMonth = (response) => {
   chartMonth.render();
 };
 
+const showFilters = () => {
+  $('.filters-period')
+    .removeClass('hidden')
+    .css('opacity', '0') // Garante que o elemento comece invisível
+    .animate({ opacity: 1 }, 100, function() {
+      // Callback após a animação
+    });
+
+  $('.btn-show-mes-visao').addClass('hidden');
+  $('.btn-hide-mes-visao').removeClass('hidden');
+};
+
+const hideFilters = () => {
+  $('.filters-period')
+    .animate({ opacity: 0 }, 500, function() {
+      $(this).addClass('hidden'); // Esconde o elemento após a animação
+    });
+
+  $('.btn-show-mes-visao').removeClass('hidden');
+  $('.btn-hide-mes-visao').addClass('hidden');
+};
+
+
+$(document).on('click', '.btn-show-mes-visao', showFilters)
+$(document).on('click', '.btn-hide-mes-visao', hideFilters)
+
 
 
 
