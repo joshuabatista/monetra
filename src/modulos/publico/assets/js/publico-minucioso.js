@@ -220,9 +220,27 @@ $(document).ready(function () {
 });
 
 
+const showFilters = () => {
+
+    $('.filtro-data').removeClass('hidden')
+    $('.btn-show-mes').addClass('hidden')
+    $('.btn-hide-mes').removeClass('hidden')
+
+}
+
+const hideFilters = () => {
+
+    $('.filtro-data').addClass('hidden')
+    $('.btn-show-mes').removeClass('hidden')
+    $('.btn-hide-mes').addClass('hidden')
+
+}
+
 
 
 //Eventos
 
 $(document).on('click', '.btn-add-minucioso', saveMinucioso)
 $(document).on('change', '#filtroPeriodo', getMinucioso)
+$(document).on('click', '.btn-show-mes', showFilters)
+$(document).on('click', '.btn-hide-mes', hideFilters)

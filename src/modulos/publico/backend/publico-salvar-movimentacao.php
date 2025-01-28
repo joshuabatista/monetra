@@ -9,8 +9,10 @@ $data = $_POST['data'];
 $categoria = $_POST['categoria'];
 $planoContas = explode(' - ', $_POST['plano_contas'])[0];
 $beneficiario = $_POST['beneficiario'];
+$beneficiario = !empty($beneficiario) ? $beneficiario : null;
 $tipo = $_POST['tipo'];
 $valor = $_POST['valor'];
+
 
 $usu_id = $_SESSION['user_id'];
 
