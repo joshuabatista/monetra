@@ -1,7 +1,7 @@
 
-<div class="hidden p-4 rounded-lg" id="pagarReceber" role="tabpanel" aria-labelledby="PagarReceber-tab">
+<div class="hidden p-4 rounded-lg mb-10" id="pagarReceber" role="tabpanel" aria-labelledby="PagarReceber-tab">
 
-    <div class="flex justify-start mt-0 mb-0 ml-4 text-zinc-500">
+    <div class="flex justify-start mt-0 mb-4 ml-4 text-zinc-500">
         <?php include(__DIR__ . '/../drawer/publico-drawer-pagar-receber.php'); ?>
     </div>
 
@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 containerPendentes">
+    <div class="grid grid-cols-1 gap-4 containerPendentes">
         <!-- Renderizado dincamicamente -->
     </div>
 
