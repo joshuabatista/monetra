@@ -34,7 +34,7 @@
     </div>
 
     <div class="flex flex-row gap-3 mt-4 ml-4">
-        <small class="text-zinc-600 font-bold text-sm">Filtros </small>
+        <small class="text-zinc-600 font-bold text-sm">Filtro </small>
         <button class="btn-show-mes"><i class="fa-solid fa-arrow-down-wide-short"></i></button>
         <button class="btn-hide-mes hidden"><i class="fa-solid fa-arrow-up-wide-short"></i></button>
     </div>

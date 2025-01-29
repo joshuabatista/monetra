@@ -220,7 +220,7 @@ $(document).ready(function () {
 });
 
 
-const showFilters = () => {
+const showFiltersMinucioso = () => {
 
     $('.filtro-data').removeClass('hidden')
     $('.btn-show-mes').addClass('hidden')
@@ -228,7 +228,7 @@ const showFilters = () => {
 
 }
 
-const hideFilters = () => {
+const hideFiltersMinucioso = () => {
 
     $('.filtro-data').addClass('hidden')
     $('.btn-show-mes').removeClass('hidden')
@@ -242,5 +242,5 @@ const hideFilters = () => {
 
 $(document).on('click', '.btn-add-minucioso', saveMinucioso)
 $(document).on('change', '#filtroPeriodo', getMinucioso)
-$(document).on('click', '.btn-show-mes', showFilters)
-$(document).on('click', '.btn-hide-mes', hideFilters)
+$(document).on('click', '.btn-show-mes', showFiltersMinucioso)
+$(document).on('click', '.btn-hide-mes', hideFiltersMinucioso)
