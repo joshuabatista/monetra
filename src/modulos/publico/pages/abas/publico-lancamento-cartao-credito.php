@@ -15,20 +15,37 @@ $plano = $queryPlan->data;
 
 ?>
 
+<style>
+
+.scrollbar-thin::-webkit-scrollbar {
+    height: 4px;
+}
+
+.scrollbar-thumb-gray-400::-webkit-scrollbar-thumb {
+    background-color: #9CA3AF;
+    border-radius: 4px;
+}
+
+.scrollbar-track-gray-100::-webkit-scrollbar-track {
+    background-color: #F3F4F6;
+}
+
+</style>
+
 <div class="" id="fevereiro" role="tabpanel" aria-labelledby="fevereiro-tab">
 
     <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800 m-3 border border-primary">
-
-        <div class=" flex text-center justify-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+        
+        <div class="flex text-center justify-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
             role="alert">
             <span class="font-medium">Lançamento de Cartão de Credito</span>
         </div>
 
-        <div class="grid-cols-7 flex gap-5">
+        <div class="grid sm:flex grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4 justify-center">
             <div>
                 <label for="" class="label">Data *</label>
                 <input type="date" id="dataCartao"
-                    class="data px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    class="w-full data px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
             </div>
             <div>
                 <label for="" class="label">Categoria *
@@ -36,7 +53,7 @@ $plano = $queryPlan->data;
                         data-drawer-target="drawer-categoria" data-drawer-show="drawer-categoria"
                         data-drawer-placement="left" aria-controls="drawer-categoria"><i
                             class="fa-solid fa-question ml-2"></i></button> </label>
-                <select name="" class="select select-categoria-cartao" id="select-categoria-cartao" name="select-categoria-cartao">
+                <select name="" class="select select-categoria-cartao w-full" id="select-categoria-cartao" name="select-categoria-cartao">
                     <option value="">Selecione</option>
                     <option value="despesa">Saída</option>
                     <option value="receita">Entrada</option>
@@ -48,59 +65,40 @@ $plano = $queryPlan->data;
                         data-drawer-target="drawer-planoContas" data-drawer-show="drawer-planoContas"
                         data-drawer-placement="left" aria-controls="drawer-planoContas"><i
                             class="fa-solid fa-question ml-2"></i></button></label>
-                <select name="" class="select w-64 selectPlanoContasCartao" id="selectPlanoContasCartao" name="selectPlanoContasCartao">
+                <select name="" class="select w-full md:w-64 selectPlanoContasCartao" id="selectPlanoContasCartao" name="selectPlanoContasCartao">
                     <option value="">Selecione</option>
                     <!-- select dinamico no js -->
                 </select>
             </div>
             <div>
                 <label for="" class="label">Beneficiário</label>
-                <input type="" name="beneficiarioCartao" placeholder="Sr. José, Avó..." class="input beneficiarioCartao">
+                <input type="" name="beneficiarioCartao" placeholder="Sr. José, Avó..." class="input beneficiarioCartao w-full">
             </div>
             <div>
                 <label for="" class="label">Tipo * <button
                         class=" text-black transition transform hover:-translate-y-1  duration-300" type="button"
                         data-drawer-target="drawer-tipo" data-drawer-show="drawer-tipo" data-drawer-placement="left"
                         aria-controls="drawer-tipo"><i class="fa-solid fa-question ml-2"></i></button></label>
-                <select name="tipoCartao" id="tipoCartao" class="select tipoCartao">
+                <select name="tipoCartao" id="tipoCartao" class=" w-full select tipoCartao">
                     <option value="">Selecione</option>
                     <!-- Select dinamico no js -->
                 </select>
             </div>
             <div>
                 <label for="" class="label">Valor *</label>
-                <input type="" name="valorCartao" id="valorCartao" placeholder="R$ 500,00" class="input valorCartao">
-            </div>
-            <div class=" mt-5">
-                <button
-                    class="btn-add-card relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                    <span
-                        class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                        Adicionar
-                    </span>
-                </button>
+                <input type="" name="valorCartao" id="valorCartao" placeholder="R$ 500,00" class="w-full input valorCartao">
             </div>
 
-            <!-- drawer -->
-            <?php include '../pages/drawer/publico-drawer-categoria.php' ?>
-
-            <?php include '../pages/drawer/publico-drawer-plano-contas.php' ?>
-
-            <?php include '../pages/drawer/publico-drawer-tipo.php' ?>
-
-
-        </div>
-
-        <div class="grid-cols-2 flex gap-5">
+            <div class="grid-cols-2 flex gap-4">
             <div>
                 <label for="" class="label">Cartão * </label>
-                <select name="cartao" id="cartao" class="select cartao w-48 ">
+                <select name="cartao" id="cartao" class="select cartao w-full ">
                     <option value="">Selecione</option>
                 </select>
             </div>
             <div>
                 <label for="" class="label">Em quantas vezes? * </label>
-                <select name="quantidade" id="quantidade" class="select quantidade w-32">
+                <select name="quantidade" id="quantidade" class="select quantidade w-full">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -133,6 +131,29 @@ $plano = $queryPlan->data;
             </div>
 
         </div>
+
+
+            <div class="mt-5 text-center">
+                <button
+                    class="btn-add-card relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                    <span
+                        class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                        Adicionar
+                    </span>
+                </button>
+            </div>
+
+            <!-- drawer -->
+            <?php include '../pages/drawer/publico-drawer-categoria.php' ?>
+
+            <?php include '../pages/drawer/publico-drawer-plano-contas.php' ?>
+
+            <?php include '../pages/drawer/publico-drawer-tipo.php' ?>
+
+
+        </div>
+
+        
     </div>
 
     <div class="">
@@ -145,8 +166,8 @@ $plano = $queryPlan->data;
 
 
 
-    <div class="hidden grid grid-cols-5 justify-center gap-3 filters-card">
-        <div class="col-data-inicio-card ml-[40px]">
+    <div class="hidden grid p-4 sm:grid-cols-1 md:grid-cols-5 justify-center gap-3 filters-card">
+        <div class="col-data-inicio-card">
             <label for="data-inicio-card" class="label">Data inicio</label>
             <input type="date" id="data-inicio-card" name="data-inicio-card"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
@@ -159,21 +180,21 @@ $plano = $queryPlan->data;
         <div class="col-card">
             <label for="filtro-card" class="label">Cartão</label>
             <select id="filtro-card" name="filtro-card"
-                class=" w-64 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                class=" w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 <option value="">Selecione</option>
             </select>
         </div>
         <div class="col-plano-contas-card">
             <label for="filtro-plano-contas-card" class="label">Plano de Contas</label>
             <select id="filtro-plano-contas-card" name="filtro-plano-contas-card"
-                class=" w-64 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                class=" w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 <option value="">Selecione</option>
                 <?php foreach($plano as $planos) {
                     echo '<option value = "'.$planos->codigo.'">'.$planos->descricao.'</option>';
                 } ?>
             </select>
         </div>
-        <div class="col-categoria-card mr-[40px]">
+        <div class="col-categoria-card">
             <label for="filtro-categoria-card" class="label">Categoria</label>
             <select id="filtro-categoria-card" name="filtro-categoria-card"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
@@ -182,47 +203,63 @@ $plano = $queryPlan->data;
                 <option value="Receita">Receita</option>
             </select>
         </div>
-    </div>
 
-    <div class="hidden grid grid-cols-1 justify-start gap-3 filters-card ml-[40px]">
-        <div class="col-tipo-card mr-[40px] mt-4">
-            <label for="filtro-tipo-card" class="label">Tipo</label>
-            <select id="filtro-tipo-card" name="filtro-tipo-card"
-                class=" w-56 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-                <option value="">Selecione</option>
-                <option value="1">Pago</option>
-                <option value="4">A pagar</option>
-                <option value="2">Recebido</option>
-                <option value="3">A receber</option>
-            </select>
+        <div class="hidden grid grid-cols-1 justify-start filters-card">
+            <div class="col-tipo-card">
+                <label for="filtro-tipo-card" class="label">Tipo</label>
+                <select id="filtro-tipo-card" name="filtro-tipo-card"
+                    class=" w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    <option value="">Selecione</option>
+                    <option value="1">Pago</option>
+                    <option value="4">A pagar</option>
+                    <option value="2">Recebido</option>
+                    <option value="3">A receber</option>
+                </select>
+            </div>
         </div>
+
     </div>
 
 
-    <table class="table-auto w-full mt-5" id="tabelaCartoes">
-        <thead class="border border-solid border-gray-300 bg-gray-50">
-            <th class="px-6 py-3 text-center" scope="col">Data</th>
-            <th class="px-6 py-3 text-center" scope="col">Categoria</th>
-            <th class="px-6 py-3 text-center" scope="col">Plano de Contas</th>
-            <th class="px-6 py-3 text-center" scope="col">Cartão de Crédito</th>
-            <th class="px-6 py-3 text-center" scope="col">Parcelas</th>
-            <th class="px-6 py-3 text-center" scope="col">Beneficiário</th>
-            <th class="px-6 py-3 text-center" scope="col">Tipo</th>
-            <th class="px-6 py-3 text-center" scope="col">Debito</th>
-            <th class="px-6 py-3 text-center" scope="col">Crédito</th>
-            <th class="px-6 py-3 text-center" scope="col">Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Linhas serão adicionadas aqui -->
-        </tbody>
-    </table>
+
+    <div class="w-full overflow-hidden relative">
+
+        <div class="flex sm:hidden absolute top-0 left-0 w-full h-4 overflow-x-auto bg-gray-100 scrollbar-thin mt-4"
+            id="scrollTopDivCard"
+            style="scrollbar-width: thin; scrollbar-color: #9CA3AF #F3F4F6;">
+            <div id="scrollTrackerCard" class="h-px"></div>
+        </div>
+
+        <div class="w-full overflow-x-auto pt-4" id="scrollBottomDivCard">
+            <table class="table-auto w-full mt-5" id="tabelaCartoes">
+                <thead class="border border-solid border-gray-300 bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-center" scope="col">Data</th>
+                        <th class="px-6 py-3 text-center" scope="col">Categoria</th>
+                        <th class="px-6 py-3 text-center" scope="col">Plano de Contas</th>
+                        <th class="px-6 py-3 text-center" scope="col">Cartão de Crédito</th>
+                        <th class="px-6 py-3 text-center" scope="col">Parcelas</th>
+                        <th class="px-6 py-3 text-center" scope="col">Beneficiário</th>
+                        <th class="px-6 py-3 text-center" scope="col">Tipo</th>
+                        <th class="px-6 py-3 text-center" scope="col">Debito</th>
+                        <th class="px-6 py-3 text-center" scope="col">Crédito</th>
+                        <th class="px-6 py-3 text-center" scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas serão adicionadas aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>                
+
+
 
     <div class="loading-card justify-center mt-5 hidden">
         <img src="/public_html/assets/images/monetra-loading.png" alt="loading" class=" w-14 animate-spin">
     </div>
 
-    <div class="flex justify-between items-center mt-5 pagination-card">
+    <div class="flex justify-center md:justify-between items-center mt-5 pagination-card">
 
         <div class="hidden sm:flex ml-2">
             <span class="font-medium text-base text-gray-500 pagination-info-card"></span>

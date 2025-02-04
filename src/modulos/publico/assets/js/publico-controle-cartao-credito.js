@@ -1,7 +1,13 @@
 $(() => {
     getMovimentationCard()
     getCards()
+    syncScrollCard()
+    updateScrollWidthCard()
 })
+
+$(window).resize(function() {
+    updateScrollWidthCard();
+});
 
 var currentPage, totalPages
 
@@ -78,16 +84,16 @@ const getMovimentationCard = async (page = 1) => {
 
                     $('#tabelaCartoes tbody').append(`
                         <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b tabela-mov-card" data-id="${movimentacao.id}">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.descricao}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.cartao}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.parcelamento}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.beneficiario}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.tipo}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Despesa' ? movimentacao.valor : ''}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Receita' ? movimentacao.valor : ''}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center "><button class="btn-excluir-mov-card rounded-md shadow-lg bg-slate-100 p-2"><i class="fa-regular fa-trash-can"></i></button></td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${dataFormatada}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.descricao}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.cartao}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.parcelamento}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.beneficiario}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.tipo}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria === 'Despesa' ? movimentacao.valor : ''}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria === 'Receita' ? movimentacao.valor : ''}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center "><button class="btn-excluir-mov-card rounded-md shadow-lg bg-slate-100 p-2"><i class="fa-regular fa-trash-can"></i></button></td>
                         </tr>
                     `);
                 });
@@ -105,7 +111,34 @@ const getMovimentationCard = async (page = 1) => {
 
     $('.btn-next-card').prop('disabled', currentPage + 1 > totalPages);
     $('.btn-prev-card').prop('disabled', currentPage - 1 <= 0);
+
+    updateScrollWidthCard()
 };
+
+const syncScrollCard = () => {
+
+    const topDiv = $('#scrollTopDivCard');
+    const bottomDiv = $('#scrollBottomDivCard');
+    
+    // Sincroniza scroll superior com inferior
+    topDiv.on('scroll', function() {
+        bottomDiv.scrollLeft(topDiv.scrollLeft());
+    });
+
+    // Sincroniza scroll inferior com superior
+    bottomDiv.on('scroll', function() {
+        topDiv.scrollLeft(bottomDiv.scrollLeft());
+    });
+}
+
+
+const updateScrollWidthCard = () => {
+
+    const tableWidth = $('#tabelaCartoes').outerWidth();
+    $('#scrollTopDivCard div').css('min-width', tableWidth + 'px');
+    
+}
+
 
 const nextCard = () => {
 

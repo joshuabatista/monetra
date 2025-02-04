@@ -9,6 +9,23 @@ $plano = $query->data;
 
 ?>
 
+<style>
+
+.scrollbar-thin::-webkit-scrollbar {
+    height: 4px;
+}
+
+.scrollbar-thumb-gray-400::-webkit-scrollbar-thumb {
+    background-color: #9CA3AF;
+    border-radius: 4px;
+}
+
+.scrollbar-track-gray-100::-webkit-scrollbar-track {
+    background-color: #F3F4F6;
+}
+
+</style>
+
 
 <div class="" id="janeiro" role="tabpanel" aria-labelledby="janeiro-tab">
 
@@ -19,55 +36,62 @@ $plano = $query->data;
             <span class="font-medium">Lançamento de movimentações</span>
         </div>
 
-        <div class="grid-cols-7 flex gap-5">
-            <div>
-                <label for="" class="label">Data *</label>
-                <input type="date" id="data"
-                    class="data px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-            </div>
-            <div>
-                <label for="" class="label">Categoria *
-                    <button class=" text-black transition transform hover:-translate-y-1  duration-300" type="button"
-                        data-drawer-target="drawer-categoria" data-drawer-show="drawer-categoria"
-                        data-drawer-placement="left" aria-controls="drawer-categoria"><i
-                            class="fa-solid fa-question ml-2"></i></button> </label>
-                <select name="" class="select select-categoria" id="select-categoria" name="select-categoria">
-                    <option value="">Selecione</option>
-                    <option value="despesa">Saída</option>
-                    <option value="receita">Entrada</option>
-                </select>
-            </div>
+        <div class="grid sm:flex grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4 justify-center">
+            
+                <div>
+                    <label for="" class="label">Data *</label>
+                    <input type="date" id="data"
+                        class="w-full  data px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                </div>
+    
+                <div>
+                    <label for="" class="label">Categoria *
+                        <button class=" text-black transition transform hover:-translate-y-1  duration-300" type="button"
+                            data-drawer-target="drawer-categoria" data-drawer-show="drawer-categoria"
+                            data-drawer-placement="left" aria-controls="drawer-categoria"><i
+                                class="fa-solid fa-question ml-2"></i></button> </label>
+                    <select name="" class="select w-full select-categoria" id="select-categoria" name="select-categoria">
+                        <option value="">Selecione</option>
+                        <option value="despesa">Saída</option>
+                        <option value="receita">Entrada</option>
+                    </select>
+                </div>
+
             <div>
                 <label for="" class="label">Plano de Contas * <button
                         class=" text-black transition transform hover:-translate-y-1  duration-300" type="button"
                         data-drawer-target="drawer-planoContas" data-drawer-show="drawer-planoContas"
                         data-drawer-placement="left" aria-controls="drawer-planoContas"><i
                             class="fa-solid fa-question ml-2"></i></button></label>
-                <select name="" class="select w-64 selectPlanoContas" id="selectPlanoContas" name="selectPlanoContas">
+                <select name="" class="w-full md:w-64 select selectPlanoContas" id="selectPlanoContas" name="selectPlanoContas">
                     <option value="">Selecione</option>
                     <!-- select dinamico no js -->
                 </select>
             </div>
+
             <div>
                 <label for="" class="label">Beneficiário</label>
-                <input type="" name="beneficiario" placeholder="Sr. José, Avó..." class="input beneficiario">
+                <input type="" name="beneficiario" placeholder="Sr. José, Avó..." class="input w-full beneficiario">
             </div>
+
             <div>
                 <label for="" class="label">Tipo * <button
                         class=" text-black transition transform hover:-translate-y-1  duration-300" type="button"
                         data-drawer-target="drawer-tipo" data-drawer-show="drawer-tipo" data-drawer-placement="left"
                         aria-controls="drawer-tipo"><i class="fa-solid fa-question ml-2"></i></button></label>
-                <select name="tipo" id="tipo" class="select tipo">
+                <select name="tipo" id="tipo" class="select w-full tipo">
                     <option value="">Selecione</option>
                     <!-- Select dinamico no js -->
                 </select>
             </div>
+
             <div>
                 <label for="" class="label">Valor *</label>
                 <input type="number" name="valor" id="valor" placeholder="R$ 500,00"
-                    class="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent valor">
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent valor">
             </div>
-            <div class=" mt-5">
+            
+            <div class="mt-5 text-center">
                 <button class="btn-add-mov relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"> <span
                         class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                         Adicionar
@@ -84,6 +108,7 @@ $plano = $query->data;
 
 
         </div>
+        
     </div>
 
     <div class="">
@@ -96,27 +121,32 @@ $plano = $query->data;
 
 
 
-    <div class="hidden grid grid-cols-5 justify-center gap-3 filters">
-        <div class="col-data-inicio ml-[40px]">
+    <div class="hidden grid p-4 sm:grid-cols-1 md:grid-cols-5 justify-center gap-3 filters">
+
+
+        <div class=" col-data-inicio">
             <label for="data-inicio" class="label">Data inicio</label>
             <input type="date" id="data-inicio" name="data-inicio"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
         </div>
+
         <div class="col-data-termino">
             <label for="data-termino" class="label">Data termino</label>
             <input type="date" id="data-termino" name="data-termino"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
         </div>
+
         <div class="col-plano-contas">
             <label for="filtro-plano-contas" class="label">Plano de Contas</label>
             <select id="filtro-plano-contas" name="filtro-plano-contas"
-                class=" w-64 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                class=" w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 <option value="">Selecione</option>
                 <?php foreach($plano as $planos) {
                     echo '<option value = "'.$planos->codigo.'">'.$planos->descricao.'</option>';
                 } ?>
             </select>
         </div>
+
         <div class="col-categoria">
             <label for="filtro-categoria" class="label">Categoria</label>
             <select id="filtro-categoria" name="filtro-categoria"
@@ -126,7 +156,8 @@ $plano = $query->data;
                 <option value="Receita">Receita</option>
             </select>
         </div>
-        <div class="col-tipo mr-[40px]">
+
+        <div class="col-tipo ">
             <label for="filtro-tipo" class="label">Tipo</label>
             <select id="filtro-tipo" name="filtro-tipo"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
@@ -137,34 +168,50 @@ $plano = $query->data;
                 <option value="3">A receber</option>
             </select>
         </div>
+
     </div>
 
-    <table class="table-auto w-full mt-5" id="tabelaMovimentacoes">
-        <thead class="border border-solid border-gray-300 bg-gray-50">
-            <th class="px-6 py-3 text-center" scope="col">Data</th>
-            <th class="px-6 py-3 text-center" scope="col">Categoria</th>
-            <th class="px-6 py-3 text-center" scope="col">Plano de Contas</th>
-            <th class="px-6 py-3 text-center" scope="col">Beneficiário</th>
-            <th class="px-6 py-3 text-center" scope="col">Tipo</th>
-            <th class="px-6 py-3 text-center" scope="col">Debito</th>
-            <th class="px-6 py-3 text-center" scope="col">Crédito</th>
-            <th class="px-6 py-3 text-center" scope="col">Excluir</th>
-            <!-- <th class="px-6 py-3 text-center" scope="col">Saldo</th> -->
-            </tr>
-        </thead>
 
+    <div class="w-full overflow-hidden relative">
 
-        <tbody>
-            <!-- Linhas serão adicionadas aqui -->
-        </tbody>
-    </table>
+        <div class="flex sm:hidden absolute top-0 left-0 w-full h-4 overflow-x-auto bg-gray-100 scrollbar-thin mt-4"
+            id="scrollTopDiv"
+            style="scrollbar-width: thin; scrollbar-color: #9CA3AF #F3F4F6;">
+            <div id="scrollTracker" class="h-px"></div>
+        </div>
+
+        <div class="w-full overflow-x-auto pt-4" id="scrollBottomDiv">
+            <table class=" min-w-full mt-5" id="tabelaMovimentacoes">
+                <thead class="border border-solid border-gray-300 bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-center" scope="col">Data</th>
+                        <th class="px-6 py-3 text-center" scope="col">Categoria</th>
+                        <th class="px-6 py-3 text-center" scope="col">Plano de Contas</th>
+                        <th class="px-6 py-3 text-center" scope="col">Beneficiário</th>
+                        <th class="px-6 py-3 text-center" scope="col">Tipo</th>
+                        <th class="px-6 py-3 text-center" scope="col">Debito</th>
+                        <th class="px-6 py-3 text-center" scope="col">Crédito</th>
+                        <th class="px-6 py-3 text-center" scope="col">Excluir</th>
+                        <!-- <th class="px-6 py-3 text-center" scope="col">Saldo</th> -->
+                    </tr>
+                </thead>
+        
+        
+                <tbody>
+                    <!-- Linhas serão adicionadas aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 
     <div class="loading justify-center mt-5 hidden">
         <img src="/public_html/assets/images/monetra-loading.png" alt="loading" class=" w-14 animate-spin">
     </div>
 
 
-    <div class="flex justify-between items-center mt-5 pagination">
+
+    <div class="flex justify-center md:justify-between items-center mt-5 pagination">
 
         <div class="hidden sm:flex ml-2">
             <span class="font-medium text-base text-gray-500 pagination-info"></span>
@@ -198,6 +245,7 @@ $plano = $query->data;
         </div>
 
     </div>
+
     <div class="flex justify-center mt-1 sm:hidden">
         <span class="font-medium text-base text-gray-500 pagination-info">Página 1 de 10</span>
     </div>

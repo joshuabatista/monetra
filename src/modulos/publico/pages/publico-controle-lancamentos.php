@@ -15,21 +15,23 @@
 <body>
 
 <div class=" flex justify-center items-center">
-    <div class="content flex flex-col rounded-lg">
+    <div class="content flex flex-col w-full lg:w-0 max-w-4x1 mx-auto rounded-lg">
         <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-            <ul class="flex justify-around flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
+
+            <ul class="flex flex-wrap justify-around overflow-x-auto whitespace-nowrap text-sm font-medium text-center" id="default-tab"
                 data-tabs-toggle="#abas" role="tablist">
                 <li class="me-2" role="presentation">
-                    <button class=" inline-block p-4 border-b-2 rounded-t-lg" id="janeiro-tab" data-tabs-target="#janeiro"
+                    <button class=" inline-block p-3 sm:p-4 border-b-2 rounded-t-lg text-xs sm:text-sm" id="janeiro-tab" data-tabs-target="#janeiro"
                         type="button" role="tab" aria-controls="janeiro" aria-selected="false">Movimentações financeiras</button>
                 </li>
                 <li class="me-2" role="presentation">
                     <button
-                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        class="inline-block p-3 sm:p-4 border-b-2 rounded-t-lg text-xs sm:text-sm hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                         id="fevereiro-tab" data-tabs-target="#fevereiro" type="button" role="tab" aria-controls="fevereiro"
                         aria-selected="false">Cartão de Crédito</button>
                 </li>
             </ul>
+            
         </div>
 
         <div id="abas">

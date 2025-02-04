@@ -1,7 +1,13 @@
 
 $(() => {
     getMovimentation()
+    syncScroll()
+    updateScrollWidth()
 })
+
+$(window).resize(function() {
+    updateScrollWidth();
+});
 
 var currentPage, totalPages
 
@@ -73,14 +79,14 @@ const getMovimentation = async (page = 1) => {
 
                     $('#tabelaMovimentacoes tbody').append(`
                         <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b tabela-mov" data-id="${movimentacao.id}">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${dataFormatada}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.descricao}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.beneficiario}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.tipo}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Despesa' ? `${movimentacao.valor}` : ''}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">${movimentacao.categoria === 'Receita' ? `${movimentacao.valor}` : ''}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center "><button class="btn-excluir-mov rounded-md shadow-lg bg-slate-100 p-2"><i class="fa-regular fa-trash-can"></i></button></td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${dataFormatada}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.descricao}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.beneficiario}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.tipo}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria === 'Despesa' ? `${movimentacao.valor}` : ''}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria === 'Receita' ? `${movimentacao.valor}` : ''}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center "><button class="btn-excluir-mov rounded-md shadow-lg bg-slate-100 p-2"><i class="fa-regular fa-trash-can"></i></button></td>
                         </tr>
                     `);
                 });
@@ -98,7 +104,36 @@ const getMovimentation = async (page = 1) => {
 
     $('.btn-next').prop('disabled', currentPage + 1 > totalPages);
     $('.btn-prev').prop('disabled', currentPage - 1 <= 0);
+
+    updateScrollWidth()
 };
+
+const syncScroll = () => {
+
+        const topDiv = $('#scrollTopDiv');
+        const bottomDiv = $('#scrollBottomDiv');
+        
+        // Sincroniza scroll superior com inferior
+        topDiv.on('scroll', function() {
+            bottomDiv.scrollLeft(topDiv.scrollLeft());
+        });
+    
+        // Sincroniza scroll inferior com superior
+        bottomDiv.on('scroll', function() {
+            topDiv.scrollLeft(bottomDiv.scrollLeft());
+        });
+}
+
+
+const updateScrollWidth = () => {
+
+        const tableWidth = $('#tabelaMovimentacoes').outerWidth();
+        $('#scrollTopDiv div').css('min-width', tableWidth + 'px');
+}
+
+
+
+
 
 const next = () => {
 
