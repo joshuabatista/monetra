@@ -50,4 +50,5 @@ RewriteRule ^edit-password$ /src/modulos/publico/backend/publico-change-password
 RewriteRule ^esqueceu-senha$ /src/modulos/publico/backend/publico-esqueceu-senha.php [L] 
 RewriteRule ^valida-codigo$ /src/modulos/publico/backend/publico-valida-codigo-esqueceu-senha.php [L] 
 RewriteRule ^setar-nova-senha$ /src/modulos/publico/backend/publico-nova-senha.php [L] 
+RewriteRule ^delete-minucioso$ /src/modulos/publico/backend/publico-delete-minucioso.php [L] 
 
