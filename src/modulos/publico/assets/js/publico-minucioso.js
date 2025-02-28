@@ -1,3 +1,4 @@
+
 $(()=> {
     getPlano()
     // chartMinucioso()
@@ -119,13 +120,21 @@ const getMinucioso = async () => {
         return; 
     }
 
+    console.log(response);
+    
+
     response.controle_minucioso.forEach((item, index) => {
         const cardHtml = `
-            <div class="bg-white border border-gray-200 rounded-lg shadow-md p-4 text-center">
+            <div class="container-minucioso-renderize bg-white border border-gray-200 rounded-lg shadow-md p-4 text-center" data-id=${item.id}>
                 <h3 class="text-lg font-semibold text-gray-800 mb-2">${item.descricao}</h3>
                 <div id="chart-${index}" class="chart mx-auto flex justify-center"></div>
                 <p class="text-sm text-gray-600">Limite: R$${item.limite.toFixed(2)}</p>
                 <p class="text-sm text-gray-600">Gasto: R$${item.total_gasto.toFixed(2)} (${item.percentual_gasto.toFixed(1)}%)</p>
+                <div class="flex items-center justify-center text-center mt-2">
+                    <div class="p-2 bg-red-200 rounded-lg w-10 text-center justify-center items-center">
+                        <button class="btn-delete-minucioso"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
             </div>
         `;
         
@@ -140,6 +149,45 @@ const getMinucioso = async () => {
 
 
 };
+
+const deleteMinucioso = async ({target}) => {
+
+    const elm = $(target).closest('.container-minucioso-renderize')
+
+    const id = elm.data('id');
+
+    const url = 'delete-minucioso'
+
+    const response = await $.getJSON(url, {id: id});
+
+    if(!response){
+        Swal.fire({
+            position: 'top-end',
+            toast: true,
+            icon: 'error',
+            title: 'Opss',
+            text: response.message,
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        })
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            toast: true,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1000,
+            text: response.message,
+            timerProgressBar: true,
+        }).then(() => {
+            getMinucioso()
+        })
+    }
+
+
+}
+
 
 
 const createChartForItem = (id, percentualGasto) => {
@@ -244,3 +292,4 @@ $(document).on('click', '.btn-add-minucioso', saveMinucioso)
 $(document).on('change', '#filtroPeriodo', getMinucioso)
 $(document).on('click', '.btn-show-mes', showFiltersMinucioso)
 $(document).on('click', '.btn-hide-mes', hideFiltersMinucioso)
+$(document).on('click', '.btn-delete-minucioso', deleteMinucioso)

@@ -22,7 +22,7 @@ if(!empty($filtro)) {
 
 
 //pegar controle
-$sqlControle = "SELECT m.plano_contas, pc.descricao, m.limite    
+$sqlControle = "SELECT m.id, m.plano_contas, pc.descricao, m.limite   
                 FROM minucioso m
                 JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
                 WHERE m.usu_id = $usu_id
@@ -38,6 +38,7 @@ $planoContas = [];
 foreach($controle as $item) {
     $planoContas[] = $item->plano_contas;
 }
+
 
 $planoContasList = "'" . implode("', '", $planoContas) . "'";
 
@@ -63,6 +64,7 @@ foreach ($controle as $item) {
     $plano = $item->plano_contas;
     $limite = (float) $item->limite;
     $descicao = $item->descricao;
+    $id = $item->id;
 
     $totalGasto = 0;
 
@@ -81,7 +83,8 @@ foreach ($controle as $item) {
         'descricao' => $descicao,
         'limite' => $limite,
         'total_gasto' => $totalGasto,
-        'percentual_gasto' => $percentualGasto
+        'percentual_gasto' => $percentualGasto,
+        'id' => $id
     ];
 }
 
