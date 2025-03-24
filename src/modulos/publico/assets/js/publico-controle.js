@@ -167,6 +167,7 @@ const saveCreditCard = () => {
     let consumed3 = $('#consumedLimitCard3').val()
     let consumed4 = $('#consumedLimitCard4').val()
     let consumed5 = $('#consumedLimitCard5').val()
+    let saldo = $("#saldoInicial").val()
 
     let switchAvancar = $('#switch-avançar').is(':checked')
 
@@ -186,7 +187,8 @@ const saveCreditCard = () => {
         consumed3: consumed3,
         consumed4: consumed4,
         consumed5: consumed5,
-        switchAvancar: switchAvancar
+        switchAvancar: switchAvancar,
+        saldo: saldo
     }
 
     $.ajax({
