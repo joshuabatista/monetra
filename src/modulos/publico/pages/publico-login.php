@@ -16,10 +16,10 @@
         <input type="checkbox" id="flip">
         <div class="cover">
             <div class="front">
-                <img src="../../../../public_html/assets/images/monetra-logo-azul-royal.png" alt="">
+                <img src="../../../../public_html/assets/images/monetra_margem.svg" alt="">
             </div>
             <div class="back">
-                <img src="../../../../public_html/assets/images/monetra-logo-azul-royal.png" alt="">
+                <img src="../../../../public_html/assets/images/monetra_margem.svg" alt="">
             </div>
         </div>
         <div class="forms">
