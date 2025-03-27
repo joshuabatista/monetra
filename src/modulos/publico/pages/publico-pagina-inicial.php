@@ -20,16 +20,11 @@
 
     <div class="grid grid-cols-12 justify-between">
 
-        <div class="logo-monetra hidden sm:block col-span-1">
-            <img class="w-24 rounded-lg shadow-lg" src="../../../../public_html/assets/images/monetra-only-logo.svg" alt="Logo-Monetra" >
+        <div class="logo-monetra col-span-6 sm:col-span-3 items-center justify-start">
+            <img class=" w-16 sm:32 rounded-lg shadow-lg" src="../../../../public_html/assets/images/monetra-only-logo.svg" alt="Logo-Monetra" >
         </div>
-
-        <div class="logo-monetra block sm:hidden grid-cols-1">
-            <img class="w-12 rounded-lg shadow-lg" src="../../../../public_html/assets/images/monetra-only-logo.svg" alt="Logo-Monetra" >
-        </div>
- 
-        <div class="col-span-10 flex justify-around items-center">
-            <div class="flex flex-row">
+        <div class="col-span-0 sm:col-span-6 hidden sm:flex justify-around items-center">
+            <div class="flex-col sm:flex-row contents">
                 <div>
                     <span class="text-lg font-thin">Sobre</span>
                 </div>
@@ -45,24 +40,42 @@
     
             </div>
         </div>
-
-        <div  class="flex items-end justify-end col-span-1">
-            <div class="hidden sm:block">
-                <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
-                    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </span>
-                    <span class="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">Get started!</span>
-                    <span class="relative invisible">Get started!</span>
-                </a>
-            </div>
-            <div class="block sm:hidden">
-                <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get Started!</button>
-            </div>
+        <div  class="hidden sm:flex justify-end col-span-0 sm:col-span-3 items-center">
+            <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
+                <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </span>
+                <span class="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">Get started!</span>
+                <span class="relative invisible">Get started!</span>
+            </a>
         </div>
 
-        
+        <div class="flex sm:hidden col-span-6 mt-4 justify-end">
+    <a href="#_" class="flex sm:hidden">
+        <div class="bg-primary h-7 w-20 text-center justify-center m-2 rounded-lg text-zinc-50 animate-[pulseGrow_2s_infinite_ease-in-out]">
+            <span class="rounded-sm font-bold text-center justify-center mt-2">Começar!</span>
+        </div>
+    </a>
+</div>
 
+
+    </div>
+    <div class="sm:hidden flex justify-around mt-4">
+        <div class="flex-row contents">
+            <div>
+                <span class="text-lg font-thin">Sobre</span>
+            </div>
+            <div>
+                <span class="text-lg font-thin">Tutorial</span>
+            </div>
+            <div>
+                <span class="text-lg font-thin">Projeto</span>
+            </div>
+            <div>
+                <span class="text-lg font-thin">Suporte</span>
+            </div>
+
+        </div>
     </div>
 </header>
 
