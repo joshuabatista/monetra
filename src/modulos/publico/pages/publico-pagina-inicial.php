@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.2/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="../../../../src/output.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
-    <link rel="icon" href="../../public_html/assets/images/monetra-only-logo-royal.png">
+    <link rel="icon" href="../../public_html/assets/images/monetra-only-logo.svg">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -21,11 +21,11 @@
     <div class="grid grid-cols-12 justify-between">
 
         <div class="logo-monetra hidden sm:block col-span-1">
-            <img class="w-24 rounded-lg shadow-lg" src="../../../../public_html/assets/images/monetra-only-logo-royal.png" alt="Logo-Monetra" >
+            <img class="w-24 rounded-lg shadow-lg" src="../../../../public_html/assets/images/monetra-only-logo.svg" alt="Logo-Monetra" >
         </div>
 
         <div class="logo-monetra block sm:hidden grid-cols-1">
-            <img class="w-12 rounded-lg shadow-lg" src="../../../../public_html/assets/images/monetra-only-logo-royal.png" alt="Logo-Monetra" >
+            <img class="w-12 rounded-lg shadow-lg" src="../../../../public_html/assets/images/monetra-only-logo.svg" alt="Logo-Monetra" >
         </div>
  
         <div class="col-span-10 flex justify-around items-center">
