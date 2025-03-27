@@ -8,13 +8,10 @@ session_start();
 $pdo->beginTransaction();
 
 $usu_id = $_SESSION['user_id'];
-
-$email = $_POST['emailUsu'];
 $nome = $_POST['nomeUsu'];
 $sobrenome = $_POST['sobrenomeUsu'];
-$celular = $_POST['celularUsu'];
 
-if(empty($email) || empty($nome) || empty($sobrenome)) {
+if(empty($nome) || empty($sobrenome)) {
     $pdo->rollback();
     response([
         'status'=>false,
@@ -22,9 +19,9 @@ if(empty($email) || empty($nome) || empty($sobrenome)) {
     ]);
 }
 
-$sql = "UPDATE users SET email = ?, nome = ?, sobrenome = ?, celular = ? WHERE id = ?";
+$sql = "UPDATE users SET nome = ?, sobrenome = ? WHERE id = ?";
 
-$query = prepare($sql, [$email, $nome, $sobrenome, $celular, $usu_id]);
+$query = prepare($sql, [$nome, $sobrenome, $usu_id]);
 
 if(!empty($query->exception)) {
     $pdo->rollback();

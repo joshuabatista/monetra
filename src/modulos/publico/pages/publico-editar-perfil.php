@@ -60,7 +60,7 @@
     </script>
 
     <?php require"../../../includes/footer.php"?>
-    <script src="/src/modulos/publico/assets/js/publico-editar.js"></script>
+    <!-- <script src="/src/modulos/publico/assets/js/publico-editar.js"></script> -->
 </body>
 
 </html>
