@@ -1344,6 +1344,10 @@ input:checked + .toggle-bg {
   margin-top: 10rem;
 }
 
+.mt-\[2rem\] {
+  margin-top: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -3062,6 +3066,10 @@ input:checked + .toggle-bg {
     margin-top: 0px;
   }
 
+  .sm\:mt-\[10rem\] {
+    margin-top: 10rem;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -3092,6 +3100,10 @@ input:checked + .toggle-bg {
 
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:justify-around {
+    justify-content: space-around;
   }
 
   .sm\:gap-8 {

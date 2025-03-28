@@ -13,12 +13,12 @@
                 </span>
             </div>
             <div id="btn-projeto">
-                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                <span class="btn-projeto text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
                     Projeto
                 </span>
             </div>
             <div id="btn-tutorial">
-                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                <span class="btn-tutorial text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
                     Tutorial
                 </span>
             </div>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div  class="hidden sm:flex justify-end col-span-0 sm:col-span-3 items-center">
-            <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
+            <a href="/login" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
                 <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </span>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="flex sm:hidden col-span-6 mb-3 mt-2 justify-end">
-            <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
+            <a href="/login" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
                 <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </span>
@@ -58,13 +58,13 @@
                 </span>
             </div>
             <div>
-                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
-                    Tutorial
+                <span class="btn-projeto-mobile text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Projeto
                 </span>
             </div>
             <div>
-                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
-                    Projeto
+                <span class="btn-tutorial text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Tutorial
                 </span>
             </div>
             <div>

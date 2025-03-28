@@ -89,7 +89,7 @@
             <div class=" text-gray-800 animate-fade-in-right mt-2">
                 <h1 class="text-3xl sm:text-3xl font-bold mb-4">Bem-vindo ao monetra</h1>
                 <p class="mb-4 sm:text-xl">
-                    O seu sistema web gratuito para uma gestão financeira pessoal precisa e eficiente.
+                    O seu sistema web gratuito para uma gestão financeira pessoal, precisa e eficiente.
                 </p>
                 <h2 class="text-2xl font-semibold mb-3">O que é o monetra?</h2>
                 <p class="mb-4 sm:text-xl">
@@ -179,7 +179,7 @@
         </div>
     </div>
 
-    <div id="projeto" class="hidden sm:flex flex-row justify-center items-center mt-[8rem]">
+    <div id="projeto-web" class="hidden sm:flex flex-row justify-center items-center mt-[8rem]">
         <div>
             <img src="../../../../public_html/assets/images/draw-entrada.svg" class="w-[20rem]">
         </div>
@@ -191,7 +191,7 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 p-0 sm:p-10 mt-6">
+    <div id="projeto-mobile" class="grid grid-cols-2 sm:grid-cols-3 p-0 sm:p-10 mt-6">
         <div class="col-span-2 sm:col-span-2 flex-col flex items-start justify-start p-4 mt-8">
             <div class="bg-white rounded-lg p-0 sm:p-8">
                 <h2 class="text-2xl font-semibold text-gray-800 mb-3 text-center">O Projeto</h2>
@@ -219,7 +219,7 @@
                         boas práticas de desenvolvimento.
                         Sem eles, o caminho teria sido mais difícil:
                     </p>
-                    <div class="flex flex-row justify-around mt-3 text-gray-700">
+                    <div class="flex flex-row justify-between text-center sm:justify-around mt-3 text-gray-700">
                         <p><strong>Jonathan Teixeira</strong></p>
                         <p><strong>Rodrigo "Miau"</strong></p>
                         <p><strong>Leonardo Campos</strong></p>
@@ -239,7 +239,7 @@
 
     </div>
 
-    <h2 class="text-3xl sm:text-3xl font-bold text-center mt-[10rem]" id="tutorial">Tutorial</h2>
+    <h2 class="text-3xl sm:text-3xl font-bold text-center mt-[2rem] sm:mt-[10rem]" id="tutorial">Tutorial</h2>
     <div class="flex mt-[1rem] justify-center">
         <div id="indicators-carousel" class="relative w-full" data-carousel="static">
             <!-- Carousel wrapper -->
@@ -366,13 +366,21 @@
         $(document).ready(function () {
             $("#btn-projeto").on("click", function () {
                 $("html, body").animate({
-                    scrollTop: $("#projeto").offset().top
+                    scrollTop: $("#projeto-web").offset().top
                 }, 800); // 800ms para um efeito suave
             });
         });
 
         $(document).ready(function () {
-            $("#btn-tutorial").on("click", function () {
+            $(".btn-projeto-mobile").on("click", function () {
+                $("html, body").animate({
+                    scrollTop: $("#projeto-mobile").offset().top
+                }, 800); // 800ms para um efeito suave
+            });
+        });
+
+        $(document).ready(function () {
+            $(".btn-tutorial").on("click", function () {
                 $("html, body").animate({
                     scrollTop: $("#tutorial").offset().top
                 }, 800); // 800ms para um efeito suave
