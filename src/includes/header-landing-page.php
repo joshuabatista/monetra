@@ -17,7 +17,7 @@
                     Projeto
                 </span>
             </div>
-            <div>
+            <div id="btn-tutorial">
                 <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
                     Tutorial
                 </span>
