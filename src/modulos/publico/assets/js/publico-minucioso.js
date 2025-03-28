@@ -1,8 +1,8 @@
 
 $(()=> {
     getPlano()
-    // chartMinucioso()
     getMinucioso()
+    $('#inputValor').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true})
 })
 
 let charts = {};
@@ -35,7 +35,7 @@ const renderSelect = (data) => {
 const saveMinucioso = () => {
 
     let planoContas = $('#selectControle').val()
-    let limite = $('#inputValor').val()
+    let limite = stripMoney($('#inputValor').val())
 
     if(planoContas === '' || limite === '') {
         Swal.fire({

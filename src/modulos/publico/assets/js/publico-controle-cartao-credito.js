@@ -3,6 +3,7 @@ $(() => {
     getCards()
     syncScrollCard()
     updateScrollWidthCard()
+    $('.valorCartao').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true})
 })
 
 $(window).resize(function() {
@@ -89,7 +90,7 @@ const getMovimentationCard = async (page = 1) => {
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.descricao}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.cartao}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.parcelamento}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.beneficiario}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.beneficiario == null ? '-' : `${movimentacao.beneficiario}`}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.tipo}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria === 'Despesa' ? movimentacao.valor : ''}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria === 'Receita' ? movimentacao.valor : ''}</td>
@@ -172,7 +173,7 @@ const addMovimentationCard = () => {
     let planoContas = $('#selectPlanoContasCartao').val();
     let beneficiario = $('.beneficiarioCartao').val();
     let tipo = $('#tipoCartao').val();
-    let valor = $('#valorCartao').val();
+    let valor = stripMoney($('#valorCartao').val())	 
     let cartao = $('.cartao').val()
     let parcelamento = $('#quantidade').val()
     let dataFormatada = formatarData(data);
@@ -403,6 +404,18 @@ $(document).on('click', '.btn-hide-filters-card', function() {
     $('#filtro-card').val('')
 
 });
+
+// const stripMoney = value => {
+//     if(value == 0)
+//         return value = 0 
+
+//     value = Number(value.replace(/[^0-9\-]+/g, '').replace(/(\..*)\./g, '$1')) / 100;
+//     // value = Number(value.replace(/[^0-9.-]+/g,"")) / 100;
+
+//     return value
+// }
+
+
 
 
 // Eventos ouvintes

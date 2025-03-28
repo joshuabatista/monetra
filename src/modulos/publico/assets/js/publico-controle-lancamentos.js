@@ -83,7 +83,7 @@ const getMovimentation = async (page = 1) => {
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${dataFormatada}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.descricao}</td>
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.beneficiario}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.beneficiario == null ? '-' : `${movimentacao.beneficiario}`}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.tipo}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria === 'Despesa' ? `${movimentacao.valor}` : ''}</td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-normal text-center">${movimentacao.categoria === 'Receita' ? `${movimentacao.valor}` : ''}</td>
@@ -355,6 +355,17 @@ $(document).on('click', '.btn-hide-filters', function() {
     
 
 });
+
+// const stripMoney = value => {
+//     if(value == 0)
+//         return value = 0 
+
+//     value = Number(value.replace(/[^0-9\-]+/g, '').replace(/(\..*)\./g, '$1')) / 100;
+//     // value = Number(value.replace(/[^0-9.-]+/g,"")) / 100;
+
+//     return value
+// }
+
 
 
 // Eventos ouvintes

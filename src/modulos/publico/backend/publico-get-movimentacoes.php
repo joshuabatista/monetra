@@ -45,6 +45,7 @@ $sql = "SELECT SQL_CALC_FOUND_ROWS pc.descricao, m.*
         FROM movimentacoes m
         JOIN plano_contas_analitico pc ON pc.codigo = m.plano_contas
         WHERE usu_id = ? $where
+        AND m.cartao_credito = '0'
         LIMIT $start, $limit";
 
 $query = prepareAll($sql, [$usu_id]);
