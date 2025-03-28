@@ -1,5 +1,8 @@
 
 $(() => {
+
+    $('.saldoInicial').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true})
+
     getSaldo()
     getInfoCard()
 })
@@ -122,7 +125,7 @@ const validation = (event) => {
 
 const saveSaldo = () => {
 
-    const saldo  = $('.saldoInicial').val()
+    const saldo  = stripMoney($('.saldoInicial').val())
     const data = $('#dataSaldo').val()
 
     $.ajax({
@@ -233,6 +236,16 @@ const saveCreditCard = () => {
 
         
     })
+}
+
+const stripMoney = value => {
+    if(value == 0)
+        return value = 0 
+
+    value = Number(value.replace(/[^0-9\-]+/g, '').replace(/(\..*)\./g, '$1')) / 100;
+    // value = Number(value.replace(/[^0-9.-]+/g,"")) / 100;
+
+    return value
 }
 
 
