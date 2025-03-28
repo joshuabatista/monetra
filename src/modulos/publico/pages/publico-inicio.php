@@ -1,10 +1,24 @@
 <?php
  $title = "Monetra | Inicio";
 
+ require '../../../../public_html/config/conexao.php';
  require '../../../includes/head.php'; 
  require "../../../../app/functions.php";
 
  $usu_id = $_SESSION['user_id'];
+
+    $sql = "SELECT valor
+            FROM movimentacoes
+            WHERE categoria = 'Inicial'
+            AND usu_id = ?";
+
+    $query = prepare($sql,[$usu_id]);
+
+    $inicial = $query->data->valor;
+
+    if(empty($inicial)){
+        header("Location: /controle");
+    }
 
 ?>
 

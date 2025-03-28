@@ -7,6 +7,14 @@ session_start();
 
 $usu_id = $_SESSION['user_id'];
 
+$saldo = $_POST['saldo'];
+
+if(empty($saldo)){
+    response([
+        'status'=>false
+    ]);
+}
+
 // Recebendo os dados dos cartões
 $cartoes = [];
 for ($i = 1; $i <= 4; $i++) {

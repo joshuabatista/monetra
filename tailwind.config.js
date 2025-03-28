@@ -17,6 +17,15 @@ module.exports = {
       screens: {
         mobile: { max: '639px' },
       },
+      animation: {
+        pulseGrow: "pulseGrow 1.5s infinite ease-in-out",
+      },
+      keyframes: {
+        pulseGrow: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.1)" },
+        },
+      },
     },
   },
   plugins: [

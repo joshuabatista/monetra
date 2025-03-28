@@ -212,19 +212,15 @@ function encryptData($data, $key) {
 }
 
 function decryptData($encryptedEmail, $key) {
+    
     $cipher = "AES-256-CBC";
-
-
   
     // Verifica se a string contém o separador '::'
     if (strpos(base64_decode($encryptedEmail), '::') === false) {
         return false; // Se não tiver '::', os dados estão corrompidos
     }
     
-
     list($encryptedData, $iv) = explode('::', base64_decode($encryptedEmail), 2); // Separa os dados criptografados do IV
-
-    
 
     // Verifica se ambos os componentes estão presentes
     if (!isset($encryptedData, $iv)) {

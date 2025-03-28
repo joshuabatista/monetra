@@ -10,7 +10,7 @@ const getInfoUser = async () => {
     const response = await $.getJSON(url)
 
     renderInfoUser(response.data)
-    
+
 }
 
 const renderInfoUser = (data) => {
@@ -78,35 +78,6 @@ const editarPerfil = () => {
         }
     })
  }
-
-//  $(document).ready(function () {
-//     const $drawer = $('#drawer-informacoes'); 
-//     const $body = $('body'); 
-
-//     function showDrawerInfo() {
-//         $drawer.removeClass('-translate-x-full').addClass('translate-x-0');
-//         $body.append('<div class="drawer-backdrop-informacoes bg-gray-900/50 fixed inset-0 z-30"></div>');
-//     }
-
-//     function hideDrawerInfo() {
-//         $drawer.removeClass('translate-x-0').addClass('-translate-x-full');
-//         $('.drawer-backdrop-informacoes').remove(); 
-//     }
-
-//     $('#drawer-trigger-info').on('click', function () {
-//         showDrawerInfo();
-//     });
-
-//     $('#drawer-hide-info').on('click', function () {
-//         hideDrawerInfo();
-//     });
-
-//     $(document).on('click', '.drawer-backdrop-informacoes', function () {
-//         hideDrawerInfo();
-//     });
-// });
-
-
 
 $(document).ready(function() {
 
