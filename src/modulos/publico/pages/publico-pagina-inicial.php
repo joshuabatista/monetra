@@ -61,7 +61,7 @@
 }
 
 .animate-scroll {
-  animation: scroll 5s linear infinite;
+  animation: scroll 15s linear infinite;
 }
 </style>
 
@@ -71,32 +71,33 @@
 
 
 <body class=" p-4">
-    <div class="grid grid-cols-2 sm:grid-cols-3">
-        <div class="hidden sm:flex col-span-1 justify-center mt-6">
-            <img class="  rounded-lg animate-slide-in" src="../../../../public_html/assets/images/monetra_margem.svg" alt="">
+    <div class="grid grid-cols-2 sm:grid-cols-3 p-0 sm:p-10">
+        <div class="hidden sm:flex col-span-1 justify-center items-start mt-6">
+            <img class=" rounded-xl animate-slide-in w-[30rem]" src="../../../../public_html/assets/images/monetra_margem.svg" alt="">
         </div>
 
         <div class="col-span-2 sm:col-span-2 flex-col flex items-start  justify-start p-4">
             <div class=" text-gray-800 animate-fade-in-right mt-2">
-                <h1 class="text-3xl sm:text-4xl font-bold mb-4">Bem-vindo ao monetra</h1>
-                <p class="mb-4 text-xl sm:text-2xl">
+                <h1 class="text-3xl sm:text-3xl font-bold mb-4">Bem-vindo ao monetra</h1>
+                <p class="mb-4 sm:text-xl">
                     O seu sistema web gratuito para uma gestão financeira pessoal precisa e eficiente.
                 </p>
-                <h2 class="text-3xl font-semibold mb-3">O que é o monetra?</h2>
-                <p class="mb-4 text-sl sm:text-2xl">
+                <h2 class="text-2xl font-semibold mb-3">O que é o monetra?</h2>
+                <p class="mb-4 sm:text-xl">
                     O monetra nasceu da junção das palavras <strong>"Money"</strong> e <strong>"Metra"</strong>, representando a medição precisa e a gestão eficiente do seu dinheiro. Este projeto é o meu primeiro desenvolvimento solo, criado com dedicação e paixão para ajudar você a assumir o controle total das suas finanças.
                 </p>
-                <h3 class="text-3xl font-semibold mb-2">Por que usar o monetra?</h3>
-                <ul class="list-disc ml-5 mb-4 text-xl sm:text-2xl">
-                <p>Gestão completa das suas finanças pessoais</p>
-                <p>Ferramentas de controle de gastos e receitas</p>
-                <p>Visualização intuitiva de relatórios</p>
-                <p>100% gratuito e online</p>
+                <ul class="list-disc mb-4 sm:text-xl">
+                    <div class="block sm:grid grid-cols-1 sm:grid-cols-2">
+                        <div>
+                            <p class="mt-1 sm:mt-0">Gestão completa das suas finanças pessoais</p>
+                            <p class="mt-1 sm:mt-0">Ferramentas de controle de gastos e receitas</p>
+                        </div>
+                        <div>
+                            <p class="mt-1 sm:mt-0">Visualização intuitiva de relatórios</p>
+                            <p class="mt-1 sm:mt-0">100% gratuito e online</p>
+                        </div>
+                    </div>
                 </ul>
-
-                <p class=" text-xl sm:text-2xl">
-                Experimente e sinta a diferença no seu bolso!
-                </p>
             </div>
 
             <div class="overflow-hidden relative w-full">
@@ -135,5 +136,66 @@
             </div>
         </div>
     </div>
+
+    <div id="projeto" class="hidden sm:flex flex-row justify-center items-center mt-[8rem]">
+        <div>
+            <img src="../../../../public_html/assets/images/draw-entrada.svg" class="w-[20rem]">
+        </div>
+        <div>
+            <img src="../../../../public_html/assets/images/monetra-laptop.png" class=" w-[30rem] mt-2">
+        </div>
+        <div>
+            <img src="../../../../public_html/assets/images/draw-saida.svg" class="w-[20rem]">
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 p-0 sm:p-10 mt-6">
+        <div class="col-span-2 sm:col-span-2 flex-col flex items-start justify-start p-4 shadow-sm mt-8">
+            <div class="bg-white rounded-lg p-0 sm:p-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-3 text-center">O Projeto</h2>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    O <strong>monetra</strong> nasceu de um desejo antigo, desde quando iniciei minha jornada no desenvolvimento de sistemas, em fevereiro de 2024. 
+                    Sempre tive vontade de criar algo voltado para finanças, pois acumulei <strong>8 anos de experiência</strong> em contabilidade empresarial e pessoal.
+                </p>
+                <div class="mt-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-3">A Jornada do Desenvolvimento</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        Esse projeto foi minha maneira de colocar em prática meus estudos em <strong>PHP, jQuery e Tailwind CSS</strong>. 
+                        Cada linha de código escrita foi um teste de lógica, uma aplicação dos meus conhecimentos contábeis e um passo rumo à evolução profissional.
+                        O monetra não é apenas um sistema, mas minha <strong>base para aprendizado contínuo</strong>, onde irei implementar e testar novas tecnologias e práticas de desenvolvimento.
+                    </p>
+                </div>
+                <div class="mt-6">
+                    <p class="text-gray-700 leading-relaxed">
+                        O monetra foi desenvolvido por mim, <strong>Joshua Batista</strong>, de forma solo. Mas não posso deixar de mencionar amigos que, de alguma forma, contribuíram com ideias e me ajudaram com boas práticas de desenvolvimento. 
+                        Sem eles, o caminho teria sido mais difícil:
+                    </p>
+                    <div class="flex flex-row justify-around mt-3 text-gray-700">
+                        <p><strong>Jonathan Teixeira</strong></p>
+                        <p><strong>Rodrigo "Miau"</strong></p>
+                        <p><strong>Leonardo Campos</strong></p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-lg font-semibold text-gray-800">O monetra é mais do que um sistema, é a materialização de um sonho. 🚀</p>
+                </div>
+            </div>
+        </div>
+        <div class="hidden sm:flex col-span-1 justify-center items-end mt-6">
+            <img src="../../../../public_html/assets/images/logo-monetra-pb.svg" alt="" class=" rounded-xl animate-slide-in w-[30rem]">
+
+        </div>
+
+    </div>
+    
+    <script>
+        $(document).ready(function () {
+    $("#btn-projeto").on("click", function () {
+        $("html, body").animate({
+            scrollTop: $("#projeto").offset().top
+        }, 800); // 800ms para um efeito suave
+    });
+});
+    </script>
     
 </body>

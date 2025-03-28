@@ -7,18 +7,26 @@
         </div>
         <div class="col-span-0 sm:col-span-6 hidden sm:flex justify-around items-center">
             <div class="flex-col sm:flex-row contents">
-                <div>
-                    <span class="text-lg font-thin">Sobre</span>
-                </div>
-                <div>
-                    <span class="text-lg font-thin">Tutorial</span>
-                </div>
-                <div>
-                    <span class="text-lg font-thin">Projeto</span>
-                </div>
-                <div>
-                    <span class="text-lg font-thin">Suporte</span>
-                </div>
+            <div>
+                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Sobre
+                </span>
+            </div>
+            <div id="btn-projeto">
+                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Projeto
+                </span>
+            </div>
+            <div>
+                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Tutorial
+                </span>
+            </div>
+            <div>
+                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Suporte
+                </span>
+            </div>
             </div>
         </div>
         <div  class="hidden sm:flex justify-end col-span-0 sm:col-span-3 items-center">
@@ -43,20 +51,28 @@
     </div>
     
     <div class="sm:hidden flex justify-around mt-4">
-        <div class="flex-row contents">
+        <div class="flex-row contents space-x-4">
             <div>
-                <span class="text-lg font-thin">Sobre</span>
+                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Sobre
+                </span>
             </div>
             <div>
-                <span class="text-lg font-thin">Tutorial</span>
+                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Tutorial
+                </span>
             </div>
             <div>
-                <span class="text-lg font-thin">Projeto</span>
+                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Projeto
+                </span>
             </div>
             <div>
-                <span class="text-lg font-thin">Suporte</span>
+                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                    Suporte
+                </span>
             </div>
-
         </div>
     </div>
+    <hr class="mt-6">
 </header>
