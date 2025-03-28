@@ -70,13 +70,6 @@
     </div>
 
 
-    <script>
-        $(document).ready(function() {
-            $('.saldoInicial').mask('000000000,00', { reverse: true });
-        });
-    </script>
-
-
     <script src="/src/modulos/publico/assets/js/publico-controle.js"></script>
     <?php require"../../../includes/footer.php"?>
 </body>

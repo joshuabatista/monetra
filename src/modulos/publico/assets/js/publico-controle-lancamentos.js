@@ -3,6 +3,7 @@ $(() => {
     getMovimentation()
     syncScroll()
     updateScrollWidth()
+    $('.valor').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true})
 })
 
 $(window).resize(function() {
@@ -168,7 +169,7 @@ const addMovimentation = () => {
     let planoContas = $('#selectPlanoContas').val();
     let beneficiario = $('.beneficiario').val();
     let tipo = $('#tipo').val();
-    let valor = $('#valor').val();
+    let valor = stripMoney($('#valor').val())
     let dataFormatada = formatarData(data);
 
     if (!dataFormatada || !categoria || !planoContas || !tipo || !valor) {
