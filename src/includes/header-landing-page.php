@@ -22,8 +22,8 @@
                     Tutorial
                 </span>
             </div>
-            <div>
-                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+            <div id="btn-suporte">
+                <span class="btn-suporte text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
                     Suporte
                 </span>
             </div>
@@ -68,7 +68,7 @@
                 </span>
             </div>
             <div>
-                <span class="text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
+                <span class="btn-suporte text-lg font-thin transition-transform duration-300 ease-in-out hover:font-bold hover:scale-110 hover:cursor-pointer">
                     Suporte
                 </span>
             </div>

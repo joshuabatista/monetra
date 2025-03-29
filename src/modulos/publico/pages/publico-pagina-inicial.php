@@ -78,7 +78,7 @@
 ?>
 
 
-<body class=" p-4">
+<body class="">
     <div class="grid grid-cols-2 sm:grid-cols-3 p-0 sm:p-10">
         <div class="hidden sm:flex col-span-1 justify-center items-start mt-6">
             <img class=" rounded-xl animate-slide-in w-[30rem]"
@@ -226,7 +226,7 @@
                     </div>
                 </div>
                 <div class="mt-8 text-center">
-                    <p class="text-lg font-semibold text-gray-800">O monetra é mais do que um sistema, é a
+                    <p class="text-lg font-semibold text-gray-800" id="tutorial">O monetra é mais do que um sistema, é a
                         materialização de um sonho. 🚀</p>
                 </div>
             </div>
@@ -239,7 +239,7 @@
 
     </div>
 
-    <h2 class="text-3xl sm:text-3xl font-bold text-center mt-[2rem] sm:mt-[10rem]" id="tutorial">Tutorial</h2>
+    <h2 class="text-3xl sm:text-3xl font-bold text-center mt-[2rem] sm:mt-[10rem]">Tutorial</h2>
     <div class="flex mt-[1rem] justify-center">
         <div id="indicators-carousel" class="relative w-full" data-carousel="static">
             <!-- Carousel wrapper -->
@@ -360,7 +360,70 @@
             </button>
         </div>
 
+
     </div>
+
+    <div class="flex justify-center items-center min-h-screen p-4" id="suporte">
+        <form class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg" id="form-suporte">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label for="nome" class="block text-sm font-medium text-gray-700">
+                        Nome <span class="text-red-600">*</span>
+                    </label>
+                    <input type="text" id="nome" name="nome"
+                        class="mt-1 px-4 py-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">
+                        E-mail <span class="text-red-600">*</span>
+                    </label>
+                    <input type="email" id="email" name="email"
+                        class="mt-1 px-4 py-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label for="assunto" class="block text-sm font-medium text-gray-700">
+                        Assunto <span class="text-red-600">*</span>
+                    </label>
+                    <select id="assunto" name="assunto"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Selecione</option>
+                        <option value="bug">Bug</option>
+                        <option value="duvida">Dúvida</option>
+                        <option value="sugestao">Sugestão</option>
+                        <option value="solicitacao">Solicitação</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mt-6">
+                <label for="message" class="block text-sm font-medium text-gray-700">Mensagem</label>
+                <textarea id="message" name="message" rows="5"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="Escreva sua mensagem aqui..."></textarea>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button type="submit"
+                    class="px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition duration-200">
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <script>
         $(document).ready(function () {
@@ -387,62 +450,74 @@
             });
         });
 
+        $(document).ready(function () {
+            $(".btn-suporte").on("click", function () {
+                $("html, body").animate({
+                    scrollTop: $("#suporte").offset().top
+                }, 800); // 800ms para um efeito suave
+            });
+        });
+
 
         $(document).ready(function () {
-    let currentIndex = 0;
-    const items = $('[data-carousel-item]');
-    const totalItems = items.length;
-    const intervalTime = 50000;
-    let interval;
+            let currentIndex = 0;
+            const items = $('[data-carousel-item]');
+            const totalItems = items.length;
+            const intervalTime = 50000;
+            let interval;
 
-    function showSlide(index) {
-        items.removeClass('block').addClass('hidden');
-        items.eq(index).removeClass('hidden').addClass('block');
-        $('[data-carousel-slide-to]').attr('aria-current', 'false');
-        $('[data-carousel-slide-to]').eq(index).attr('aria-current', 'true');
-    }
+            function showSlide(index) {
+                items.removeClass('block').addClass('hidden');
+                items.eq(index).removeClass('hidden').addClass('block');
+                $('[data-carousel-slide-to]').attr('aria-current', 'false');
+                $('[data-carousel-slide-to]').eq(index).attr('aria-current', 'true');
+            }
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalItems;
-        showSlide(currentIndex);
-    }
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                showSlide(currentIndex);
+            }
 
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-        showSlide(currentIndex);
-    }
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                showSlide(currentIndex);
+            }
 
-    function startAutoSlide() {
-        interval = setInterval(nextSlide, intervalTime);
-    }
+            function startAutoSlide() {
+                interval = setInterval(nextSlide, intervalTime);
+            }
 
-    function stopAutoSlide() {
-        clearInterval(interval);
-    }
+            function stopAutoSlide() {
+                clearInterval(interval);
+            }
 
-    $('[data-carousel-next]').click(function () {
-        stopAutoSlide();
-        nextSlide();
-        startAutoSlide();
-    });
+            $('[data-carousel-next]').click(function () {
+                stopAutoSlide();
+                nextSlide();
+                startAutoSlide();
+            });
 
-    $('[data-carousel-prev]').click(function () {
-        stopAutoSlide();
-        prevSlide();
-        startAutoSlide();
-    });
+            $('[data-carousel-prev]').click(function () {
+                stopAutoSlide();
+                prevSlide();
+                startAutoSlide();
+            });
 
-    $('[data-carousel-slide-to]').click(function () {
-        stopAutoSlide();
-        currentIndex = $(this).index();
-        showSlide(currentIndex);
-        startAutoSlide();
-    });
+            $('[data-carousel-slide-to]').click(function () {
+                stopAutoSlide();
+                currentIndex = $(this).index();
+                showSlide(currentIndex);
+                startAutoSlide();
+            });
 
-    showSlide(currentIndex);
-    startAutoSlide();
-});
-
+            showSlide(currentIndex);
+            startAutoSlide();
+        });
     </script>
 
 </body>
+
+<footer class=" bg-slate-500 p-0">
+        <h1>oi</h1>
+</footer>
+
