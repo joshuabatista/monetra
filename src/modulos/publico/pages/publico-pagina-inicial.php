@@ -397,123 +397,21 @@
             </div>
             <div class="mt-6">
                 <label for="message" class="block text-sm font-medium text-gray-700">Mensagem</label>
-                <textarea id="message" name="message" rows="5"
+                <textarea id="mensagem" name="mensagem" rows="5"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     placeholder="Escreva sua mensagem aqui..."></textarea>
             </div>
             <div class="mt-6 flex justify-end">
-                <button type="submit"
-                    class="px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition duration-200">
+                <button class="btn-send-suporte px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition duration-200">
                     Enviar
                 </button>
             </div>
         </form>
     </div>
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-        $(document).ready(function () {
-            $("#btn-projeto").on("click", function () {
-                $("html, body").animate({
-                    scrollTop: $("#projeto-web").offset().top
-                }, 800); // 800ms para um efeito suave
-            });
-        });
-
-        $(document).ready(function () {
-            $(".btn-projeto-mobile").on("click", function () {
-                $("html, body").animate({
-                    scrollTop: $("#projeto-mobile").offset().top
-                }, 800); // 800ms para um efeito suave
-            });
-        });
-
-        $(document).ready(function () {
-            $(".btn-tutorial").on("click", function () {
-                $("html, body").animate({
-                    scrollTop: $("#tutorial").offset().top
-                }, 800); // 800ms para um efeito suave
-            });
-        });
-
-        $(document).ready(function () {
-            $(".btn-suporte").on("click", function () {
-                $("html, body").animate({
-                    scrollTop: $("#suporte").offset().top
-                }, 800); // 800ms para um efeito suave
-            });
-        });
-
-
-        $(document).ready(function () {
-            let currentIndex = 0;
-            const items = $('[data-carousel-item]');
-            const totalItems = items.length;
-            const intervalTime = 50000;
-            let interval;
-
-            function showSlide(index) {
-                items.removeClass('block').addClass('hidden');
-                items.eq(index).removeClass('hidden').addClass('block');
-                $('[data-carousel-slide-to]').attr('aria-current', 'false');
-                $('[data-carousel-slide-to]').eq(index).attr('aria-current', 'true');
-            }
-
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalItems;
-                showSlide(currentIndex);
-            }
-
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                showSlide(currentIndex);
-            }
-
-            function startAutoSlide() {
-                interval = setInterval(nextSlide, intervalTime);
-            }
-
-            function stopAutoSlide() {
-                clearInterval(interval);
-            }
-
-            $('[data-carousel-next]').click(function () {
-                stopAutoSlide();
-                nextSlide();
-                startAutoSlide();
-            });
-
-            $('[data-carousel-prev]').click(function () {
-                stopAutoSlide();
-                prevSlide();
-                startAutoSlide();
-            });
-
-            $('[data-carousel-slide-to]').click(function () {
-                stopAutoSlide();
-                currentIndex = $(this).index();
-                showSlide(currentIndex);
-                startAutoSlide();
-            });
-
-            showSlide(currentIndex);
-            startAutoSlide();
-        });
-    </script>
+    <script src="/src/modulos/publico/assets/js/publico-pagina-inicial.js"></script>
 
 </body>
 
