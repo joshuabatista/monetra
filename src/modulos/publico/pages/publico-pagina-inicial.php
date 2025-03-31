@@ -402,12 +402,13 @@
                     placeholder="Escreva sua mensagem aqui..."></textarea>
             </div>
             <div class="mt-6 flex justify-end">
-                <button class="btn-send-suporte px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition duration-200">
+                <button class="btn-send-suporte px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition duration-200 ">
                     Enviar
                 </button>
             </div>
         </form>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
