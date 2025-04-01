@@ -26,6 +26,7 @@ function enviarEmail($para, $nome, $assunto, $mensagem) {
 
         // Conteúdo do e-mail
         $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
         $mail->Subject = $assunto;
         $mail->Body    = $mensagem;
         $mail->AltBody = strip_tags($mensagem);

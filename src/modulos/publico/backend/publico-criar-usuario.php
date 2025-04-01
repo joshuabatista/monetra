@@ -167,6 +167,42 @@ $mensagem = '
 
 $resultado = enviarEmail($email, $nome, $assunto, $mensagem);
 
+//me manda email ao ter um novo usuario no monetra
+
+$emailMonetra = "monetrafin@gmail.com";
+
+$assuntoMonetra = "Um novo usuario monetra: $nome";
+
+$mensagemMonetra = '
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Temos um novo usuário no sistema!</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+        <div style="background-color: #4b50d1; padding: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; text-align: center;">
+            monetra - transformando Dados em Decisões
+        </div>
+        <div style="padding: 20px; color: #333; line-height: 1.6;">
+            <p>O usuário ' . $nome . ' acabou de criar uma conta!</p>
+            <p>nome completo: '.$nome.' '.$sobrenome.'</p>
+            <p>E-mail: '.$email.'</p>
+            <p>UHUUUUUUULL!!!  \O/ </p>
+            <p>Dúvidas e sugestões, entre em contato com a gente via e-mail: 
+                <span style="font-style: italic; color: #6b7280;">monetrafin@gmail.com</span>
+            </p>
+            <small style="font-size: 12px; color: #6b7280; font-style: italic;">(Não responda este e-mail)</small>
+        </div>
+    </body>
+    </html>
+';
+
+$novo = enviarEmail($emailMonetra, $nome, $assuntoMonetra, $mensagemMonetra);
+
+
+
 $pdo->commit();
 
 response([
