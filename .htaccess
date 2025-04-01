@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteRule ^$ /login [L,R=301]
+RewriteRule ^$ /page [L,R=301]
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -9,6 +9,7 @@ RewriteRule ^$ /login [L,R=301]
 </IfModule>
 
 RewriteRule ^login$ /src/modulos/publico/pages/publico-login.php [L]
+RewriteRule ^page$ /src/modulos/publico/pages/publico-pagina-inicial.php [L]
 RewriteRule ^perfil$ /src/modulos/publico/pages/publico-editar-perfil.php [L]
 RewriteRule ^alterar-senha$ /src/modulos/publico/pages/publico-alterar-senha.php [L]
 RewriteRule ^inicio$ /src/modulos/publico/pages/publico-inicio.php [L]
@@ -51,4 +52,5 @@ RewriteRule ^esqueceu-senha$ /src/modulos/publico/backend/publico-esqueceu-senha
 RewriteRule ^valida-codigo$ /src/modulos/publico/backend/publico-valida-codigo-esqueceu-senha.php [L] 
 RewriteRule ^setar-nova-senha$ /src/modulos/publico/backend/publico-nova-senha.php [L] 
 RewriteRule ^delete-minucioso$ /src/modulos/publico/backend/publico-delete-minucioso.php [L] 
+RewriteRule ^send-suporte$ /src/modulos/publico/backend/send-suporte.php [L] 
 
