@@ -1,4 +1,5 @@
 <?php
+ob_start();
  $title = "Monetra | Inicio";
 
  require '../../../../public_html/config/conexao.php';
