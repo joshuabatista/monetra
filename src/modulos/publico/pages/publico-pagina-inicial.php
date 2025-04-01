@@ -17,6 +17,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.js"
+        integrity="sha512-LThUFuq6Y8DTeSxG7VgJQu+3slKAhZ1u3z1EJdZESaVuQIEJ7TXC/DV8xNNEDFW01iWF4tUuzeC4RdiyrRPdRw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.css"
+        integrity="sha512-aHc6FOiM/2Ko2Au1xqzHo++VfZGZI7cgUJptweRq1j2qrPF8UZdO+3MScBvQwPpclaxEDMBJ4bAuulsIz1Y8uA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')</style> -->
 </head>
 
@@ -240,31 +246,25 @@
     </div>
 
     <h2 class="text-3xl sm:text-3xl font-bold text-center mt-[2rem] sm:mt-[10rem]">Tutorial</h2>
-    <div class="flex mt-[1rem] justify-center">
+    <!-- <div class="flex mt-[1rem] justify-center">
         <div id="indicators-carousel" class="relative w-full" data-carousel="static">
-            <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                <!-- Item 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
                     <img src="../../../../public_html/assets/images/tutorial-1-canva.png"
                         class="absolute block w-[50rem] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
-                <!-- Item 2 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <img src="../../../../public_html/assets/images/tutorial-2-canva.png"
                         class="absolute block w-[50rem] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
-                <!-- Item 3 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <img src="../../../../public_html/assets/images/tutorial-3-canva.png"
                         class="absolute block w-[50rem] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
-                <!-- Item 4 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <img src="../../../../public_html/assets/images/tutorial-4-canva.png"
                         class="absolute block w-[50rem] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
-                <!-- Item 5 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <img src="../../../../public_html/assets/images/tutorial-6-canva.png"
                         class="absolute block w-[50rem] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
@@ -302,7 +302,6 @@
                         class="absolute block w-[50rem] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
             </div>
-            <!-- Slider indicators -->
             <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
                 <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
                     data-carousel-slide-to="0"></button>
@@ -331,7 +330,6 @@
                 <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 14"
                     data-carousel-slide-to="14"></button>
             </div>
-            <!-- Slider controls -->
             <button type="button"
                 class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                 data-carousel-prev>
@@ -361,10 +359,20 @@
         </div>
 
 
+    </div> -->
+
+    <div class="flex justify-center p-4 sm:p-0">
+        <iframe width="1150" height="500" src="https://www.youtube.com/embed/cH4iyM8diZc?si=UI3mpGaHJiIckcjw"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
+
+
     <div class="flex justify-center items-center min-h-screen p-4" id="suporte">
-        <form class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg" id="form-suporte">
+        <form class="w-full max-w-6xl bg-white p-8 rounded-lg shadow-lg" id="form-suporte">
+            <h2 class="text-3xl sm:text-3xl font-bold text-center">Suporte</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                     <label for="nome" class="block text-sm font-medium text-gray-700">
@@ -402,7 +410,8 @@
                     placeholder="Escreva sua mensagem aqui..."></textarea>
             </div>
             <div class="mt-6 flex justify-end">
-                <button class="btn-send-suporte px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition duration-200 ">
+                <button
+                    class="btn-send-suporte px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition duration-200 ">
                     Enviar
                 </button>
             </div>
@@ -416,7 +425,104 @@
 
 </body>
 
-<footer class=" bg-slate-500 p-0">
-        <h1>oi</h1>
+<footer class=" ">
+    <div class="w-full mx-auto max-w-screen-xl p-4  md:flex md:items-center md:justify-between">
+        <span class="text-sm text-gray-500 sm:text-center flex justify-center dark:text-gray-400">© 2025 monetra™. All
+            Rights Reserved.
+        </span>
+        <ul
+            class="flex justify-center  flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+            <li>
+                <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                    class="hover:underline me-4 md:me-6">Privacy Policy</button>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/joshua-batista-14b13a194/" taget="_blank"
+                    class="hover:underline me-4 md:me-6"><i class="fa-brands fa-linkedin-in"></i></a>
+            </li>
+            <li>
+                <a class="hover:underline">monetrafin@gmail.com</a>
+            </li>
+        </ul>
+    </div>
 </footer>
 
+
+<div id="default-modal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+            <!-- Modal header -->
+            <div
+                class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Politica de Privacidade
+                </h3>
+                <button type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="default-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+             <div class=" p-4">
+
+                 <section class="mb-6">
+                     <h2 class="text-2xl font-semibold text-gray-800">1. Coleta de Informações</h2>
+                     <p class="mt-2 text-gray-700">Coletamos os seguintes tipos de informações:</p>
+                     <ul class="list-disc list-inside text-gray-700 mt-2">
+                         <li><strong>Informações fornecidas pelo usuário:</strong> Nome, e-mail, dados de login e outras
+                             inseridas manualmente.</li>
+                         <li><strong>Dados financeiros:</strong> Registros de transações e pagamentos (armazenados de forma
+                             segura).</li>
+                         <li><strong>Dados de navegação:</strong> Endereço IP, tipo de dispositivo, navegador e uso do
+                             sistema.</li>
+                     </ul>
+                 </section>
+     
+                 <section class="mb-6">
+                     <h2 class="text-2xl font-semibold text-gray-800">2. Uso das Informações</h2>
+                     <p class="mt-2 text-gray-700">As informações são utilizadas para melhorar a experiência do usuário,
+                         gerenciar transações e garantir a segurança do sistema.</p>
+                 </section>
+     
+                 <section class="mb-6">
+                     <h2 class="text-2xl font-semibold text-gray-800">3. Compartilhamento de Dados</h2>
+                     <p class="mt-2 text-gray-700">Não compartilhamos informações pessoais, exceto quando exigido por lei ou
+                         para prestadores de serviço sob contrato de confidencialidade.</p>
+                 </section>
+     
+                 <section class="mb-6">
+                     <h2 class="text-2xl font-semibold text-gray-800">4. Proteção das Informações</h2>
+                     <p class="mt-2 text-gray-700">Adotamos medidas de segurança como criptografia, controle de acesso
+                         restrito e monitoramento de atividades suspeitas.</p>
+                 </section>
+     
+                 <section class="mb-6">
+                     <h2 class="text-2xl font-semibold text-gray-800">5. Seus Direitos</h2>
+                     <p class="mt-2 text-gray-700">Você pode acessar, corrigir ou excluir suas informações pessoais a
+                         qualquer momento.</p>
+                 </section>
+     
+                 <section class="mb-6">
+                     <h2 class="text-2xl font-semibold text-gray-800">6. Contato</h2>
+                     <p class="mt-2 text-gray-700">Se tiver dúvidas, entre em contato pelo e-mail <a
+                             href="mailto:suporte@monetra.com" class="text-blue-600 hover:underline">monetrafin@gmail.com</a>.
+                     </p>
+                 </section>
+             </div>
+
+            <!-- Modal footer -->
+            <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button data-modal-hide="default-modal" type="button"
+                    class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

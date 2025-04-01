@@ -14,9 +14,12 @@
 
     $query = prepare($sql,[$usu_id]);
 
+    $inicial_check = $query->data;
     $inicial = $query->data->valor;
 
-    if(empty($inicial)){
+    // dd($inicial);
+
+    if(empty($inicial_check)){
         header("Location: /controle");
     }
 
