@@ -3,29 +3,32 @@ require '../../../../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../../../../');
+$dotenv->load();
 
 function enviarEmail($para, $nome, $assunto, $mensagem) {
     $mail = new PHPMailer(true);
 
     try {
-        // Configurações do servidor SMTP
-        $mail->isSMTP();                                         
-        $mail->Host = 'smtp.gmail.com'; // Ex.: smtp.gmail.com
-        $mail->SMTPAuth = true;                                  
-        $mail->Username = 'monetrafin@gmail.com'; // Seu e-mail
-        $mail->Password = 'eabk ngnq mvso gcup'; // Senha do seu e-mail
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // TLS ou SSL
-        $mail->Port = 587; // Porta do servidor SMTP (587 para TLS, 465 para SSL)
+        $mail->isSMTP();
+        $mail->Host       = $_ENV['SMTP_HOST'];
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $_ENV['SMTP_USER'];
+        $mail->Password   = $_ENV['SMTP_PASS'];
+        $mail->SMTPSecure = $_ENV['SMTP_SECURE'];
+        $mail->Port       = $_ENV['SMTP_PORT'];
 
         // Configurações do remetente e destinatário
-        $mail->setFrom('monetrafin@gmail.com', 'Monetra'); // Seu e-mail
-        $mail->addAddress($para, $nome); // E-mail e nome do destinatário
+        $mail->setFrom($_ENV['SMTP_FROM'], $_ENV['SMTP_FROM_NAME']);
+        $mail->addAddress($para, $nome);
 
         // Conteúdo do e-mail
-        $mail->isHTML(true); // Define que o e-mail será em HTML
-        $mail->Subject = $assunto; // Assunto
-        $mail->Body    = $mensagem; // Corpo do e-mail (HTML permitido)
-        $mail->AltBody = strip_tags($mensagem); // Texto alternativo sem HTML
+        $mail->isHTML(true);
+        $mail->Subject = $assunto;
+        $mail->Body    = $mensagem;
+        $mail->AltBody = strip_tags($mensagem);
 
         // Envia o e-mail
         $mail->send();
