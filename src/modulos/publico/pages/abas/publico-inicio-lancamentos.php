@@ -12,9 +12,8 @@
                     aria-selected="false">Debito / Dinheiro</button>
             </li>
             <li class="me-2" role="presentation">
-                <button
-                    class="tab-cartao-inicio inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                    id="dashboard-styled-tab" data-tabs-target="#credito-tab" type="button" role="tab"
+                <button class="tab-cartao-inicio inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    id="dashboard-styled-tab" <?= $cartao <= 0 ? 'disabled' : '' ?> data-tabs-target="#credito-tab" type="button" role="tab"
                     aria-controls="dashboard" aria-selected="false">Crédito</button>
             </li>
 

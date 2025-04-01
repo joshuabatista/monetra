@@ -20,6 +20,14 @@
         header("Location: /controle");
     }
 
+    $sql = "SELECT COUNT(id) qtn
+            FROM cartao_credito 
+            WHERE usu_id = ?";
+
+    $query = prepare($sql, [$usu_id]);
+
+    $cartao = $query->data->qtn;
+
 ?>
 
 
@@ -38,7 +46,7 @@
                 <ul class="flex flex-wrap text-sm font-medium text-center w-full justify-around">
 
                     <li class="flex-1" role="presentation">
-                        <button class="inline-block p-2" id="visao-tab" data-tabs-target="#visao-geral" type="button" role="tab" aria-controls="visao-geral" aria-selected="false">
+                        <button class="inline-block p-2" id="visao-tab" <?= $inicial <= 0 ? 'disabled' : '' ?> data-tabs-target="#visao-geral" type="button" role="tab" aria-controls="visao-geral" aria-selected="false">
                             <p class="hidden lg:block">Visão Geral</p>
                             <p class="lg:hidden text-xs flex flex-col items-center">
                                 <i class="fa-solid fa-house"></i>
@@ -47,7 +55,7 @@
                         </button>
                     </li>
                     <li class="flex-1" role="presentation">
-                        <button class="inline-block p-2" id="dashboard-tab" data-tabs-target="#dashboard" type="button"role="tab" aria-controls="dashboard" aria-selected="false">
+                        <button class="inline-block p-2" id="dashboard-tab" <?= $inicial <= 0 ? 'disabled' : '' ?> data-tabs-target="#dashboard" type="button"role="tab" aria-controls="dashboard" aria-selected="false">
                             <p class="hidden lg:block">Dashboard</p>
                             <p class="lg:hidden text-xs flex flex-col items-center">
                                 <i class="fa-solid fa-chart-pie"></i>
@@ -56,7 +64,7 @@
                         </button>
                     </li>
                     <li class="flex-1 relative" role="presentation">
-                        <button class="inline-block p-2" id="minucioso-tab" data-tabs-target="#minucioso" type="button" role="tab" aria-controls="minucioso" aria-selected="false">
+                        <button class="inline-block p-2" id="minucioso-tab" <?= $inicial <= 0 ? 'disabled' : '' ?> data-tabs-target="#minucioso" type="button" role="tab" aria-controls="minucioso" aria-selected="false">
                             <p class="hidden lg:block">Controle Minucioso</p>
                             <p class="lg:hidden text-xs flex flex-col items-center">
                                 <i class="fa-solid fa-sack-dollar"></i>
@@ -67,7 +75,7 @@
                             class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse bolinhaMinucioso hidden"></span>
                     </li>
                     <li class="flex-1 relative" role="presentation">
-                        <button class="inline-block p-2" id="pagarReceber-tab" data-tabs-target="#pagarReceber" type="button" role="tab" aria-controls="cartao" aria-selected="false">
+                        <button class="inline-block p-2" id="pagarReceber-tab" <?= $inicial <= 0 ? 'disabled' : '' ?> data-tabs-target="#pagarReceber" type="button" role="tab" aria-controls="cartao" aria-selected="false">
                             <p class="hidden lg:block">Pagar / Receber</p>
                             <p class="lg:hidden text-xs flex flex-col items-center">
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
@@ -78,7 +86,7 @@
                             class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse bolinhaPendentes hidden"></span>
                     </li>
                     <li class="flex-1" role="presentation">
-                        <button class="inline-block p-2" id="cartao-tab" data-tabs-target="#cartao" type="button" role="tab" aria-controls="cartao" aria-selected="false">
+                        <button class="inline-block p-2" id="cartao-tab" <?= $inicial <= 0 ? 'disabled' : '' ?> data-tabs-target="#cartao" type="button" role="tab" aria-controls="cartao" aria-selected="false">
                             <p class="hidden lg:block">Cartão de Crédito</p>
                             <p class="lg:hidden text-xs flex flex-col items-center">
                                 <i class="fa-solid fa-credit-card"></i>
