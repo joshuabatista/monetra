@@ -95,7 +95,7 @@
             <div class=" text-gray-800 animate-fade-in-right mt-2">
                 <h1 class="text-3xl sm:text-3xl font-bold mb-4">Bem-vindo ao monetra</h1>
                 <p class="mb-4 sm:text-xl">
-                    O seu sistema web gratuito para uma gestão financeira pessoal, precisa e eficiente.
+                    O seu sistema web preferido para uma gestão financeira pessoal, precisa e eficiente.
                 </p>
                 <h2 class="text-2xl font-semibold mb-3">O que é o monetra?</h2>
                 <p class="mb-4 sm:text-xl">
@@ -112,7 +112,7 @@
                         </div>
                         <div>
                             <p class="mt-1 sm:mt-0">Visualização intuitiva de relatórios</p>
-                            <p class="mt-1 sm:mt-0">100% gratuito e online</p>
+                            <p class="mt-1 sm:mt-0">100% online</p>
                         </div>
                     </div>
                 </ul>
