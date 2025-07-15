@@ -9,11 +9,12 @@ $usu_id = $_SESSION['user_id'];
 
 $saldo = $_POST['saldo'];
 
-if(empty($saldo)){
-    response([
-        'status'=>false
-    ]);
-}
+// if(empty($saldo)){
+//     response([
+//         'status'=>false,
+//         'message'=>'Erro no saldo, contate o suporte tecnico'
+//     ]);
+// }
 
 // Recebendo os dados dos cartões
 $cartoes = [];
